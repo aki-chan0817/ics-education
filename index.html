@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情報通信技術活用論2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+            background-color: #f4f9f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        #app {
+            background-color: #f4f9f1;
+            width: 100%;
+            max-width: 600px;
+            min-height: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            color: #2d5016;
+        }
+
+        .menu-button {
+            background-color: #b9e8b5;
+            border: none;
+            padding: 12px 40px;
+            font-size: 16px;
+            margin: 6px 0;
+            cursor: pointer;
+            border-radius: 8px;
+            width: 200px;
+            transition: background-color 0.3s;
+        }
+
+        .menu-button:hover {
+            background-color: #a0d89c;
+        }
+
+        .question-number {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .sentence-box {
+            font-size: 22px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            line-height: 1.8;
+            background-color: #f4f9f1;
+        }
+
+        .underline {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+        }
+
+        .answer-input {
+            font-size: 18px;
+            padding: 10px 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .result-text {
+            font-size: 16px;
+            margin: 10px 0;
+            min-height: 30px;
+            font-weight: bold;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        .answer-button {
+            background-color: #ffeb99;
+            border: none;
+            padding: 12px 40px;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .answer-button:hover {
+            background-color: #ffe066;
+        }
+
+        .next-button {
+            background-color: #b0d6ff;
+            border: none;
+            padding: 12px 40px;
+            font-size: 16px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .next-button:hover {
+            background-color: #8fc4ff;
+        }
+
+        .finish-title {
+            font-size: 26px;
+            font-weight: bold;
+            margin: 60px 0;
+            color: #2d5016;
+        }
+
+        .home-button {
+            background-color: #b9e8b5;
+            border: none;
+            padding: 15px 50px;
+            font-size: 18px;
+            margin: 20px 0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .home-button:hover {
+            background-color: #a0d89c;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        const kanjiQuestions = {
+            "1年生": [
+                {sentence: "明日は木曜日です。", kanji: "木", reading: "もく"},
+                {sentence: "山にのぼります。", kanji: "山", reading: "やま"},
+                {sentence: "川の水がながれています。", kanji: "川", reading: "かわ"},
+                {sentence: "空に月が出ています。", kanji: "月", reading: "つき"},
+                {sentence: "花がさきました。", kanji: "花", reading: "はな"},
+                {sentence: "赤い車が走っています。", kanji: "車", reading: "くるま"},
+                {sentence: "犬がほえています。", kanji: "犬", reading: "いぬ"},
+                {sentence: "手をあらいましょう。", kanji: "手", reading: "て"},
+                {sentence: "口をあけてください。", kanji: "口", reading: "くち"},
+                {sentence: "大きな魚をつりました。", kanji: "魚", reading: "さかな"},
+            ],
+            "2年生": [
+                {sentence: "父と母はやさしいです。", kanji: "父", reading: "ちち"},
+                {sentence: "兄といっしょにあそびます。", kanji: "兄", reading: "あに"},
+                {sentence: "白い鳥がとんでいます。", kanji: "鳥", reading: "とり"},
+                {sentence: "音が小さいです。", kanji: "音", reading: "おと"},
+                {sentence: "雪がふっています。", kanji: "雪", reading: "ゆき"},
+                {sentence: "強い風がふいています。", kanji: "風", reading: "かぜ"},
+                {sentence: "朝ごはんを食べました。", kanji: "朝", reading: "あさ"},
+                {sentence: "図書館で本を読みます。", kanji: "本", reading: "ほん"},
+                {sentence: "話をよく聞きましょう。", kanji: "話", reading: "はなし"},
+                {sentence: "学校へ行きます。", kanji: "行", reading: "い"},
+            ],
+            "3年生": [
+                {sentence: "海で貝をひろいました。", kanji: "海", reading: "うみ"},
+                {sentence: "草がはえています。", kanji: "草", reading: "くさ"},
+                {sentence: "毎日朝ごはんを食べます。", kanji: "毎", reading: "まい"},
+                {sentence: "黄色い花がさきました。", kanji: "黄", reading: "き"},
+                {sentence: "町の中を歩きます。", kanji: "町", reading: "まち"},
+                {sentence: "家の前に道があります。", kanji: "道", reading: "みち"},
+                {sentence: "形がちがいます。", kanji: "形", reading: "かたち"},
+                {sentence: "空気がつめたいです。", kanji: "気", reading: "き"},
+                {sentence: "文字をならいました。", kanji: "文", reading: "ぶん"},
+                {sentence: "世界の国をしらべます。", kanji: "国", reading: "くに"},
+            ],
+            "4年生": [
+                {sentence: "公園で遊びました。", kanji: "公", reading: "こう"},
+                {sentence: "地図を見ながら行きます。", kanji: "地", reading: "ち"},
+                {sentence: "寒い冬がきました。", kanji: "冬", reading: "ふゆ"},
+                {sentence: "船が海を進みます。", kanji: "船", reading: "ふね"},
+                {sentence: "紙でつるをおりました。", kanji: "紙", reading: "かみ"},
+                {sentence: "図を見て考えます。", kanji: "図", reading: "ず"},
+                {sentence: "体をうごかしましょう。", kanji: "体", reading: "からだ"},
+                {sentence: "星がきれいに光っています。", kanji: "星", reading: "ほし"},
+                {sentence: "朝早く起きました。", kanji: "早", reading: "はや"},
+                {sentence: "空の色が青いです。", kanji: "空", reading: "そら"},
+            ],
+            "5年生": [
+                {sentence: "世界の地図を見ました。", kanji: "地図", reading: "ちず"},
+                {sentence: "自然を大切にしましょう。", kanji: "自然", reading: "しぜん"},
+                {sentence: "交通のきまりをまもります。", kanji: "交通", reading: "こうつう"},
+                {sentence: "工場を見学しました。", kanji: "工場", reading: "こうじょう"},
+                {sentence: "未来のことを考えます。", kanji: "未来", reading: "みらい"},
+                {sentence: "地球はまるいです。", kanji: "地球", reading: "ちきゅう"},
+                {sentence: "植物を育てます。", kanji: "植物", reading: "しょくぶつ"},
+                {sentence: "音楽の時間です。", kanji: "音楽", reading: "おんがく"},
+                {sentence: "自由に絵をかきます。", kanji: "自由", reading: "じゆう"},
+                {sentence: "風がつよくふきました。", kanji: "風", reading: "かぜ"},
+            ],
+            "6年生": [
+                {sentence: "歴史を学びます。", kanji: "歴史", reading: "れきし"},
+                {sentence: "新聞を読みます。", kanji: "新聞", reading: "しんぶん"},
+                {sentence: "政治について話します。", kanji: "政治", reading: "せいじ"},
+                {sentence: "科学の実験をしました。", kanji: "科学", reading: "かがく"},
+                {sentence: "経済のニュースを見ました。", kanji: "経済", reading: "けいざい"},
+                {sentence: "文化をまなびます。", kanji: "文化", reading: "ぶんか"},
+                {sentence: "努力をつづけます。", kanji: "努力", reading: "どりょく"},
+                {sentence: "未来の夢を語ります。", kanji: "未来", reading: "みらい"},
+                {sentence: "安全に気をつけます。", kanji: "安全", reading: "あんぜん"},
+                {sentence: "成長することはすばらしい。", kanji: "成長", reading: "せいちょう"},
+            ],
+        };
+
+        let currentQuestions = [];
+        let currentIndex = 0;
+        const app = document.getElementById('app');
+
+        function shuffle(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        function showMenu() {
+            app.innerHTML = `
+                <h1>🌳 かんじのもり 🌳</h1>
+                ${Object.keys(kanjiQuestions).map(grade => 
+                    `<button class="menu-button" onclick="startQuiz('${grade}')">${grade}</button>`
+                ).join('')}
+            `;
+        }
+
+        function startQuiz(grade) {
+            currentQuestions = shuffle(kanjiQuestions[grade]);
+            currentIndex = 0;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = currentQuestions[currentIndex];
+            const sentence = q.sentence;
+            const kanji = q.kanji;
+            const kanjiIndex = sentence.indexOf(kanji);
+            
+            const before = sentence.substring(0, kanjiIndex);
+            const after = sentence.substring(kanjiIndex + kanji.length);
+            
+            app.innerHTML = `
+                <div class="question-number">(${currentIndex + 1}/${currentQuestions.length}) のもんだい</div>
+                <div class="sentence-box">
+                    ${before}<span class="underline">${kanji}</span>${after}
+                </div>
+                <input type="text" class="answer-input" id="answerInput" placeholder="ひらがなでこたえてね">
+                <div class="result-text" id="resultText"></div>
+                <button class="answer-button" onclick="checkAnswer()">こたえる</button>
+                <button class="next-button" onclick="nextQuestion()">▶ 次へ</button>
+            `;
+            
+            document.getElementById('answerInput').focus();
+            document.getElementById('answerInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkAnswer();
+                }
+            });
+        }
+
+        function checkAnswer() {
+            const q = currentQuestions[currentIndex];
+            const answer = document.getElementById('answerInput').value.trim();
+            const resultText = document.getElementById('resultText');
+            
+            if (answer === q.reading) {
+                resultText.textContent = '💮 正解！';
+                resultText.className = 'result-text correct';
+            } else {
+                resultText.textContent = `❌ 不正解! 正しくは「${q.reading}」`;
+                resultText.className = 'result-text incorrect';
+            }
+        }
+
+        function nextQuestion() {
+            if (currentIndex + 1 < currentQuestions.length) {
+                currentIndex++;
+                showQuestion();
+            } else {
+                showFinish();
+            }
+        }
+
+        function showFinish() {
+            app.innerHTML = `
+                <div class="finish-title">✨おつかれさまでした✨</div>
+                <button class="home-button" onclick="showMenu()">🏠 メニューにもどる</button>
+            `;
+        }
+
+        showMenu();
+    </script>
+</body>
+</html>
