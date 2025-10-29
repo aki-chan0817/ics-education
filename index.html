@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>情報通信技術活用論2025</title>
+    <title>🌸 かんじのもり 🌸</title>
     <style>
         * {
             margin: 0;
@@ -53,6 +53,28 @@
             font-size: 16px;
             margin: 20px 0;
             color: #2d5016;
+        }
+        .progress-container {
+            width: 80%;
+            max-width: 400px;
+            height: 30px;
+            background-color: #e8f5e3;
+            border-radius: 15px;
+            margin: 20px auto;
+            overflow: hidden;
+            border: 2px solid #b9e8b5;
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #b9e8b5, #7ac977);
+            border-radius: 15px;
+            transition: width 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2d5016;
+            font-weight: bold;
+            font-size: 14px;
         }
         .sentence-box {
             font-size: 22px;
@@ -162,6 +184,9 @@
 
         <div id="question-screen" class="hidden">
             <div class="question-number" id="question-number"></div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
             <div class="sentence-box" id="sentence-box"></div>
             <input type="text" class="input-box" id="answer-input" placeholder="ひらがなで入力してね">
             <div class="result" id="result"></div>
@@ -276,6 +301,12 @@
         function showQuestion() {
             const q = currentQuestions[currentIndex];
             document.getElementById('question-number').textContent = `(${currentIndex + 1}/${currentQuestions.length}) のもんだい`;
+            
+            // 進捗バーを更新
+            const progress = ((currentIndex + 1) / currentQuestions.length) * 100;
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = `${currentIndex + 1}/${currentQuestions.length}`;
             
             const sentenceBox = document.getElementById('sentence-box');
             const sentence = q.sentence;
