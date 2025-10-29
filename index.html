@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>情報通信技術活用論2025</title>
+    <title>🌸 かんじのもり 🌸</title>
     <style>
         * {
             margin: 0;
@@ -155,6 +155,14 @@
         .hidden {
             display: none;
         }
+
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -255,6 +263,7 @@
                 ${Object.keys(kanjiQuestions).map(grade => 
                     `<button class="menu-button" onclick="startQuiz('${grade}')">${grade}</button>`
                 ).join('')}
+                <div class="footer">情報通信技術活用論2025</div>
             `;
         }
 
@@ -324,8 +333,5 @@
 
         showMenu();
     </script>
-
-     <p>情報通信技術活用論2025</p>
-    
 </body>
 </html>
