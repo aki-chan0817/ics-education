@@ -140,7 +140,7 @@
         .finish-title {
             font-size: 26px;
             font-weight: bold;
-            margin: 60px 0;
+            margin: 60px 0 30px 0;
             color: #2d5016;
         }
         .menu-button {
@@ -155,6 +155,81 @@
         }
         .menu-button:hover {
             background-color: #a0d89f;
+        }
+        .stats-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        .grade-stats {
+            background-color: white;
+            border: 2px solid #b9e8b5;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .grade-stats h3 {
+            color: #2d5016;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e8f5e3;
+        }
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+        .stat-label {
+            color: #555;
+        }
+        .stat-value {
+            font-weight: bold;
+            color: #2d5016;
+        }
+        .accuracy-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #e8f5e3;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        .accuracy-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #7ac977, #b9e8b5);
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+        .no-data {
+            color: #999;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+        }
+        .reset-button {
+            font-size: 14px;
+            background-color: #ffb3b3;
+            padding: 8px 20px;
+            margin: 10px auto;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        .reset-button:hover {
+            background-color: #ff9999;
+        }
+        .current-result {
+            background-color: white;
+            border: 2px solid #b9e8b5;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 300px;
         }
         footer {
             width: 100%;
@@ -180,6 +255,7 @@
             <button class="grade-button" onclick="startQuiz('4年生')">4年生</button>
             <button class="grade-button" onclick="startQuiz('5年生')">5年生</button>
             <button class="grade-button" onclick="startQuiz('6年生')">6年生</button>
+            <button class="grade-button" style="background-color: #ffd966; margin-top: 30px;" onclick="showStats()">📊 学習記録を見る</button>
         </div>
 
         <div id="question-screen" class="hidden">
@@ -196,6 +272,19 @@
 
         <div id="finish-screen" class="hidden">
             <div class="finish-title">✨おつかれさまでした✨</div>
+            <div class="current-result">
+                <div class="stat-row">
+                    <span class="stat-label">今回の正答率:</span>
+                    <span class="stat-value" id="current-accuracy"></span>
+                </div>
+            </div>
+            <button class="menu-button" onclick="showMenu()">🏠 メニューにもどる</button>
+        </div>
+
+        <div id="stats-screen" class="hidden">
+            <div class="title">📊 学習記録</div>
+            <div class="stats-container" id="stats-container"></div>
+            <button class="reset-button" onclick="resetAllStats()">すべての記録をリセット</button>
             <button class="menu-button" onclick="showMenu()">🏠 メニューにもどる</button>
         </div>
     </div>
@@ -282,17 +371,23 @@
 
         let currentQuestions = [];
         let currentIndex = 0;
+        let currentGrade = '';
+        let correctCount = 0;
+        let stats = JSON.parse(localStorage.getItem('kanjiStats')) || {};
 
         function showMenu() {
             document.getElementById('menu-screen').classList.remove('hidden');
             document.getElementById('question-screen').classList.add('hidden');
             document.getElementById('finish-screen').classList.add('hidden');
+            document.getElementById('stats-screen').classList.add('hidden');
         }
 
         function startQuiz(grade) {
             const questions = kanjiQuestions[grade];
             currentQuestions = questions.sort(() => Math.random() - 0.5);
             currentIndex = 0;
+            currentGrade = grade;
+            correctCount = 0;
             document.getElementById('menu-screen').classList.add('hidden');
             document.getElementById('question-screen').classList.remove('hidden');
             showQuestion();
@@ -302,7 +397,6 @@
             const q = currentQuestions[currentIndex];
             document.getElementById('question-number').textContent = `(${currentIndex + 1}/${currentQuestions.length}) のもんだい`;
             
-            // 進捗バーを更新
             const progress = ((currentIndex + 1) / currentQuestions.length) * 100;
             const progressBar = document.getElementById('progress-bar');
             progressBar.style.width = progress + '%';
@@ -333,6 +427,7 @@
             if (answer === q.reading) {
                 resultDiv.textContent = '💮 正解!';
                 resultDiv.className = 'result correct';
+                correctCount++;
             } else {
                 resultDiv.textContent = `❌ 不正解! 正しくは「${q.reading}」`;
                 resultDiv.className = 'result incorrect';
@@ -349,8 +444,107 @@
         }
 
         function showFinish() {
+            if (!stats[currentGrade]) {
+                stats[currentGrade] = {
+                    totalQuestions: 0,
+                    correctAnswers: 0,
+                    attempts: 0
+                };
+            }
+            stats[currentGrade].totalQuestions += currentQuestions.length;
+            stats[currentGrade].correctAnswers += correctCount;
+            stats[currentGrade].attempts += 1;
+            localStorage.setItem('kanjiStats', JSON.stringify(stats));
+            
+            const accuracy = Math.round((correctCount / currentQuestions.length) * 100);
+            document.getElementById('current-accuracy').textContent = `${accuracy}% (${correctCount}/${currentQuestions.length})`;
+            
             document.getElementById('question-screen').classList.add('hidden');
             document.getElementById('finish-screen').classList.remove('hidden');
+        }
+
+        function showStats() {
+            document.getElementById('menu-screen').classList.add('hidden');
+            document.getElementById('stats-screen').classList.remove('hidden');
+            
+            const container = document.getElementById('stats-container');
+            container.innerHTML = '';
+            
+            const grades = ['1年生', '2年生', '3年生', '4年生', '5年生', '6年生'];
+            let hasData = false;
+            
+            grades.forEach(grade => {
+                const gradeDiv = document.createElement('div');
+                gradeDiv.className = 'grade-stats';
+                
+                const title = document.createElement('h3');
+                title.textContent = grade;
+                gradeDiv.appendChild(title);
+                
+                if (stats[grade] && stats[grade].attempts > 0) {
+                    hasData = true;
+                    const accuracy = Math.round((stats[grade].correctAnswers / stats[grade].totalQuestions) * 100);
+                    
+                    const attemptsRow = document.createElement('div');
+                    attemptsRow.className = 'stat-row';
+                    attemptsRow.innerHTML = `
+                        <span class="stat-label">挑戦回数:</span>
+                        <span class="stat-value">${stats[grade].attempts}回</span>
+                    `;
+                    gradeDiv.appendChild(attemptsRow);
+                    
+                    const questionsRow = document.createElement('div');
+                    questionsRow.className = 'stat-row';
+                    questionsRow.innerHTML = `
+                        <span class="stat-label">解いた問題数:</span>
+                        <span class="stat-value">${stats[grade].totalQuestions}問</span>
+                    `;
+                    gradeDiv.appendChild(questionsRow);
+                    
+                    const correctRow = document.createElement('div');
+                    correctRow.className = 'stat-row';
+                    correctRow.innerHTML = `
+                        <span class="stat-label">正解数:</span>
+                        <span class="stat-value">${stats[grade].correctAnswers}問</span>
+                    `;
+                    gradeDiv.appendChild(correctRow);
+                    
+                    const accuracyRow = document.createElement('div');
+                    accuracyRow.className = 'stat-row';
+                    accuracyRow.innerHTML = `
+                        <span class="stat-label">正答率:</span>
+                        <span class="stat-value">${accuracy}%</span>
+                    `;
+                    gradeDiv.appendChild(accuracyRow);
+                    
+                    const barContainer = document.createElement('div');
+                    barContainer.className = 'accuracy-bar';
+                    const barFill = document.createElement('div');
+                    barFill.className = 'accuracy-fill';
+                    barFill.style.width = accuracy + '%';
+                    barContainer.appendChild(barFill);
+                    gradeDiv.appendChild(barContainer);
+                } else {
+                    const noData = document.createElement('div');
+                    noData.className = 'no-data';
+                    noData.textContent = 'まだ挑戦していません';
+                    gradeDiv.appendChild(noData);
+                }
+                
+                container.appendChild(gradeDiv);
+            });
+            
+            if (!hasData) {
+                container.innerHTML = '<div class="no-data" style="margin-top: 40px;">まだ学習記録がありません。<br>問題に挑戦してみましょう!</div>';
+            }
+        }
+
+        function resetAllStats() {
+            if (confirm('すべての学習記録を削除しますか？')) {
+                localStorage.removeItem('kanjiStats');
+                stats = {};
+                showStats();
+            }
         }
 
         document.getElementById('answer-input').addEventListener('keypress', function(e) {
