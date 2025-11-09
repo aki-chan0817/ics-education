@@ -10,7 +10,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f9f1;
@@ -20,7 +19,6 @@
             align-items: center;
             padding: 20px;
         }
-
         .container {
             flex: 1;
             width: 100%;
@@ -30,14 +28,12 @@
             align-items: center;
             text-align: center;
         }
-
         .title {
             font-size: 28px;
             font-weight: bold;
             margin: 40px 0;
             color: #2d5016;
         }
-
         .grade-button {
             font-size: 16px;
             background-color: #b9e8b5;
@@ -50,17 +46,14 @@
             display: block;
             transition: background-color 0.3s;
         }
-
         .grade-button:hover {
             background-color: #a0d89f;
         }
-
         .question-number {
             font-size: 16px;
             margin: 20px 0;
             color: #2d5016;
         }
-
         .progress-container {
             width: 80%;
             max-width: 400px;
@@ -71,7 +64,6 @@
             overflow: hidden;
             border: 2px solid #b9e8b5;
         }
-
         .progress-bar {
             height: 100%;
             background: linear-gradient(90deg, #b9e8b5, #7ac977);
@@ -84,7 +76,6 @@
             font-weight: bold;
             font-size: 14px;
         }
-
         .sentence-box {
             font-size: 22px;
             padding: 40px;
@@ -92,11 +83,9 @@
             background-color: #f4f9f1;
             margin: 40px 0;
         }
-
         .underline {
             text-decoration: underline;
         }
-
         .input-box {
             font-size: 18px;
             padding: 10px;
@@ -106,25 +95,20 @@
             margin: 10px 0;
             text-align: center;
         }
-
         .input-box::placeholder {
             color: gray;
         }
-
         .result {
             font-size: 16px;
             margin: 10px 0;
             min-height: 30px;
         }
-
         .correct {
             color: green;
         }
-
         .incorrect {
             color: red;
         }
-
         .answer-button {
             font-size: 16px;
             background-color: #ffeb99;
@@ -136,11 +120,9 @@
             display: block;
             transition: background-color 0.3s;
         }
-
         .answer-button:hover {
             background-color: #ffd966;
         }
-
         .next-button {
             font-size: 16px;
             background-color: #b0d6ff;
@@ -152,18 +134,15 @@
             display: block;
             transition: background-color 0.3s;
         }
-
         .next-button:hover {
             background-color: #90c0ff;
         }
-
         .finish-title {
             font-size: 26px;
             font-weight: bold;
             margin: 60px 0 30px 0;
             color: #2d5016;
         }
-
         .menu-button {
             font-size: 18px;
             background-color: #b9e8b5;
@@ -174,17 +153,14 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
         .menu-button:hover {
             background-color: #a0d89f;
         }
-
         .stats-container {
             width: 100%;
             max-width: 500px;
             margin: 20px auto;
         }
-
         .grade-stats {
             background-color: white;
             border: 2px solid #b9e8b5;
@@ -192,33 +168,27 @@
             padding: 20px;
             margin: 15px 0;
         }
-
         .grade-stats h3 {
             color: #2d5016;
             margin-bottom: 15px;
             font-size: 18px;
         }
-
         .stat-row {
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
             border-bottom: 1px solid #e8f5e3;
         }
-
         .stat-row:last-child {
             border-bottom: none;
         }
-
         .stat-label {
             color: #555;
         }
-
         .stat-value {
             font-weight: bold;
             color: #2d5016;
         }
-
         .accuracy-bar {
             width: 100%;
             height: 20px;
@@ -227,21 +197,18 @@
             overflow: hidden;
             margin-top: 5px;
         }
-
         .accuracy-fill {
             height: 100%;
             background: linear-gradient(90deg, #7ac977, #b9e8b5);
             border-radius: 10px;
             transition: width 0.4s ease;
         }
-
         .no-data {
             color: #999;
             font-style: italic;
             text-align: center;
             padding: 20px;
         }
-
         .reset-button {
             font-size: 14px;
             background-color: #ffb3b3;
@@ -253,11 +220,9 @@
             display: block;
             transition: background-color 0.3s;
         }
-
         .reset-button:hover {
             background-color: #ff9999;
         }
-
         .current-result {
             background-color: white;
             border: 2px solid #b9e8b5;
@@ -266,7 +231,6 @@
             margin: 20px auto;
             max-width: 300px;
         }
-
         footer {
             width: 100%;
             text-align: center;
@@ -276,7 +240,6 @@
             font-size: 14px;
             margin-top: 20px;
         }
-
         .hidden {
             display: none;
         }
@@ -284,7 +247,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- メニュー画面 -->
         <div id="menu-screen">
             <div class="title">🌳 かんじのもり 🌳</div>
             <button class="grade-button" onclick="startQuiz('1年生')">1年生</button>
@@ -293,12 +255,9 @@
             <button class="grade-button" onclick="startQuiz('4年生')">4年生</button>
             <button class="grade-button" onclick="startQuiz('5年生')">5年生</button>
             <button class="grade-button" onclick="startQuiz('6年生')">6年生</button>
-            <button class="grade-button" style="background-color: #ffd966; margin-top: 30px;" onclick="showStats()">
-                📊 学習記録を見る
-            </button>
+            <button class="grade-button" style="background-color: #ffd966; margin-top: 30px;" onclick="showStats()">📊 学習記録を見る</button>
         </div>
 
-        <!-- 問題画面 -->
         <div id="question-screen" class="hidden">
             <div class="question-number" id="question-number"></div>
             <div class="progress-container">
@@ -311,7 +270,6 @@
             <button class="next-button" id="next-button" onclick="nextQuestion()">▶ 次へ</button>
         </div>
 
-        <!-- 完了画面 -->
         <div id="finish-screen" class="hidden">
             <div class="finish-title">✨おつかれさまでした✨</div>
             <div class="current-result">
@@ -323,7 +281,6 @@
             <button class="menu-button" onclick="showMenu()">🏠 メニューにもどる</button>
         </div>
 
-        <!-- 統計画面 -->
         <div id="stats-screen" class="hidden">
             <div class="title">📊 学習記録</div>
             <div class="stats-container" id="stats-container"></div>
@@ -337,9 +294,6 @@
     </footer>
 
     <script>
-        // ========================================
-        // 漢字問題データ
-        // ========================================
         const kanjiQuestions = {
             "1年生": [
                 {"sentence": "大きなイヌ。", "kanji": "大", "reading": "おお"},
@@ -352,76 +306,6 @@
                 {"sentence": "なつ休み。", "kanji": "休", "reading": "やす"},
                 {"sentence": "夕ごはんをたべる。", "kanji": "夕", "reading": "ゆう"},
                 {"sentence": "音がくの先生。", "kanji": "音", "reading": "おん"},
-                {"sentence": "山にのぼる。", "kanji": "山", "reading": "やま"},
-                {"sentence": "川の水がながれる。", "kanji": "川", "reading": "かわ"},
-                {"sentence": "木のえだをきる。", "kanji": "木", "reading": "き"},
-                {"sentence": "森のなかをあるく。", "kanji": "森", "reading": "もり"},
-                {"sentence": "林でとりをみた。", "kanji": "林", "reading": "はやし"},
-                {"sentence": "田のあぜみち。", "kanji": "田", "reading": "た"},
-                {"sentence": "草のなかに虫。", "kanji": "虫", "reading": "むし"},
-                {"sentence": "空に月がうかぶ。", "kanji": "空", "reading": "そら"},
-                {"sentence": "花がさく。", "kanji": "花", "reading": "はな"},
-                {"sentence": "石をひろう。", "kanji": "石", "reading": "いし"},
-                {"sentence": "青いそら。", "kanji": "青", "reading": "あお"},
-                {"sentence": "赤いりんご。", "kanji": "赤", "reading": "あか"},
-                {"sentence": "白いくも。", "kanji": "白", "reading": "しろ"},
-                {"sentence": "早くおきる。", "kanji": "早", "reading": "はや"},
-                {"sentence": "正しいこたえ。", "kanji": "正", "reading": "ただ"},
-                {"sentence": "生きものをまもる。", "kanji": "生", "reading": "い"},
-                {"sentence": "天の川をみる。", "kanji": "天", "reading": "てん"},
-                {"sentence": "気もちがいい。", "kanji": "気", "reading": "き"},
-                {"sentence": "水をのむ。", "kanji": "水", "reading": "みず"},
-                {"sentence": "火をつける。", "kanji": "火", "reading": "ひ"},
-                {"sentence": "土をほる。", "kanji": "土", "reading": "つち"},
-                {"sentence": "金のかみかざり。", "kanji": "金", "reading": "きん"},
-                {"sentence": "玉をなげる。", "kanji": "玉", "reading": "たま"},
-                {"sentence": "王さまがでてくる。", "kanji": "王", "reading": "おう"},
-                {"sentence": "竹のはっぱ。", "kanji": "竹", "reading": "たけ"},
-                {"sentence": "糸をまく。", "kanji": "糸", "reading": "いと"},
-                {"sentence": "貝をひろう。", "kanji": "貝", "reading": "かい"},
-                {"sentence": "本をよむ。", "kanji": "本", "reading": "ほん"},
-                {"sentence": "文を書く。", "kanji": "文", "reading": "ぶん"},
-                {"sentence": "字をれんしゅうする。", "kanji": "字", "reading": "じ"},
-                {"sentence": "学校にいく。", "kanji": "校", "reading": "こう"},
-                {"sentence": "立ってあいさつ。", "kanji": "立", "reading": "た"},
-                {"sentence": "名まえをよぶ。", "kanji": "名", "reading": "な"},
-                {"sentence": "目でみる。", "kanji": "目", "reading": "め"},
-                {"sentence": "耳でおとをきく。", "kanji": "耳", "reading": "みみ"},
-                {"sentence": "口でうたう。", "kanji": "口", "reading": "くち"},
-                {"sentence": "手をあらう。", "kanji": "手", "reading": "て"},
-                {"sentence": "足ではしる。", "kanji": "足", "reading": "あし"},
-                {"sentence": "力いっぱいおす。", "kanji": "力", "reading": "ちから"},
-                {"sentence": "人があつまる。", "kanji": "人", "reading": "ひと"},
-                {"sentence": "子どもがあそぶ。", "kanji": "子", "reading": "こ"},
-                {"sentence": "女の子と話す。", "kanji": "女", "reading": "おんな"},
-                {"sentence": "右のてをあげる。", "kanji": "右", "reading": "みぎ"},
-                {"sentence": "左にまがる。", "kanji": "左", "reading": "ひだり"},
-                {"sentence": "上をみる。", "kanji": "上", "reading": "うえ"},
-                {"sentence": "下になにかある。", "kanji": "下", "reading": "した"},
-                {"sentence": "中にねこがいる。", "kanji": "中", "reading": "なか"},
-                {"sentence": "出入り口をさがす。", "kanji": "出", "reading": "で"},
-                {"sentence": "入学しきの日。", "kanji": "入", "reading": "にゅう"},
-                {"sentence": "見てまねをする。", "kanji": "見", "reading": "み"},
-                {"sentence": "行きたいところ。", "kanji": "行", "reading": "い"},
-                {"sentence": "来年は二年生。", "kanji": "来", "reading": "らい"},
-                {"sentence": "今すぐいく。", "kanji": "今", "reading": "いま"},
-                {"sentence": "年があける。", "kanji": "年", "reading": "とし"},
-                {"sentence": "月がでている。", "kanji": "月", "reading": "つき"},
-                {"sentence": "日よう日にでかける。", "kanji": "日", "reading": "にち"},
-                {"sentence": "村にすむ。", "kanji": "村", "reading": "むら"},
-                {"sentence": "町をあるく。", "kanji": "町", "reading": "まち"},
-                {"sentence": "田うえをてつだう。", "kanji": "田", "reading": "た"},
-                {"sentence": "森で虫をつかまえる。", "kanji": "虫", "reading": "むし"},
-                {"sentence": "天気がいい。", "kanji": "天", "reading": "てん"},
-                {"sentence": "青空の下であそぶ。", "kanji": "青", "reading": "あお"},
-                {"sentence": "本を立てる。", "kanji": "立", "reading": "た"},
-                {"sentence": "森の中をさんぽ。", "kanji": "中", "reading": "なか"},
-                {"sentence": "百円をはらう。", "kanji": "百", "reading": "ひゃく"},
-                {"sentence": "千人のまえでうたう。", "kanji": "千", "reading": "せん"},
-                {"sentence": "五つの星をかぞえる。", "kanji": "五", "reading": "いつ"},
-                {"sentence": "六本のえんぴつ。", "kanji": "六", "reading": "ろく"},
-                {"sentence": "八人でおどる。", "kanji": "八", "reading": "はち"},
-                {"sentence": "一ばんうしろ。", "kanji": "一", "reading": "いち"}
             ],
             "2年生": [
                 {"sentence": "ともだちに会う。", "kanji": "会", "reading": "あ"},
@@ -434,76 +318,6 @@
                 {"sentence": "車が止まる。", "kanji": "止", "reading": "と"},
                 {"sentence": "船にのる。", "kanji": "船", "reading": "ふね"},
                 {"sentence": "原っぱであそぶ。", "kanji": "原", "reading": "はら"},
-                {"sentence": "ロープを強く引く。", "kanji": "引", "reading": "ひ"},
-                {"sentence": "羽をひろげた鳥。", "kanji": "羽", "reading": "はね"},
-                {"sentence": "白い雲がながれる。", "kanji": "雲", "reading": "くも"},
-                {"sentence": "園で花をうえる。", "kanji": "園", "reading": "えん"},
-                {"sentence": "遠くの山がみえる。", "kanji": "遠", "reading": "とお"},
-                {"sentence": "何をしているの。", "kanji": "何", "reading": "なに"},
-                {"sentence": "理科のじっけん。", "kanji": "科", "reading": "か"},
-                {"sentence": "夏の川あそび。", "kanji": "夏", "reading": "なつ"},
-                {"sentence": "家にかえる。", "kanji": "家", "reading": "いえ"},
-                {"sentence": "歌をうたう。", "kanji": "歌", "reading": "うた"},
-                {"sentence": "絵をかく。", "kanji": "絵", "reading": "え"},
-                {"sentence": "海のなみ。", "kanji": "海", "reading": "うみ"},
-                {"sentence": "画を見てまねる。", "kanji": "画", "reading": "が"},
-                {"sentence": "二回めのテスト。", "kanji": "回", "reading": "かい"},
-                {"sentence": "会ぎがはじまる。", "kanji": "会", "reading": "かい"},
-                {"sentence": "外であそぶ。", "kanji": "外", "reading": "そと"},
-                {"sentence": "角をまがる。", "kanji": "角", "reading": "かど"},
-                {"sentence": "楽しいえんそく。", "kanji": "楽", "reading": "たの"},
-                {"sentence": "水の中で活やく。", "kanji": "活", "reading": "かつ"},
-                {"sentence": "間をあけてならぶ。", "kanji": "間", "reading": "あいだ"},
-                {"sentence": "まるい石をひろう。", "kanji": "丸", "reading": "まる"},
-                {"sentence": "岩の上にすわる。", "kanji": "岩", "reading": "いわ"},
-                {"sentence": "顔をあらう。", "kanji": "顔", "reading": "かお"},
-                {"sentence": "汽車にのる。", "kanji": "汽", "reading": "き"},
-                {"sentence": "日記を書く。", "kanji": "記", "reading": "き"},
-                {"sentence": "家に帰る。", "kanji": "帰", "reading": "かえ"},
-                {"sentence": "弓でねらう。", "kanji": "弓", "reading": "ゆみ"},
-                {"sentence": "牛のちち。", "kanji": "牛", "reading": "うし"},
-                {"sentence": "魚をつる。", "kanji": "魚", "reading": "さかな"},
-                {"sentence": "京のまちをあるく。", "kanji": "京", "reading": "きょう"},
-                {"sentence": "強い風がふく。", "kanji": "強", "reading": "つよ"},
-                {"sentence": "先生に教わる。", "kanji": "教", "reading": "おし"},
-                {"sentence": "近くの公園。", "kanji": "近", "reading": "ちか"},
-                {"sentence": "兄とでかける。", "kanji": "兄", "reading": "あに"},
-                {"sentence": "いろいろな形。", "kanji": "形", "reading": "かたち"},
-                {"sentence": "時間を計る。", "kanji": "計", "reading": "はか"},
-                {"sentence": "元気にあいさつ。", "kanji": "元", "reading": "げん"},
-                {"sentence": "言葉をおぼえる。", "kanji": "言", "reading": "こと"},
-                {"sentence": "原っぱであそぶ。", "kanji": "原", "reading": "はら"},
-                {"sentence": "戸をしめる。", "kanji": "戸", "reading": "と"},
-                {"sentence": "古いふく。", "kanji": "古", "reading": "ふる"},
-                {"sentence": "午前のかいぎ。", "kanji": "午", "reading": "ご"},
-                {"sentence": "昼ごはんの後。", "kanji": "後", "reading": "あと"},
-                {"sentence": "語をれんしゅうする。", "kanji": "語", "reading": "ご"},
-                {"sentence": "工場を見学する。", "kanji": "工", "reading": "こう"},
-                {"sentence": "公園であそぶ。", "kanji": "公", "reading": "こう"},
-                {"sentence": "広いみち。", "kanji": "広", "reading": "ひろ"},
-                {"sentence": "人と交わる。", "kanji": "交", "reading": "まじ"},
-                {"sentence": "光がさす。", "kanji": "光", "reading": "ひかり"},
-                {"sentence": "よく考える。", "kanji": "考", "reading": "かんが"},
-                {"sentence": "行きたいところ。", "kanji": "行", "reading": "い"},
-                {"sentence": "高い山。", "kanji": "高", "reading": "たか"},
-                {"sentence": "黄いろの花。", "kanji": "黄", "reading": "き"},
-                {"sentence": "合図をする。", "kanji": "合", "reading": "あ"},
-                {"sentence": "谷に水がながれる。", "kanji": "谷", "reading": "たに"},
-                {"sentence": "日本の国。", "kanji": "国", "reading": "くに"},
-                {"sentence": "黒いねこ。", "kanji": "黒", "reading": "くろ"},
-                {"sentence": "今の気もち。", "kanji": "今", "reading": "いま"},
-                {"sentence": "才のある人。", "kanji": "才", "reading": "さい"},
-                {"sentence": "細い道をあるく。", "kanji": "細", "reading": "ほそ"},
-                {"sentence": "作り方をおしえる。", "kanji": "作", "reading": "つく"},
-                {"sentence": "算数のけいさん。", "kanji": "算", "reading": "さん"},
-                {"sentence": "歩くのを止める。", "kanji": "止", "reading": "と"},
-                {"sentence": "市のまつり。", "kanji": "市", "reading": "し"},
-                {"sentence": "矢をはなつ。", "kanji": "矢", "reading": "や"},
-                {"sentence": "姉とさんぽ。", "kanji": "姉", "reading": "あね"},
-                {"sentence": "友を思う。", "kanji": "思", "reading": "おも"},
-                {"sentence": "紙をおる。", "kanji": "紙", "reading": "かみ"},
-                {"sentence": "寺でいのる。", "kanji": "寺", "reading": "てら"},
-                {"sentence": "自分でやる。", "kanji": "自", "reading": "じ"}
             ],
             "3年生": [
                 {"sentence": "ゆう名な詩を読む。", "kanji": "詩", "reading": "し"},
@@ -516,12 +330,233 @@
                 {"sentence": "相手に伝える。", "kanji": "相手", "reading": "あいて"},
                 {"sentence": "形を整える。", "kanji": "整", "reading": "ととの"},
                 {"sentence": "新たな発見。", "kanji": "発見", "reading": "はっけん"},
-                {"sentence": "悪いゆめをみた。", "kanji": "悪", "reading": "わる"},
-                {"sentence": "安いりんごをかった。", "kanji": "安", "reading": "やす"},
-                {"sentence": "暗いみちをあるく。", "kanji": "暗", "reading": "くら"},
-                {"sentence": "医しゃにみてもらう。", "kanji": "医", "reading": "い"},
-                {"sentence": "委員にえらばれた。", "kanji": "委", "reading": "い"},
-                {"sentence": "意見をのべる。", "kanji": "意", "reading": "い"},
-                {"sentence": "花を育てる。", "kanji": "育", "reading": "そだ"},
-                {"sentence": "会社の員。", "kanji": "員", "reading": "いん"},
-                {"sentence": "病院へいく。", "kanji": "院
+            ],
+            "4年生": [
+                {"sentence": "季節に関する言葉。", "kanji": "季節", "reading": "きせつ"},
+                {"sentence": "節目の年。", "kanji": "節", "reading": "ふし"},
+                {"sentence": "お米が配給される。", "kanji": "配給", "reading": "はいきゅう"},
+                {"sentence": "最も古い寺。", "kanji": "最", "reading": "もっと"},
+                {"sentence": "昨日の出来事。", "kanji": "昨日", "reading": "きのう"},
+                {"sentence": "信号が赤だ。", "kanji": "信号", "reading": "しんごう"},
+                {"sentence": "図書館にある資料。", "kanji": "資料", "reading": "しりょう"},
+                {"sentence": "友達とあそぶ。", "kanji": "友達", "reading": "ともだち"},
+                {"sentence": "夏休みの半ば。", "kanji": "半", "reading": "なか"},
+                {"sentence": "海底の生き物を調査する。", "kanji": "海底", "reading": "かいてい"},
+            ],
+            "5年生": [
+                {"sentence": "学校の校舎。", "kanji": "校舎", "reading": "こうしゃ"},
+                {"sentence": "家と学校を往復する。", "kanji": "往復", "reading": "おうふく"},
+                {"sentence": "馬が暴れる。", "kanji": "暴", "reading": "あば"},
+                {"sentence": "土地を肥やす。", "kanji": "肥", "reading": "こ"},
+                {"sentence": "豊かな心情。", "kanji": "情", "reading": "じょう"},
+                {"sentence": "明るい態度。", "kanji": "態", "reading": "たい"},
+                {"sentence": "司会を任せる。", "kanji": "司会", "reading": "しかい"},
+                {"sentence": "画像を加工する。", "kanji": "像", "reading": "ぞう"},
+                {"sentence": "原因が分かる。", "kanji": "原因", "reading": "げんいん"},
+                {"sentence": "コードを接続する。", "kanji": "接続", "reading": "せつぞく"},
+            ],
+            "6年生": [
+                {"sentence": "姿勢を正す。", "kanji": "姿勢", "reading": "しせい"},
+                {"sentence": "胸がドキドキする。", "kanji": "胸", "reading": "むね"},
+                {"sentence": "布が垂れ下がる。", "kanji": "垂", "reading": "た"},
+                {"sentence": "視線を感じる。", "kanji": "視線", "reading": "しせん"},
+                {"sentence": "乱暴な発言だ。", "kanji": "乱暴", "reading": "らんぼう"},
+                {"sentence": "テスト範囲を確認する。", "kanji": "確認", "reading": "かくにん"},
+                {"sentence": "純白のウエディングドレス。", "kanji": "純白", "reading": "じゅんぱく"},
+                {"sentence": "ワクチンを注射する。", "kanji": "注射", "reading": "ちゅうしゃ"},
+                {"sentence": "電源を切る。", "kanji": "源", "reading": "げん"},
+                {"sentence": "密接な関係。", "kanji": "密接", "reading": "みっせつ"},
+            ],
+        };
+
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let currentGrade = '';
+        let correctCount = 0;
+        let stats = JSON.parse(localStorage.getItem('kanjiStats')) || {};
+
+        function showMenu() {
+            document.getElementById('menu-screen').classList.remove('hidden');
+            document.getElementById('question-screen').classList.add('hidden');
+            document.getElementById('finish-screen').classList.add('hidden');
+            document.getElementById('stats-screen').classList.add('hidden');
+        }
+
+        function startQuiz(grade) {
+            const questions = kanjiQuestions[grade];
+            currentQuestions = questions.sort(() => Math.random() - 0.5);
+            currentIndex = 0;
+            currentGrade = grade;
+            correctCount = 0;
+            document.getElementById('menu-screen').classList.add('hidden');
+            document.getElementById('question-screen').classList.remove('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = currentQuestions[currentIndex];
+            document.getElementById('question-number').textContent = `(${currentIndex + 1}/${currentQuestions.length}) のもんだい`;
+            
+            const progress = ((currentIndex + 1) / currentQuestions.length) * 100;
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = `${currentIndex + 1}/${currentQuestions.length}`;
+            
+            const sentenceBox = document.getElementById('sentence-box');
+            const sentence = q.sentence;
+            const kanji = q.kanji;
+            const index = sentence.indexOf(kanji);
+            
+            const before = sentence.substring(0, index);
+            const target = sentence.substring(index, index + kanji.length);
+            const after = sentence.substring(index + kanji.length);
+            
+            sentenceBox.innerHTML = before + '<span class="underline">' + target + '</span>' + after;
+            
+            document.getElementById('answer-input').value = '';
+            document.getElementById('result').textContent = '';
+            document.getElementById('result').className = 'result';
+            document.getElementById('answer-input').focus();
+        }
+
+        function checkAnswer() {
+            const q = currentQuestions[currentIndex];
+            const answer = document.getElementById('answer-input').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (answer === q.reading) {
+                resultDiv.textContent = '💮 正解!';
+                resultDiv.className = 'result correct';
+                correctCount++;
+            } else {
+                resultDiv.textContent = `❌ 不正解! 正しくは「${q.reading}」`;
+                resultDiv.className = 'result incorrect';
+            }
+        }
+
+        function nextQuestion() {
+            if (currentIndex + 1 < currentQuestions.length) {
+                currentIndex++;
+                showQuestion();
+            } else {
+                showFinish();
+            }
+        }
+
+        function showFinish() {
+            if (!stats[currentGrade]) {
+                stats[currentGrade] = {
+                    totalQuestions: 0,
+                    correctAnswers: 0,
+                    attempts: 0
+                };
+            }
+            stats[currentGrade].totalQuestions += currentQuestions.length;
+            stats[currentGrade].correctAnswers += correctCount;
+            stats[currentGrade].attempts += 1;
+            localStorage.setItem('kanjiStats', JSON.stringify(stats));
+            
+            const accuracy = Math.round((correctCount / currentQuestions.length) * 100);
+            document.getElementById('current-accuracy').textContent = `${accuracy}% (${correctCount}/${currentQuestions.length})`;
+            
+            document.getElementById('question-screen').classList.add('hidden');
+            document.getElementById('finish-screen').classList.remove('hidden');
+        }
+
+        function showStats() {
+            document.getElementById('menu-screen').classList.add('hidden');
+            document.getElementById('stats-screen').classList.remove('hidden');
+            
+            const container = document.getElementById('stats-container');
+            container.innerHTML = '';
+            
+            const grades = ['1年生', '2年生', '3年生', '4年生', '5年生', '6年生'];
+            let hasData = false;
+            
+            grades.forEach(grade => {
+                const gradeDiv = document.createElement('div');
+                gradeDiv.className = 'grade-stats';
+                
+                const title = document.createElement('h3');
+                title.textContent = grade;
+                gradeDiv.appendChild(title);
+                
+                if (stats[grade] && stats[grade].attempts > 0) {
+                    hasData = true;
+                    const accuracy = Math.round((stats[grade].correctAnswers / stats[grade].totalQuestions) * 100);
+                    
+                    const attemptsRow = document.createElement('div');
+                    attemptsRow.className = 'stat-row';
+                    attemptsRow.innerHTML = `
+                        <span class="stat-label">挑戦回数:</span>
+                        <span class="stat-value">${stats[grade].attempts}回</span>
+                    `;
+                    gradeDiv.appendChild(attemptsRow);
+                    
+                    const questionsRow = document.createElement('div');
+                    questionsRow.className = 'stat-row';
+                    questionsRow.innerHTML = `
+                        <span class="stat-label">解いた問題数:</span>
+                        <span class="stat-value">${stats[grade].totalQuestions}問</span>
+                    `;
+                    gradeDiv.appendChild(questionsRow);
+                    
+                    const correctRow = document.createElement('div');
+                    correctRow.className = 'stat-row';
+                    correctRow.innerHTML = `
+                        <span class="stat-label">正解数:</span>
+                        <span class="stat-value">${stats[grade].correctAnswers}問</span>
+                    `;
+                    gradeDiv.appendChild(correctRow);
+                    
+                    const accuracyRow = document.createElement('div');
+                    accuracyRow.className = 'stat-row';
+                    accuracyRow.innerHTML = `
+                        <span class="stat-label">正答率:</span>
+                        <span class="stat-value">${accuracy}%</span>
+                    `;
+                    gradeDiv.appendChild(accuracyRow);
+                    
+                    const barContainer = document.createElement('div');
+                    barContainer.className = 'accuracy-bar';
+                    const barFill = document.createElement('div');
+                    barFill.className = 'accuracy-fill';
+                    barFill.style.width = accuracy + '%';
+                    barContainer.appendChild(barFill);
+                    gradeDiv.appendChild(barContainer);
+                } else {
+                    const noData = document.createElement('div');
+                    noData.className = 'no-data';
+                    noData.textContent = 'まだ挑戦していません';
+                    gradeDiv.appendChild(noData);
+                }
+                
+                container.appendChild(gradeDiv);
+            });
+            
+            if (!hasData) {
+                container.innerHTML = '<div class="no-data" style="margin-top: 40px;">まだ学習記録がありません。<br>問題に挑戦してみましょう!</div>';
+            }
+        }
+
+        function resetAllStats() {
+            if (confirm('すべての学習記録を削除しますか？')) {
+                localStorage.removeItem('kanjiStats');
+                stats = {};
+                showStats();
+            }
+        }
+
+        document.getElementById('answer-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const resultDiv = document.getElementById('result');
+                if (resultDiv.textContent === '') {
+                    checkAnswer();
+                } else {
+                    nextQuestion();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
