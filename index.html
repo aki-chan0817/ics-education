@@ -11,8 +11,8 @@
             box-sizing: border-box;
         }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f9f1;
+            font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+            background: linear-gradient(135deg, #f4f9f1 0%, #e8f5e3 100%);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -22,51 +22,72 @@
         .container {
             flex: 1;
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
         }
         .title {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
-            margin: 40px 0;
+            margin: 30px 0 40px;
             color: #2d5016;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
         }
         .grade-button {
-            font-size: 16px;
-            background-color: #b9e8b5;
-            padding: 12px 40px;
-            margin: 6px auto;
-            border: none;
-            border-radius: 8px;
+            font-size: 18px;
+            background: linear-gradient(145deg, #d4f1d0, #b9e8b5);
+            padding: 14px 50px;
+            margin: 8px auto;
+            border: 2px solid #a0d89f;
+            border-radius: 12px;
             cursor: pointer;
-            width: 200px;
+            width: 220px;
             display: block;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            color: #2d5016;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .grade-button:hover {
-            background-color: #a0d89f;
+            background: linear-gradient(145deg, #b9e8b5, #a0d89f);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .grade-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .stats-menu-button {
+            background: linear-gradient(145deg, #ffe699, #ffd966);
+            border: 2px solid #ffcc33;
+            margin-top: 30px;
+        }
+        .stats-menu-button:hover {
+            background: linear-gradient(145deg, #ffd966, #ffcc33);
         }
         .question-number {
-            font-size: 16px;
-            margin: 20px 0;
+            font-size: 18px;
+            margin: 25px 0 15px;
             color: #2d5016;
+            font-weight: bold;
         }
         .progress-container {
-            width: 80%;
-            max-width: 400px;
-            height: 30px;
-            background-color: #e8f5e3;
-            border-radius: 15px;
-            margin: 20px auto;
+            width: 90%;
+            max-width: 450px;
+            height: 35px;
+            background-color: #fff;
+            border-radius: 18px;
+            margin: 15px auto 30px;
             overflow: hidden;
-            border: 2px solid #b9e8b5;
+            border: 3px solid #b9e8b5;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
         .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, #b9e8b5, #7ac977);
+            background: linear-gradient(90deg, #7ac977, #b9e8b5);
             border-radius: 15px;
             transition: width 0.4s ease;
             display: flex;
@@ -74,110 +95,158 @@
             justify-content: center;
             color: #2d5016;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 15px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
         }
         .sentence-box {
-            font-size: 22px;
-            padding: 40px;
+            font-size: 26px;
+            line-height: 1.8;
+            padding: 45px 30px;
             text-align: center;
-            background-color: #f4f9f1;
-            margin: 40px 0;
+            background-color: #fff;
+            margin: 30px 0;
+            border-radius: 16px;
+            border: 3px solid #b9e8b5;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .underline {
             text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-decoration-color: #ff6b6b;
+            text-underline-offset: 5px;
+            font-weight: bold;
         }
         .input-box {
-            font-size: 18px;
-            padding: 10px;
-            width: 300px;
-            border: 2px solid #b9e8b5;
-            border-radius: 8px;
-            margin: 10px 0;
+            font-size: 20px;
+            padding: 14px 20px;
+            width: 320px;
+            max-width: 90%;
+            border: 3px solid #b9e8b5;
+            border-radius: 12px;
+            margin: 15px 0;
             text-align: center;
+            transition: all 0.3s;
+            background-color: #fff;
+        }
+        .input-box:focus {
+            outline: none;
+            border-color: #7ac977;
+            box-shadow: 0 0 0 3px rgba(122, 201, 119, 0.2);
         }
         .input-box::placeholder {
-            color: gray;
+            color: #999;
         }
         .result {
-            font-size: 16px;
-            margin: 10px 0;
-            min-height: 30px;
+            font-size: 18px;
+            margin: 15px 0;
+            min-height: 40px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .correct {
-            color: green;
+            color: #22c55e;
+            font-size: 20px;
         }
         .incorrect {
-            color: red;
+            color: #ef4444;
+            font-size: 18px;
         }
         .answer-button {
-            font-size: 16px;
-            background-color: #ffeb99;
-            padding: 12px 40px;
-            margin: 10px auto;
-            border: none;
-            border-radius: 8px;
+            font-size: 18px;
+            background: linear-gradient(145deg, #fff4cc, #ffeb99);
+            padding: 14px 50px;
+            margin: 12px auto;
+            border: 2px solid #ffd966;
+            border-radius: 12px;
             cursor: pointer;
             display: block;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            font-weight: bold;
+            color: #6b5a00;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .answer-button:hover {
-            background-color: #ffd966;
+            background: linear-gradient(145deg, #ffeb99, #ffd966);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         .next-button {
-            font-size: 16px;
-            background-color: #b0d6ff;
-            padding: 12px 40px;
-            margin: 5px auto;
-            border: none;
-            border-radius: 8px;
+            font-size: 18px;
+            background: linear-gradient(145deg, #c7e3ff, #b0d6ff);
+            padding: 14px 50px;
+            margin: 8px auto;
+            border: 2px solid #90c0ff;
+            border-radius: 12px;
             cursor: pointer;
             display: block;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            font-weight: bold;
+            color: #003d82;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .next-button:hover {
-            background-color: #90c0ff;
+            background: linear-gradient(145deg, #b0d6ff, #90c0ff);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         .finish-title {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: bold;
-            margin: 60px 0 30px 0;
+            margin: 50px 0 35px;
             color: #2d5016;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         .menu-button {
             font-size: 18px;
-            background-color: #b9e8b5;
-            padding: 15px 40px;
+            background: linear-gradient(145deg, #d4f1d0, #b9e8b5);
+            padding: 16px 50px;
             margin: 20px;
-            border: none;
-            border-radius: 8px;
+            border: 2px solid #a0d89f;
+            border-radius: 12px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            font-weight: bold;
+            color: #2d5016;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .menu-button:hover {
-            background-color: #a0d89f;
+            background: linear-gradient(145deg, #b9e8b5, #a0d89f);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         .stats-container {
             width: 100%;
-            max-width: 500px;
-            margin: 20px auto;
+            max-width: 550px;
+            margin: 25px auto;
         }
         .grade-stats {
-            background-color: white;
-            border: 2px solid #b9e8b5;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 15px 0;
+            background: linear-gradient(145deg, #ffffff, #f9f9f9);
+            border: 3px solid #b9e8b5;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
         .grade-stats h3 {
             color: #2d5016;
-            margin-bottom: 15px;
-            font-size: 18px;
+            margin-bottom: 18px;
+            font-size: 20px;
+            text-align: center;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e8f5e3;
         }
         .stat-row {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #e8f5e3;
+            padding: 12px 8px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 16px;
         }
         .stat-row:last-child {
             border-bottom: none;
@@ -188,60 +257,88 @@
         .stat-value {
             font-weight: bold;
             color: #2d5016;
+            font-size: 17px;
         }
         .accuracy-bar {
             width: 100%;
-            height: 20px;
-            background-color: #e8f5e3;
-            border-radius: 10px;
+            height: 24px;
+            background-color: #f0f0f0;
+            border-radius: 12px;
             overflow: hidden;
-            margin-top: 5px;
+            margin-top: 10px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
         .accuracy-fill {
             height: 100%;
             background: linear-gradient(90deg, #7ac977, #b9e8b5);
-            border-radius: 10px;
+            border-radius: 12px;
             transition: width 0.4s ease;
         }
         .no-data {
             color: #999;
             font-style: italic;
             text-align: center;
-            padding: 20px;
+            padding: 25px;
+            font-size: 16px;
         }
         .reset-button {
-            font-size: 14px;
-            background-color: #ffb3b3;
-            padding: 8px 20px;
-            margin: 10px auto;
-            border: none;
-            border-radius: 8px;
+            font-size: 15px;
+            background: linear-gradient(145deg, #ffc9c9, #ffb3b3);
+            padding: 10px 25px;
+            margin: 15px auto;
+            border: 2px solid #ff9999;
+            border-radius: 10px;
             cursor: pointer;
             display: block;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            font-weight: bold;
+            color: #8b0000;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
         .reset-button:hover {
-            background-color: #ff9999;
+            background: linear-gradient(145deg, #ffb3b3, #ff9999);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
         .current-result {
-            background-color: white;
-            border: 2px solid #b9e8b5;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 300px;
+            background: linear-gradient(145deg, #ffffff, #f9f9f9);
+            border: 3px solid #b9e8b5;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px auto;
+            max-width: 350px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .current-result .stat-row {
+            font-size: 18px;
+            padding: 8px 0;
         }
         footer {
             width: 100%;
             text-align: center;
-            padding: 20px;
-            background-color: #e8f5e3;
+            padding: 25px;
+            background: linear-gradient(to top, #d4ecd0, #e8f5e3);
             color: #2d5016;
             font-size: 14px;
-            margin-top: 20px;
+            margin-top: 30px;
+            border-top: 2px solid #b9e8b5;
         }
         .hidden {
             display: none;
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 26px;
+            }
+            .sentence-box {
+                font-size: 22px;
+                padding: 35px 20px;
+            }
+            .grade-button {
+                width: 200px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -255,7 +352,7 @@
             <button class="grade-button" onclick="startQuiz('4年生')">4年生</button>
             <button class="grade-button" onclick="startQuiz('5年生')">5年生</button>
             <button class="grade-button" onclick="startQuiz('6年生')">6年生</button>
-            <button class="grade-button" style="background-color: #ffd966; margin-top: 30px;" onclick="showStats()">📊 学習記録を見る</button>
+            <button class="grade-button stats-menu-button" onclick="showStats()">📊 学習記録を見る</button>
         </div>
 
         <div id="question-screen" class="hidden">
@@ -271,7 +368,7 @@
         </div>
 
         <div id="finish-screen" class="hidden">
-            <div class="finish-title">✨おつかれさまでした✨</div>
+            <div class="finish-title">✨ おつかれさまでした ✨</div>
             <div class="current-result">
                 <div class="stat-row">
                     <span class="stat-label">今回の正答率:</span>
@@ -297,93 +394,37 @@
         const kanjiQuestions = {
             "1年生": [
                 {"sentence": "大きなイヌ。", "kanji": "大", "reading": "おお"},
-{"sentence": "小さい声。", "kanji": "小", "reading": "ちい"},
-{"sentence": "あめを九つたべた。", "kanji": "九", "reading": "ここの"},
-{"sentence": "男の子のわらいごえ。", "kanji": "男", "reading": "おとこ"},
-{"sentence": "さんすうの学しゅう。", "kanji": "学", "reading": "がく"},
-{"sentence": "日の出をみる。", "kanji": "日", "reading": "ひ"},
-{"sentence": "じてん車をこぐ。", "kanji": "車", "reading": "しゃ"},
-{"sentence": "なつ休み。", "kanji": "休", "reading": "やす"},
-{"sentence": "夕ごはんをたべる。", "kanji": "夕", "reading": "ゆう"},
-{"sentence": "音がくの先生。", "kanji": "音", "reading": "おん"},
-
-{"sentence": "山にのぼる。", "kanji": "山", "reading": "やま"},
-{"sentence": "川の水がながれる。", "kanji": "川", "reading": "かわ"},
-{"sentence": "木のえだをきる。", "kanji": "木", "reading": "き"},
-{"sentence": "森のなかをあるく。", "kanji": "森", "reading": "もり"},
-{"sentence": "林でとりをみた。", "kanji": "林", "reading": "はやし"},
-{"sentence": "田のあぜみち。", "kanji": "田", "reading": "た"},
-{"sentence": "草のなかに虫。", "kanji": "虫", "reading": "むし"},
-{"sentence": "空に月がうかぶ。", "kanji": "空", "reading": "そら"},
-{"sentence": "花がさく。", "kanji": "花", "reading": "はな"},
-{"sentence": "石をひろう。", "kanji": "石", "reading": "いし"},
-
-{"sentence": "青いそら。", "kanji": "青", "reading": "あお"},
-{"sentence": "赤いりんご。", "kanji": "赤", "reading": "あか"},
-{"sentence": "白いくも。", "kanji": "白", "reading": "しろ"},
-{"sentence": "早くおきる。", "kanji": "早", "reading": "はや"},
-{"sentence": "正しいこたえ。", "kanji": "正", "reading": "ただ"},
-{"sentence": "生きものをまもる。", "kanji": "生", "reading": "い"},
-{"sentence": "天の川をみる。", "kanji": "天", "reading": "てん"},
-{"sentence": "気もちがいい。", "kanji": "気", "reading": "き"},
-{"sentence": "水をのむ。", "kanji": "水", "reading": "みず"},
-{"sentence": "火をつける。", "kanji": "火", "reading": "ひ"},
-
-{"sentence": "土をほる。", "kanji": "土", "reading": "つち"},
-{"sentence": "金のかみかざり。", "kanji": "金", "reading": "きん"},
-{"sentence": "玉をなげる。", "kanji": "玉", "reading": "たま"},
-{"sentence": "王さまがでてくる。", "kanji": "王", "reading": "おう"},
-{"sentence": "竹のはっぱ。", "kanji": "竹", "reading": "たけ"},
-{"sentence": "糸をまく。", "kanji": "糸", "reading": "いと"},
-{"sentence": "貝をひろう。", "kanji": "貝", "reading": "かい"},
-{"sentence": "本をよむ。", "kanji": "本", "reading": "ほん"},
-{"sentence": "文を書く。", "kanji": "文", "reading": "ぶん"},
-{"sentence": "字をれんしゅうする。", "kanji": "字", "reading": "じ"},
-
-{"sentence": "学校にいく。", "kanji": "校", "reading": "こう"},
-{"sentence": "立ってあいさつ。", "kanji": "立", "reading": "た"},
-{"sentence": "名まえをよぶ。", "kanji": "名", "reading": "な"},
-{"sentence": "目でみる。", "kanji": "目", "reading": "め"},
-{"sentence": "耳でおとをきく。", "kanji": "耳", "reading": "みみ"},
-{"sentence": "口でうたう。", "kanji": "口", "reading": "くち"},
-{"sentence": "手をあらう。", "kanji": "手", "reading": "て"},
-{"sentence": "足ではしる。", "kanji": "足", "reading": "あし"},
-{"sentence": "力いっぱいおす。", "kanji": "力", "reading": "ちから"},
-{"sentence": "人があつまる。", "kanji": "人", "reading": "ひと"},
-
-{"sentence": "子どもがあそぶ。", "kanji": "子", "reading": "こ"},
-{"sentence": "女の子と話す。", "kanji": "女", "reading": "おんな"},
-{"sentence": "右のてをあげる。", "kanji": "右", "reading": "みぎ"},
-{"sentence": "左にまがる。", "kanji": "左", "reading": "ひだり"},
-{"sentence": "上をみる。", "kanji": "上", "reading": "うえ"},
-{"sentence": "下になにかある。", "kanji": "下", "reading": "した"},
-{"sentence": "中にねこがいる。", "kanji": "中", "reading": "なか"},
-{"sentence": "出入り口をさがす。", "kanji": "出", "reading": "で"},
-{"sentence": "入学しきの日。", "kanji": "入", "reading": "にゅう"},
-{"sentence": "見てまねをする。", "kanji": "見", "reading": "み"},
-
-{"sentence": "行きたいところ。", "kanji": "行", "reading": "い"},
-{"sentence": "来年は二年生。", "kanji": "来", "reading": "らい"},
-{"sentence": "今すぐいく。", "kanji": "今", "reading": "いま"},
-{"sentence": "年があける。", "kanji": "年", "reading": "とし"},
-{"sentence": "月がでている。", "kanji": "月", "reading": "つき"},
-{"sentence": "日よう日にでかける。", "kanji": "日", "reading": "にち"},
-{"sentence": "村にすむ。", "kanji": "村", "reading": "むら"},
-{"sentence": "町をあるく。", "kanji": "町", "reading": "まち"},
-{"sentence": "田うえをてつだう。", "kanji": "田", "reading": "た"},
-{"sentence": "森で虫をつかまえる。", "kanji": "虫", "reading": "むし"},
-
-{"sentence": "天気がいい。", "kanji": "天", "reading": "てん"},
-{"sentence": "青空の下であそぶ。", "kanji": "青", "reading": "あお"},
-{"sentence": "本を立てる。", "kanji": "立", "reading": "た"},
-{"sentence": "森の中をさんぽ。", "kanji": "中", "reading": "なか"},
-{"sentence": "百円をはらう。", "kanji": "百", "reading": "ひゃく"},
-{"sentence": "千人のまえでうたう。", "kanji": "千", "reading": "せん"},
-{"sentence": "五つの星をかぞえる。", "kanji": "五", "reading": "いつ"},
-{"sentence": "六本のえんぴつ。", "kanji": "六", "reading": "ろく"},
-{"sentence": "八人でおどる。", "kanji": "八", "reading": "はち"},
-{"sentence": "一ばんうしろ。", "kanji": "一", "reading": "いち"}
-]            "2年生": [
+                {"sentence": "小さい声。", "kanji": "小", "reading": "ちい"},
+                {"sentence": "あめを九つたべた。", "kanji": "九", "reading": "ここの"},
+                {"sentence": "男の子のわらいごえ。", "kanji": "男", "reading": "おとこ"},
+                {"sentence": "さんすうの学しゅう。", "kanji": "学", "reading": "がく"},
+                {"sentence": "日の出をみる。", "kanji": "日", "reading": "ひ"},
+                {"sentence": "じてん車をこぐ。", "kanji": "車", "reading": "しゃ"},
+                {"sentence": "なつ休み。", "kanji": "休", "reading": "やす"},
+                {"sentence": "夕ごはんをたべる。", "kanji": "夕", "reading": "ゆう"},
+                {"sentence": "音がくの先生。", "kanji": "音", "reading": "おん"},
+                {"sentence": "山にのぼる。", "kanji": "山", "reading": "やま"},
+                {"sentence": "川の水がながれる。", "kanji": "川", "reading": "かわ"},
+                {"sentence": "木のえだをきる。", "kanji": "木", "reading": "き"},
+                {"sentence": "森のなかをあるく。", "kanji": "森", "reading": "もり"},
+                {"sentence": "林でとりをみた。", "kanji": "林", "reading": "はやし"},
+                {"sentence": "田のあぜみち。", "kanji": "田", "reading": "た"},
+                {"sentence": "草のなかに虫。", "kanji": "虫", "reading": "むし"},
+                {"sentence": "空に月がうかぶ。", "kanji": "空", "reading": "そら"},
+                {"sentence": "花がさく。", "kanji": "花", "reading": "はな"},
+                {"sentence": "石をひろう。", "kanji": "石", "reading": "いし"},
+                {"sentence": "青いそら。", "kanji": "青", "reading": "あお"},
+                {"sentence": "赤いりんご。", "kanji": "赤", "reading": "あか"},
+                {"sentence": "白いくも。", "kanji": "白", "reading": "しろ"},
+                {"sentence": "早くおきる。", "kanji": "早", "reading": "はや"},
+                {"sentence": "正しいこたえ。", "kanji": "正", "reading": "ただ"},
+                {"sentence": "生きものをまもる。", "kanji": "生", "reading": "い"},
+                {"sentence": "天の川をみる。", "kanji": "天", "reading": "てん"},
+                {"sentence": "気もちがいい。", "kanji": "気", "reading": "き"},
+                {"sentence": "水をのむ。", "kanji": "水", "reading": "みず"},
+                {"sentence": "火をつける。", "kanji": "火", "reading": "ひ"}
+            ],
+            "2年生": [
                 {"sentence": "ともだちに会う。", "kanji": "会", "reading": "あ"},
                 {"sentence": "海でおよぐ。", "kanji": "海", "reading": "うみ"},
                 {"sentence": "教科書を読む。", "kanji": "教", "reading": "きょう"},
@@ -393,82 +434,27 @@
                 {"sentence": "主語を探す。", "kanji": "語", "reading": "ご"},
                 {"sentence": "車が止まる。", "kanji": "止", "reading": "と"},
                 {"sentence": "船にのる。", "kanji": "船", "reading": "ふね"},
-                {"sentence": "原っぱであそぶ。", "kanji": "原", "reading": "はら"},{"sentence": "ロープを強く引く。", "kanji": "引", "reading": "ひ"},
-{"sentence": "羽をひろげた鳥。", "kanji": "羽", "reading": "はね"},
-{"sentence": "白い雲がながれる。", "kanji": "雲", "reading": "くも"},
-{"sentence": "園で花をうえる。", "kanji": "園", "reading": "えん"},
-{"sentence": "遠くの山がみえる。", "kanji": "遠", "reading": "とお"},
-{"sentence": "何をしているの。", "kanji": "何", "reading": "なに"},
-{"sentence": "理科のじっけん。", "kanji": "科", "reading": "か"},
-{"sentence": "夏の川あそび。", "kanji": "夏", "reading": "なつ"},
-{"sentence": "家にかえる。", "kanji": "家", "reading": "いえ"},
-{"sentence": "歌をうたう。", "kanji": "歌", "reading": "うた"},
-
-{"sentence": "絵をかく。", "kanji": "絵", "reading": "え"},
-{"sentence": "海のなみ。", "kanji": "海", "reading": "うみ"},
-{"sentence": "画を見てまねる。", "kanji": "画", "reading": "が"},
-{"sentence": "二回めのテスト。", "kanji": "回", "reading": "かい"},
-{"sentence": "会ぎがはじまる。", "kanji": "会", "reading": "かい"},
-{"sentence": "外であそぶ。", "kanji": "外", "reading": "そと"},
-{"sentence": "角をまがる。", "kanji": "角", "reading": "かど"},
-{"sentence": "楽しいえんそく。", "kanji": "楽", "reading": "たの"},
-{"sentence": "水の中で活やく。", "kanji": "活", "reading": "かつ"},
-{"sentence": "間をあけてならぶ。", "kanji": "間", "reading": "あいだ"},
-
-{"sentence": "まるい石をひろう。", "kanji": "丸", "reading": "まる"},
-{"sentence": "岩の上にすわる。", "kanji": "岩", "reading": "いわ"},
-{"sentence": "顔をあらう。", "kanji": "顔", "reading": "かお"},
-{"sentence": "汽車にのる。", "kanji": "汽", "reading": "き"},
-{"sentence": "日記を書く。", "kanji": "記", "reading": "き"},
-{"sentence": "家に帰る。", "kanji": "帰", "reading": "かえ"},
-{"sentence": "弓でねらう。", "kanji": "弓", "reading": "ゆみ"},
-{"sentence": "牛のちち。", "kanji": "牛", "reading": "うし"},
-{"sentence": "魚をつる。", "kanji": "魚", "reading": "さかな"},
-{"sentence": "京のまちをあるく。", "kanji": "京", "reading": "きょう"},
-
-{"sentence": "強い風がふく。", "kanji": "強", "reading": "つよ"},
-{"sentence": "先生に教わる。", "kanji": "教", "reading": "おし"},
-{"sentence": "近くの公園。", "kanji": "近", "reading": "ちか"},
-{"sentence": "兄とでかける。", "kanji": "兄", "reading": "あに"},
-{"sentence": "いろいろな形。", "kanji": "形", "reading": "かたち"},
-{"sentence": "時間を計る。", "kanji": "計", "reading": "はか"},
-{"sentence": "元気にあいさつ。", "kanji": "元", "reading": "げん"},
-{"sentence": "言葉をおぼえる。", "kanji": "言", "reading": "こと"},
-{"sentence": "原っぱであそぶ。", "kanji": "原", "reading": "はら"},
-{"sentence": "戸をしめる。", "kanji": "戸", "reading": "と"},
-
-{"sentence": "古いふく。", "kanji": "古", "reading": "ふる"},
-{"sentence": "午前のかいぎ。", "kanji": "午", "reading": "ご"},
-{"sentence": "昼ごはんの後。", "kanji": "後", "reading": "あと"},
-{"sentence": "語をれんしゅうする。", "kanji": "語", "reading": "ご"},
-{"sentence": "工場を見学する。", "kanji": "工", "reading": "こう"},
-{"sentence": "公園であそぶ。", "kanji": "公", "reading": "こう"},
-{"sentence": "広いみち。", "kanji": "広", "reading": "ひろ"},
-{"sentence": "人と交わる。", "kanji": "交", "reading": "まじ"},
-{"sentence": "光がさす。", "kanji": "光", "reading": "ひかり"},
-{"sentence": "よく考える。", "kanji": "考", "reading": "かんが"},
-
-{"sentence": "行きたいところ。", "kanji": "行", "reading": "い"},
-{"sentence": "高い山。", "kanji": "高", "reading": "たか"},
-{"sentence": "黄いろの花。", "kanji": "黄", "reading": "き"},
-{"sentence": "合図をする。", "kanji": "合", "reading": "あ"},
-{"sentence": "谷に水がながれる。", "kanji": "谷", "reading": "たに"},
-{"sentence": "日本の国。", "kanji": "国", "reading": "くに"},
-{"sentence": "黒いねこ。", "kanji": "黒", "reading": "くろ"},
-{"sentence": "今の気もち。", "kanji": "今", "reading": "いま"},
-{"sentence": "才のある人。", "kanji": "才", "reading": "さい"},
-{"sentence": "細い道をあるく。", "kanji": "細", "reading": "ほそ"},
-
-{"sentence": "作り方をおしえる。", "kanji": "作", "reading": "つく"},
-{"sentence": "算数のけいさん。", "kanji": "算", "reading": "さん"},
-{"sentence": "歩くのを止める。", "kanji": "止", "reading": "と"},
-{"sentence": "市のまつり。", "kanji": "市", "reading": "し"},
-{"sentence": "矢をはなつ。", "kanji": "矢", "reading": "や"},
-{"sentence": "姉とさんぽ。", "kanji": "姉", "reading": "あね"},
-{"sentence": "友を思う。", "kanji": "思", "reading": "おも"},
-{"sentence": "紙をおる。", "kanji": "紙", "reading": "かみ"},
-{"sentence": "寺でいのる。", "kanji": "寺", "reading": "てら"},
-{"sentence": "自分でやる。", "kanji": "自", "reading": "じ"}
+                {"sentence": "原っぱであそぶ。", "kanji": "原", "reading": "はら"},
+                {"sentence": "ロープを強く引く。", "kanji": "引", "reading": "ひ"},
+                {"sentence": "羽をひろげた鳥。", "kanji": "羽", "reading": "はね"},
+                {"sentence": "白い雲がながれる。", "kanji": "雲", "reading": "くも"},
+                {"sentence": "園で花をうえる。", "kanji": "園", "reading": "えん"},
+                {"sentence": "遠くの山がみえる。", "kanji": "遠", "reading": "とお"},
+                {"sentence": "何をしているの。", "kanji": "何", "reading": "なに"},
+                {"sentence": "理科のじっけん。", "kanji": "科", "reading": "か"},
+                {"sentence": "夏の川あそび。", "kanji": "夏", "reading": "なつ"},
+                {"sentence": "家にかえる。", "kanji": "家", "reading": "いえ"},
+                {"sentence": "歌をうたう。", "kanji": "歌", "reading": "うた"},
+                {"sentence": "絵をかく。", "kanji": "絵", "reading": "え"},
+                {"sentence": "海のなみ。", "kanji": "海", "reading": "うみ"},
+                {"sentence": "画を見てまねる。", "kanji": "画", "reading": "が"},
+                {"sentence": "二回めのテスト。", "kanji": "回", "reading": "かい"},
+                {"sentence": "会ぎがはじまる。", "kanji": "会", "reading": "かい"},
+                {"sentence": "外であそぶ。", "kanji": "外", "reading": "そと"},
+                {"sentence": "角をまがる。", "kanji": "角", "reading": "かど"},
+                {"sentence": "楽しいえんそく。", "kanji": "楽", "reading": "たの"},
+                {"sentence": "水の中で活やく。", "kanji": "活", "reading": "かつ"},
+                {"sentence": "間をあけてならぶ。", "kanji": "間", "reading": "あいだ"}
             ],
             "3年生": [
                 {"sentence": "ゆう名な詩を読む。", "kanji": "詩", "reading": "し"},
@@ -480,223 +466,27 @@
                 {"sentence": "農家のおじさん。", "kanji": "農家", "reading": "のうか"},
                 {"sentence": "相手に伝える。", "kanji": "相手", "reading": "あいて"},
                 {"sentence": "形を整える。", "kanji": "整", "reading": "ととの"},
-                {"sentence": "新たな発見。", "kanji": "発見", "reading": "はっけん"},{"sentence": "悪いゆめをみた。", "kanji": "悪", "reading": "わる"},
-{"sentence": "安いりんごをかった。", "kanji": "安", "reading": "やす"},
-{"sentence": "暗いみちをあるく。", "kanji": "暗", "reading": "くら"},
-{"sentence": "医しゃにみてもらう。", "kanji": "医", "reading": "い"},
-{"sentence": "委員にえらばれた。", "kanji": "委", "reading": "い"},
-{"sentence": "意見をのべる。", "kanji": "意", "reading": "い"},
-{"sentence": "花を育てる。", "kanji": "育", "reading": "そだ"},
-{"sentence": "会社の員。", "kanji": "員", "reading": "いん"},
-{"sentence": "病院へいく。", "kanji": "院", "reading": "いん"},
-{"sentence": "水を飲む。", "kanji": "飲", "reading": "の"},
-
-{"sentence": "車を運ぶ。", "kanji": "運", "reading": "はこ"},
-{"sentence": "川で泳ぐ。", "kanji": "泳", "reading": "およ"},
-{"sentence": "駅でまつ。", "kanji": "駅", "reading": "えき"},
-{"sentence": "町の中央。", "kanji": "央", "reading": "おう"},
-{"sentence": "横にすわる。", "kanji": "横", "reading": "よこ"},
-{"sentence": "木の屋ね。", "kanji": "屋", "reading": "や"},
-{"sentence": "温かいスープ。", "kanji": "温", "reading": "あたた"},
-{"sentence": "化学のじっけん。", "kanji": "化", "reading": "か"},
-{"sentence": "荷物をはこぶ。", "kanji": "荷", "reading": "に"},
-{"sentence": "世界の国。", "kanji": "界", "reading": "かい"},
-
-{"sentence": "ドアを開ける。", "kanji": "開", "reading": "あ"},
-{"sentence": "三階にのぼる。", "kanji": "階", "reading": "かい"},
-{"sentence": "寒い夜。", "kanji": "寒", "reading": "さむ"},
-{"sentence": "感しゃの気もち。", "kanji": "感", "reading": "かん"},
-{"sentence": "漢字をおぼえる。", "kanji": "漢", "reading": "かん"},
-{"sentence": "図書館にいく。", "kanji": "館", "reading": "かん"},
-{"sentence": "川の岸をあるく。", "kanji": "岸", "reading": "きし"},
-{"sentence": "朝早く起きる。", "kanji": "起", "reading": "お"},
-{"sentence": "春の学期。", "kanji": "期", "reading": "き"},
-{"sentence": "客がくる。", "kanji": "客", "reading": "きゃく"},
-
-{"sentence": "研究をつづける。", "kanji": "研", "reading": "けん"},
-{"sentence": "急に立ち上がる。", "kanji": "急", "reading": "きゅう"},
-{"sentence": "三年級の生徒。", "kanji": "級", "reading": "きゅう"},
-{"sentence": "神宮にいく。", "kanji": "宮", "reading": "きゅう"},
-{"sentence": "野球をする。", "kanji": "球", "reading": "きゅう"},
-{"sentence": "さようならを言って去る。", "kanji": "去", "reading": "さ"},
-{"sentence": "大きな橋をわたる。", "kanji": "橋", "reading": "はし"},
-{"sentence": "仕事の業務。", "kanji": "業", "reading": "ぎょう"},
-{"sentence": "楽しい曲をひく。", "kanji": "曲", "reading": "きょく"},
-{"sentence": "郵便局に行く。", "kanji": "局", "reading": "きょく"},
-
-{"sentence": "銀のゆびわ。", "kanji": "銀", "reading": "ぎん"},
-{"sentence": "市の区わけ。", "kanji": "区", "reading": "く"},
-{"sentence": "苦しいマラソン。", "kanji": "苦", "reading": "くる"},
-{"sentence": "道具をつかう。", "kanji": "具", "reading": "ぐ"},
-{"sentence": "君の名まえ。", "kanji": "君", "reading": "きみ"},
-{"sentence": "係の仕事。", "kanji": "係", "reading": "かかり"},
-{"sentence": "軽いかばん。", "kanji": "軽", "reading": "かる"},
-{"sentence": "血が出る。", "kanji": "血", "reading": "ち"},
-{"sentence": "きまりを決める。", "kanji": "決", "reading": "き"},
-{"sentence": "研究をつづける。", "kanji": "研", "reading": "けん"},
-
-{"sentence": "県のちずをみる。", "kanji": "県", "reading": "けん"},
-{"sentence": "倉庫にしまう。", "kanji": "庫", "reading": "こ"},
-{"sentence": "湖にうつる山。", "kanji": "湖", "reading": "みずうみ"},
-{"sentence": "前を向く。", "kanji": "向", "reading": "む"},
-{"sentence": "幸せをいのる。", "kanji": "幸", "reading": "しあわ"},
-{"sentence": "港に船がつく。", "kanji": "港", "reading": "みなと"},
-{"sentence": "番号をよむ。", "kanji": "号", "reading": "ごう"},
-{"sentence": "木の根をほる。", "kanji": "根", "reading": "ね"},
-{"sentence": "祭りに行く。", "kanji": "祭", "reading": "まつ"},
-{"sentence": "さらをあらう。", "kanji": "皿", "reading": "さら"},
-
-{"sentence": "仕事をする。", "kanji": "仕", "reading": "し"},
-{"sentence": "魚が死ぬ。", "kanji": "死", "reading": "し"},
-{"sentence": "かさを使う。", "kanji": "使", "reading": "つか"},
-{"sentence": "勉強を始める。", "kanji": "始", "reading": "はじ"},
-{"sentence": "ゆびでさす。", "kanji": "指", "reading": "ゆび"},
-{"sentence": "歯をみがく。", "kanji": "歯", "reading": "は"},
-{"sentence": "詩をよむ。", "kanji": "詩", "reading": "し"},
-{"sentence": "次のページ。", "kanji": "次", "reading": "つぎ"},
-{"sentence": "大事にする。", "kanji": "事", "reading": "じ"},
-{"sentence": "荷物を持つ。", "kanji": "持", "reading": "も"},
-{"sentence": "式がはじまる。", "kanji": "式", "reading": "しき"},
-{"sentence": "実がなる。", "kanji": "実", "reading": "み"},
-{"sentence": "写真をとる。", "kanji": "写", "reading": "しゃ"},
-{"sentence": "物語の作者。", "kanji": "者", "reading": "しゃ"},
-{"sentence": "主に話す。", "kanji": "主", "reading": "おも"},
-{"sentence": "約そくを守る。", "kanji": "守", "reading": "まも"},
-{"sentence": "本を取り出す。", "kanji": "取", "reading": "と"},
-{"sentence": "酒をのむ。", "kanji": "酒", "reading": "さけ"},
-{"sentence": "ボールを受ける。", "kanji": "受", "reading": "う"},
-{"sentence": "州をまたぐ川。", "kanji": "州", "reading": "しゅう"}
-{"sentence": "ごみを拾う。", "kanji": "拾", "reading": "ひろ"},
-{"sentence": "しごとが終わる。", "kanji": "終", "reading": "お"},
-{"sentence": "ならって習う。", "kanji": "習", "reading": "なら"},
-{"sentence": "友だちを集める。", "kanji": "集", "reading": "あつ"},
-{"sentence": "町に住む。", "kanji": "住", "reading": "す"},
-{"sentence": "重いかばん。", "kanji": "重", "reading": "おも"},
-{"sentence": "宿にとまる。", "kanji": "宿", "reading": "やど"},
-{"sentence": "所をさがす。", "kanji": "所", "reading": "ところ"},
-{"sentence": "暑い日。", "kanji": "暑", "reading": "あつ"},
-{"sentence": "友を助ける。", "kanji": "助", "reading": "たす"},
-
-{"sentence": "昭和のえいが。", "kanji": "昭", "reading": "しょう"},
-{"sentence": "火を消す。", "kanji": "消", "reading": "け"},
-{"sentence": "商店で買う。", "kanji": "商", "reading": "しょう"},
-{"sentence": "本の章を読む。", "kanji": "章", "reading": "しょう"},
-{"sentence": "試合に勝つ。", "kanji": "勝", "reading": "か"},
-{"sentence": "馬に乗る。", "kanji": "乗", "reading": "の"},
-{"sentence": "木を植える。", "kanji": "植", "reading": "う"},
-{"sentence": "名前を申す。", "kanji": "申", "reading": "もう"},
-{"sentence": "体が大きい。", "kanji": "身", "reading": "み"},
-{"sentence": "神社に行く。", "kanji": "神", "reading": "じん"},
-
-{"sentence": "真ん中に立つ。", "kanji": "真", "reading": "ま"},
-{"sentence": "川が深い。", "kanji": "深", "reading": "ふか"},
-{"sentence": "前に進む。", "kanji": "進", "reading": "すす"},
-{"sentence": "世の中を学ぶ。", "kanji": "世", "reading": "よ"},
-{"sentence": "机を整える。", "kanji": "整", "reading": "ととの"},
-{"sentence": "昔の話。", "kanji": "昔", "reading": "むかし"},
-{"sentence": "全ての人。", "kanji": "全", "reading": "すべ"},
-{"sentence": "相手に伝える。", "kanji": "相", "reading": "あい"},
-{"sentence": "手紙を送る。", "kanji": "送", "reading": "おく"},
-{"sentence": "家のことを想う。", "kanji": "想", "reading": "おも"},
-
-{"sentence": "息をすう。", "kanji": "息", "reading": "いき"},
-{"sentence": "速く走る。", "kanji": "速", "reading": "はや"},
-{"sentence": "家族と食べる。", "kanji": "族", "reading": "ぞく"},
-{"sentence": "他の道を行く。", "kanji": "他", "reading": "ほか"},
-{"sentence": "ボールを打つ。", "kanji": "打", "reading": "う"},
-{"sentence": "対しょうをくらべる。", "kanji": "対", "reading": "たい"},
-{"sentence": "バスを待つ。", "kanji": "待", "reading": "ま"},
-{"sentence": "代わりに行く。", "kanji": "代", "reading": "か"},
-{"sentence": "第一の目標。", "kanji": "第", "reading": "だい"},
-{"sentence": "問題の題。", "kanji": "題", "reading": "だい"},
-
-{"sentence": "炭をくべる。", "kanji": "炭", "reading": "すみ"},
-{"sentence": "短いはなし。", "kanji": "短", "reading": "みじか"},
-{"sentence": "先生と談話する。", "kanji": "談", "reading": "だん"},
-{"sentence": "服を着る。", "kanji": "着", "reading": "き"},
-{"sentence": "水を注ぐ。", "kanji": "注", "reading": "そそ"},
-{"sentence": "柱をたてる。", "kanji": "柱", "reading": "はしら"},
-{"sentence": "町の丁目。", "kanji": "丁", "reading": "ちょう"},
-{"sentence": "帳に書く。", "kanji": "帳", "reading": "ちょう"},
-{"sentence": "音を調べる。", "kanji": "調", "reading": "しら"},
-{"sentence": "車を追う。", "kanji": "追", "reading": "お"},
-
-{"sentence": "時間を定める。", "kanji": "定", "reading": "さだ"},
-{"sentence": "庭で花をそだてる。", "kanji": "庭", "reading": "にわ"},
-{"sentence": "笛をふく。", "kanji": "笛", "reading": "ふえ"},
-{"sentence": "鉄のドア。", "kanji": "鉄", "reading": "てつ"},
-{"sentence": "自転車に乗る。", "kanji": "転", "reading": "てん"},
-{"sentence": "都にのぼる。", "kanji": "都", "reading": "みやこ"},
-{"sentence": "一度ためす。", "kanji": "度", "reading": "ど"},
-{"sentence": "ボールを投げる。", "kanji": "投", "reading": "な"},
-{"sentence": "豆をまく。", "kanji": "豆", "reading": "まめ"},
-{"sentence": "島にすむ人。", "kanji": "島", "reading": "しま"},
-
-{"sentence": "湯をわかす。", "kanji": "湯", "reading": "ゆ"},
-{"sentence": "山に登る。", "kanji": "登", "reading": "のぼ"},
-{"sentence": "等しい長さ。", "kanji": "等", "reading": "ひと"},
-{"sentence": "体を動かす。", "kanji": "動", "reading": "うご"},
-{"sentence": "童話を読む。", "kanji": "童", "reading": "どう"},
-{"sentence": "農家の人。", "kanji": "農", "reading": "のう"},
-{"sentence": "波がよせる。", "kanji": "波", "reading": "なみ"},
-{"sentence": "手紙を配る。", "kanji": "配", "reading": "くば"},
-{"sentence": "人数が倍になる。", "kanji": "倍", "reading": "ばい"},
-{"sentence": "箱をあける。", "kanji": "箱", "reading": "はこ"},
-
-{"sentence": "畑でやさいをつくる。", "kanji": "畑", "reading": "はたけ"},
-{"sentence": "花が発つ。", "kanji": "発", "reading": "はつ"},
-{"sentence": "反対のいけん。", "kanji": "反", "reading": "はん"},
-{"sentence": "坂をのぼる。", "kanji": "坂", "reading": "さか"},
-{"sentence": "板にえをかく。", "kanji": "板", "reading": "いた"},
-{"sentence": "けがの皮がなおる。", "kanji": "皮", "reading": "かわ"},
-{"sentence": "悲しい話。", "kanji": "悲", "reading": "かな"},
-{"sentence": "美しい花。", "kanji": "美", "reading": "うつく"},
-{"sentence": "鼻で息をすう。", "kanji": "鼻", "reading": "はな"},
-{"sentence": "筆で書く。", "kanji": "筆", "reading": "ふで"},
-
-{"sentence": "氷がとける。", "kanji": "氷", "reading": "こおり"},
-{"sentence": "表をつくる。", "kanji": "表", "reading": "ひょう"},
-{"sentence": "一秒を計る。", "kanji": "秒", "reading": "びょう"},
-{"sentence": "病気がなおる。", "kanji": "病", "reading": "びょう"},
-{"sentence": "品をならべる。", "kanji": "品", "reading": "しな"},
-{"sentence": "試合に負ける。", "kanji": "負", "reading": "ま"},
-{"sentence": "部屋に入る。", "kanji": "部", "reading": "ぶ"},
-{"sentence": "服をきがえる。", "kanji": "服", "reading": "ふく"},
-{"sentence": "福がくる。", "kanji": "福", "reading": "ふく"},
-{"sentence": "物をかぞえる。", "kanji": "物", "reading": "もの"},
-
-{"sentence": "平らな地面。", "kanji": "平", "reading": "たい"},
-{"sentence": "手紙を返す。", "kanji": "返", "reading": "かえ"},
-{"sentence": "勉強をがんばる。", "kanji": "勉", "reading": "べん"},
-{"sentence": "鳥を放す。", "kanji": "放", "reading": "はな"},
-{"sentence": "いい味のスープ。", "kanji": "味", "reading": "あじ"},
-{"sentence": "命をたいせつに。", "kanji": "命", "reading": "いのち"},
-{"sentence": "面をつける。", "kanji": "面", "reading": "めん"},
-{"sentence": "先生に問う。", "kanji": "問", "reading": "と"},
-{"sentence": "大事な役目。", "kanji": "役", "reading": "やく"},
-{"sentence": "薬をのむ。", "kanji": "薬", "reading": "くすり"},
-
-{"sentence": "由来をしらべる。", "kanji": "由", "reading": "ゆ"},
-{"sentence": "油をつかう。", "kanji": "油", "reading": "あぶら"},
-{"sentence": "持っている。", "kanji": "有", "reading": "あ"},
-{"sentence": "公園で遊ぶ。", "kanji": "遊", "reading": "あそ"},
-{"sentence": "予ていを立てる。", "kanji": "予", "reading": "よ"},
-{"sentence": "羊をかう。", "kanji": "羊", "reading": "ひつじ"},
-{"sentence": "洋服をきる。", "kanji": "洋", "reading": "よう"},
-{"sentence": "木の葉がちる。", "kanji": "葉", "reading": "は"},
-{"sentence": "陽の光。", "kanji": "陽", "reading": "ひ"},
-{"sentence": "同じ様に書く。", "kanji": "様", "reading": "よう"},
-
-{"sentence": "葉が落ちる。", "kanji": "落", "reading": "お"},
-{"sentence": "川が流れる。", "kanji": "流", "reading": "なが"},
-{"sentence": "旅に出る。", "kanji": "旅", "reading": "たび"},
-{"sentence": "両手でささえる。", "kanji": "両", "reading": "りょう"},
-{"sentence": "緑の山。", "kanji": "緑", "reading": "みどり"},
-{"sentence": "礼を言う。", "kanji": "礼", "reading": "れい"},
-{"sentence": "列にならぶ。", "kanji": "列", "reading": "れつ"},
-{"sentence": "練習をする。", "kanji": "練", "reading": "れん"},
-{"sentence": "道を歩く。", "kanji": "路", "reading": "ろ"},
-{"sentence": "和やかに話す。", "kanji": "和", "reading": "なご"}
+                {"sentence": "新たな発見。", "kanji": "発見", "reading": "はっけん"},
+                {"sentence": "悪いゆめをみた。", "kanji": "悪", "reading": "わる"},
+                {"sentence": "安いりんごをかった。", "kanji": "安", "reading": "やす"},
+                {"sentence": "暗いみちをあるく。", "kanji": "暗", "reading": "くら"},
+                {"sentence": "医しゃにみてもらう。", "kanji": "医", "reading": "い"},
+                {"sentence": "委員にえらばれた。", "kanji": "委", "reading": "い"},
+                {"sentence": "意見をのべる。", "kanji": "意", "reading": "い"},
+                {"sentence": "花を育てる。", "kanji": "育", "reading": "そだ"},
+                {"sentence": "会社の員。", "kanji": "員", "reading": "いん"},
+                {"sentence": "病院へいく。", "kanji": "院", "reading": "いん"},
+                {"sentence": "水を飲む。", "kanji": "飲", "reading": "の"},
+                {"sentence": "車を運ぶ。", "kanji": "運", "reading": "はこ"},
+                {"sentence": "川で泳ぐ。", "kanji": "泳", "reading": "およ"},
+                {"sentence": "駅でまつ。", "kanji": "駅", "reading": "えき"},
+                {"sentence": "町の中央。", "kanji": "央", "reading": "おう"},
+                {"sentence": "横にすわる。", "kanji": "横", "reading": "よこ"},
+                {"sentence": "木の屋ね。", "kanji": "屋", "reading": "や"},
+                {"sentence": "温かいスープ。", "kanji": "温", "reading": "あたた"},
+                {"sentence": "化学のじっけん。", "kanji": "化", "reading": "か"},
+                {"sentence": "荷物をはこぶ。", "kanji": "荷", "reading": "に"},
+                {"sentence": "世界の国。", "kanji": "界", "reading": "かい"}
             ],
             "4年生": [
                 {"sentence": "季節に関する言葉。", "kanji": "季節", "reading": "きせつ"},
@@ -708,203 +498,27 @@
                 {"sentence": "図書館にある資料。", "kanji": "資料", "reading": "しりょう"},
                 {"sentence": "友達とあそぶ。", "kanji": "友達", "reading": "ともだち"},
                 {"sentence": "夏休みの半ば。", "kanji": "半", "reading": "なか"},
-                {"sentence": "海底の生き物を調査する。", "kanji": "海底", "reading": "かいてい"},{"sentence": "愛をだれかに伝える。", "kanji": "愛", "reading": "あい"},
-{"sentence": "新しい案を出す。", "kanji": "案", "reading": "あん"},
-{"sentence": "以後きをつける。", "kanji": "以", "reading": "い"},
-{"sentence": "あたたかい衣。", "kanji": "衣", "reading": "ころも"},
-{"sentence": "位をたてる。", "kanji": "位", "reading": "くらい"},
-{"sentence": "いばらの道。", "kanji": "茨", "reading": "いばら"},
-{"sentence": "印をつける。", "kanji": "印", "reading": "しるし"},
-{"sentence": "英語をならう。", "kanji": "英", "reading": "えい"},
-{"sentence": "栄える町。", "kanji": "栄", "reading": "さか"},
-{"sentence": "媛の名まえ。", "kanji": "媛", "reading": "ひめ"},
-
-{"sentence": "塩をふる。", "kanji": "塩", "reading": "しお"},
-{"sentence": "岡の上にのぼる。", "kanji": "岡", "reading": "おか"},
-{"sentence": "大きな億の数。", "kanji": "億", "reading": "おく"},
-{"sentence": "数字を加える。", "kanji": "加", "reading": "くわ"},
-{"sentence": "果物を食べる。", "kanji": "果", "reading": "は"},
-{"sentence": "貨物を運ぶ。", "kanji": "貨", "reading": "か"},
-{"sentence": "新しい課がはじまる。", "kanji": "課", "reading": "か"},
-{"sentence": "芽が出た。", "kanji": "芽", "reading": "め"},
-{"sentence": "賀の言葉を言う。", "kanji": "賀", "reading": "が"},
-{"sentence": "計画を改める。", "kanji": "改", "reading": "あらた"},
-
-{"sentence": "機械を直す。", "kanji": "械", "reading": "かい"},
-{"sentence": "害のある虫。", "kanji": "害", "reading": "がい"},
-{"sentence": "街をあるく。", "kanji": "街", "reading": "まち"},
-{"sentence": "各クラスで集まる。", "kanji": "各", "reading": "かく"},
-{"sentence": "覚える練習をする。", "kanji": "覚", "reading": "おぼ"},
-{"sentence": "潟のちけい。", "kanji": "潟", "reading": "かた"},
-{"sentence": "本を完読みした。", "kanji": "完", "reading": "かん"},
-{"sentence": "官のもんだいをかんがえる。", "kanji": "官", "reading": "かん"},
-{"sentence": "管をつなぐ。", "kanji": "管", "reading": "かん"},
-{"sentence": "関係を大切にする。", "kanji": "関", "reading": "せき"},
-
-{"sentence": "観覧車にのる。", "kanji": "観", "reading": "かん"},
-{"sentence": "願いごとを書く。", "kanji": "願", "reading": "ねが"},
-{"sentence": "岐阜県をしらべる。", "kanji": "岐", "reading": "き"},
-{"sentence": "希望の気持ち。", "kanji": "希", "reading": "のぞ"},
-{"sentence": "季節が変わる。", "kanji": "季", "reading": "き"},
-{"sentence": "旗をふる。", "kanji": "旗", "reading": "はた"},
-{"sentence": "器に水を注ぐ。", "kanji": "器", "reading": "うつわ"},
-{"sentence": "機会をまつ。", "kanji": "機", "reading": "き"},
-{"sentence": "議論をする。", "kanji": "議", "reading": "ぎ"},
-{"sentence": "求める気もち。", "kanji": "求", "reading": "もと"},
-
-{"sentence": "子どもが泣く。", "kanji": "泣", "reading": "な"},
-{"sentence": "給食を食べる。", "kanji": "給", "reading": "きゅう"},
-{"sentence": "手を挙げる。", "kanji": "挙", "reading": "あ"},
-{"sentence": "漁に出る。", "kanji": "漁", "reading": "りょう"},
-{"sentence": "共に助け合う。", "kanji": "共", "reading": "とも"},
-{"sentence": "協力して掃除する。", "kanji": "協", "reading": "きょう"},
-{"sentence": "鏡で自分を見る。", "kanji": "鏡", "reading": "かがみ"},
-{"sentence": "競争は楽しい。", "kanji": "競", "reading": "きょう"},
-{"sentence": "極端な例。", "kanji": "極", "reading": "きょく"},
-{"sentence": "熊を図かんで見る。", "kanji": "熊", "reading": "くま"},
-
-{"sentence": "訓練をする。", "kanji": "訓", "reading": "くん"},
-{"sentence": "軍が出動する。", "kanji": "軍", "reading": "ぐん"},
-{"sentence": "郡の名前を調べる。", "kanji": "郡", "reading": "ぐん"},
-{"sentence": "群れを作る。", "kanji": "群", "reading": "むれ"},
-{"sentence": "径をはかる。", "kanji": "径", "reading": "けい"},
-{"sentence": "景色がきれい。", "kanji": "景", "reading": "けい"},
-{"sentence": "芸をならう。", "kanji": "芸", "reading": "げい"},
-{"sentence": "欠けた月。", "kanji": "欠", "reading": "かけ"},
-{"sentence": "結ぶリボン。", "kanji": "結", "reading": "むす"},
-{"sentence": "建物をながめる。", "kanji": "建", "reading": "たて"},
-
-{"sentence": "健康に気をつける。", "kanji": "健", "reading": "けん"},
-{"sentence": "実験を経験する。", "kanji": "験", "reading": "けん"},
-{"sentence": "固い石。", "kanji": "固", "reading": "かた"},
-{"sentence": "功のあった人。", "kanji": "功", "reading": "こう"},
-{"sentence": "好きを大切にする。", "kanji": "好", "reading": "す"},
-{"sentence": "花の香り。", "kanji": "香", "reading": "か"},
-{"sentence": "候補をえらぶ。", "kanji": "候", "reading": "こう"},
-{"sentence": "康らかな気もち。", "kanji": "康", "reading": "こう"},
-{"sentence": "佐藤さんに会う。", "kanji": "佐", "reading": "さ"},
-{"sentence": "差をくらべる。", "kanji": "差", "reading": "さ"},
-
-{"sentence": "菜の花がさく。", "kanji": "菜", "reading": "な"},
-{"sentence": "最初のページ。", "kanji": "最", "reading": "さい"},
-{"sentence": "埼玉県をしらべる。", "kanji": "埼", "reading": "さい"},
-{"sentence": "材木をつかう。", "kanji": "材", "reading": "ざい"},
-{"sentence": "崎の道を歩く。", "kanji": "崎", "reading": "さき"},
-{"sentence": "昨日のこと。", "kanji": "昨", "reading": "さく"},
-{"sentence": "札を机におく。", "kanji": "札", "reading": "ふだ"},
-{"sentence": "印刷で刷る。", "kanji": "刷", "reading": "す"},
-{"sentence": "よく察する。", "kanji": "察", "reading": "さつ"},
-{"sentence": "参る場所へ行く。", "kanji": "参", "reading": "さん"},
-
-{"sentence": "産物を売る。", "kanji": "産", "reading": "さん"},
-{"sentence": "散歩にでかける。", "kanji": "散", "reading": "さん"},
-{"sentence": "物が残る。", "kanji": "残", "reading": "のこ"},
-{"sentence": "氏名をかく。", "kanji": "氏", "reading": "うじ"},
-{"sentence": "司会をする。", "kanji": "司", "reading": "し"},
-{"sentence": "試合を行う。", "kanji": "試", "reading": "し"},
-{"sentence": "児童があつまる。", "kanji": "児", "reading": "じ"},
-{"sentence": "病を治す。", "kanji": "治", "reading": "なお"},
-{"sentence": "滋賀県をしらべる。", "kanji": "滋", "reading": "し"},
-{"sentence": "辞を述べる。", "kanji": "辞", "reading": "じ"} ,
-
-{"sentence": "鹿を見る。", "kanji": "鹿", "reading": "しか"},
-{"sentence": "失敗から学ぶ。", "kanji": "失", "reading": "しつ"},
-{"sentence": "本を借りる。", "kanji": "借", "reading": "か"},
-{"sentence": "いろいろな種をまく。", "kanji": "種", "reading": "たね"},
-{"sentence": "周りを見回す。", "kanji": "周", "reading": "まわ"},
-{"sentence": "お祝いをする。", "kanji": "祝", "reading": "いわ"},
-{"sentence": "順番を守る。", "kanji": "順", "reading": "じゅん"},
-{"sentence": "初めの一歩。", "kanji": "初", "reading": "はじ"},
-{"sentence": "松の木を植える。", "kanji": "松", "reading": "まつ"},
-{"sentence": "笑ってあいさつ。", "kanji": "笑", "reading": "わら"},
-
-{"sentence": "歌を唱える。", "kanji": "唱", "reading": "とな"},
-{"sentence": "パンを焼く。", "kanji": "焼", "reading": "や"},
-{"sentence": "光を照らす。", "kanji": "照", "reading": "てら"},
-{"sentence": "城を見に行く。", "kanji": "城", "reading": "しろ"},
-{"sentence": "縄をなう。", "kanji": "縄", "reading": "なわ"},
-{"sentence": "臣下の話。", "kanji": "臣", "reading": "しん"},
-{"sentence": "信じる心。", "kanji": "信", "reading": "しん"},
-{"sentence": "井戸をのぞく。", "kanji": "井", "reading": "い"},
-{"sentence": "成長する。", "kanji": "成", "reading": "なる"},
-{"sentence": "省くところ。", "kanji": "省", "reading": "はぶ"},
-
-{"sentence": "水を清める。", "kanji": "清", "reading": "きよ"},
-{"sentence": "静かな夜。", "kanji": "静", "reading": "しず"},
-{"sentence": "席につく。", "kanji": "席", "reading": "せき"},
-{"sentence": "積み木を積む。", "kanji": "積", "reading": "つ"},
-{"sentence": "折り紙で折る。", "kanji": "折", "reading": "お"},
-{"sentence": "節をまもる。", "kanji": "節", "reading": "せつ"},
-{"sentence": "説明を聞く。", "kanji": "説", "reading": "せつ"},
-{"sentence": "浅い川。", "kanji": "浅", "reading": "あさ"},
-{"sentence": "戦いを学ぶ。", "kanji": "戦", "reading": "いくさ"},
-{"sentence": "選ぶ投票。", "kanji": "選", "reading": "えら"},
-
-{"sentence": "然りとは限らない。", "kanji": "然", "reading": "しか"},
-{"sentence": "争いをやめる。", "kanji": "争", "reading": "あらそ"},
-{"sentence": "倉にしまう。", "kanji": "倉", "reading": "くら"},
-{"sentence": "鳥の巣を見つける。", "kanji": "巣", "reading": "す"},
-{"sentence": "束をまとめる。", "kanji": "束", "reading": "たば"},
-{"sentence": "側に寄る。", "kanji": "側", "reading": "がわ"},
-{"sentence": "続けて書く。", "kanji": "続", "reading": "つづ"},
-{"sentence": "卒業する日。", "kanji": "卒", "reading": "そつ"},
-{"sentence": "孫と遊ぶ。", "kanji": "孫", "reading": "まご"},
-{"sentence": "帯をしめる。", "kanji": "帯", "reading": "おび"},
-
-{"sentence": "隊で行進する。", "kanji": "隊", "reading": "たい"},
-{"sentence": "達成感を味わう。", "kanji": "達", "reading": "たつ"},
-{"sentence": "単語をおぼえる。", "kanji": "単", "reading": "たん"},
-{"sentence": "物を置く場所。", "kanji": "置", "reading": "お"},
-{"sentence": "仲よく遊ぶ。", "kanji": "仲", "reading": "なか"},
-{"sentence": "沖に行く船。", "kanji": "沖", "reading": "おき"},
-{"sentence": "兆しが見える。", "kanji": "兆", "reading": "きざ"},
-{"sentence": "低い山。", "kanji": "低", "reading": "ひく"},
-{"sentence": "底を調べる。", "kanji": "底", "reading": "そこ"},
-{"sentence": "目的を決める。", "kanji": "的", "reading": "まと"},
-
-{"sentence": "典を読む。", "kanji": "典", "reading": "てん"},
-{"sentence": "伝える仕事。", "kanji": "伝", "reading": "つた"},
-{"sentence": "徒競走をする。", "kanji": "徒", "reading": "と"},
-{"sentence": "努力を続ける。", "kanji": "努", "reading": "つと"},
-{"sentence": "灯りをつける。", "kanji": "灯", "reading": "ひ"},
-{"sentence": "働いて得る。", "kanji": "働", "reading": "はたら"},
-{"sentence": "特別な日。", "kanji": "特", "reading": "とく"},
-{"sentence": "徳を重んじる。", "kanji": "徳", "reading": "とく"},
-{"sentence": "栃の木を見る。", "kanji": "栃", "reading": "とち"},
-{"sentence": "奈良へ行く。", "kanji": "奈", "reading": "な"},
-
-{"sentence": "梨を食べる。", "kanji": "梨", "reading": "なし"},
-{"sentence": "熱いお湯。", "kanji": "熱", "reading": "ねつ"},
-{"sentence": "念を入れる。", "kanji": "念", "reading": "ねん"},
-{"sentence": "試合に敗れる。", "kanji": "敗", "reading": "やぶ"},
-{"sentence": "梅の花がさく。", "kanji": "梅", "reading": "うめ"},
-{"sentence": "博物館に行く。", "kanji": "博", "reading": "はく"},
-{"sentence": "阪の坂道。", "kanji": "阪", "reading": "さか"},
-{"sentence": "ご飯を食べる。", "kanji": "飯", "reading": "めし"},
-{"sentence": "鳥が飛ぶ。", "kanji": "飛", "reading": "と"},
-{"sentence": "必ず宿題をする。", "kanji": "必", "reading": "かなら"},
-
-{"sentence": "票をあつめる。", "kanji": "票", "reading": "ひょう"},
-{"sentence": "標をたてる。", "kanji": "標", "reading": "しるべ"},
-{"sentence": "不安を感じる。", "kanji": "不", "reading": "ふ"},
-{"sentence": "夫と話す。", "kanji": "夫", "reading": "おっと"},
-{"sentence": "付け足す。", "kanji": "付", "reading": "つ"},
-{"sentence": "府の建物。", "kanji": "府", "reading": "ふ"},
-{"sentence": "丘の上（阜の意味）", "kanji": "阜", "reading": "おか"},
-{"sentence": "富のある村。", "kanji": "富", "reading": "とみ"},
-{"sentence": "副作用に注意。", "kanji": "副", "reading": "ふく"},
-{"sentence": "兵が整列する。", "kanji": "兵", "reading": "へい"},
-
-{"sentence": "別の道を行く。", "kanji": "別", "reading": "べつ"},
-{"sentence": "辺を歩く。", "kanji": "辺", "reading": "へん"},
-{"sentence": "変化を受け入れる。", "kanji": "変", "reading": "か"},
-{"sentence": "便利な道具。", "kanji": "便", "reading": "べん"},
-{"sentence": "包をあける。", "kanji": "包", "reading": "つつ"},
-{"sentence": "法律を守る。", "kanji": "法", "reading": "ほう"},
-{"sentence": "望みを持つ。", "kanji": "望", "reading": "のぞ"},
-{"sentence": "牧場で牛を見る。", "kanji": "牧", "reading": "まき"},
-{"sentence": "末の兄弟。", "kanji": "末", "reading": "すえ"},
-{"sentence": "満ちる海。", "kanji": "満",
+                {"sentence": "海底の生き物を調査する。", "kanji": "海底", "reading": "かいてい"},
+                {"sentence": "愛をだれかに伝える。", "kanji": "愛", "reading": "あい"},
+                {"sentence": "新しい案を出す。", "kanji": "案", "reading": "あん"},
+                {"sentence": "以後きをつける。", "kanji": "以", "reading": "い"},
+                {"sentence": "あたたかい衣。", "kanji": "衣", "reading": "ころも"},
+                {"sentence": "位をたてる。", "kanji": "位", "reading": "くらい"},
+                {"sentence": "印をつける。", "kanji": "印", "reading": "しるし"},
+                {"sentence": "英語をならう。", "kanji": "英", "reading": "えい"},
+                {"sentence": "栄える町。", "kanji": "栄", "reading": "さか"},
+                {"sentence": "塩をふる。", "kanji": "塩", "reading": "しお"},
+                {"sentence": "岡の上にのぼる。", "kanji": "岡", "reading": "おか"},
+                {"sentence": "大きな億の数。", "kanji": "億", "reading": "おく"},
+                {"sentence": "数字を加える。", "kanji": "加", "reading": "くわ"},
+                {"sentence": "果物を食べる。", "kanji": "果", "reading": "は"},
+                {"sentence": "貨物を運ぶ。", "kanji": "貨", "reading": "か"},
+                {"sentence": "新しい課がはじまる。", "kanji": "課", "reading": "か"},
+                {"sentence": "芽が出た。", "kanji": "芽", "reading": "め"},
+                {"sentence": "計画を改める。", "kanji": "改", "reading": "あらた"},
+                {"sentence": "害のある虫。", "kanji": "害", "reading": "がい"},
+                {"sentence": "街をあるく。", "kanji": "街", "reading": "まち"},
+                {"sentence": "各クラスで集まる。", "kanji": "各", "reading": "かく"}
             ],
             "5年生": [
                 {"sentence": "学校の校舎。", "kanji": "校舎", "reading": "こうしゃ"},
@@ -916,223 +530,27 @@
                 {"sentence": "司会を任せる。", "kanji": "司会", "reading": "しかい"},
                 {"sentence": "画像を加工する。", "kanji": "像", "reading": "ぞう"},
                 {"sentence": "原因が分かる。", "kanji": "原因", "reading": "げんいん"},
-                {"sentence": "コードを接続する。", "kanji": "接続", "reading": "せつぞく"},{"sentence": "空気の圧をはかる。", "kanji": "圧", "reading": "あつ"},
-{"sentence": "家の周りを囲む。", "kanji": "囲", "reading": "かこ"},
-{"sentence": "町が移る。", "kanji": "移", "reading": "うつ"},
-{"sentence": "原因を考える。", "kanji": "因", "reading": "いん"},
-{"sentence": "永い時を生きる。", "kanji": "永", "reading": "なが"},
-{"sentence": "店を営む。", "kanji": "営", "reading": "いとな"},
-{"sentence": "衛生に気をつける。", "kanji": "衛", "reading": "えい"},
-{"sentence": "計算を易しくする。", "kanji": "易", "reading": "やさ"},
-{"sentence": "利益をえる。", "kanji": "益", "reading": "えき"},
-{"sentence": "液体をまぜる。", "kanji": "液", "reading": "えき"},
-
-{"sentence": "劇を演じる。", "kanji": "演", "reading": "えん"},
-{"sentence": "声に応える。", "kanji": "応", "reading": "こた"},
-{"sentence": "道を往く人。", "kanji": "往", "reading": "おう"},
-{"sentence": "桜がさく。", "kanji": "桜", "reading": "さくら"},
-{"sentence": "可笑しい話。", "kanji": "可", "reading": "か"},
-{"sentence": "仮の名前を使う。", "kanji": "仮", "reading": "かり"},
-{"sentence": "物の価を調べる。", "kanji": "価", "reading": "あたい"},
-{"sentence": "河の流れ。", "kanji": "河", "reading": "かわ"},
-{"sentence": "時間が過ぎる。", "kanji": "過", "reading": "す"},
-{"sentence": "気分が快い。", "kanji": "快", "reading": "こころよ"},
-
-{"sentence": "意味を解く。", "kanji": "解", "reading": "と"},
-{"sentence": "正しい格をまもる。", "kanji": "格", "reading": "かく"},
-{"sentence": "確かな答え。", "kanji": "確", "reading": "たし"},
-{"sentence": "額を出す。", "kanji": "額", "reading": "ひたい"},
-{"sentence": "新聞を刊行する。", "kanji": "刊", "reading": "かん"},
-{"sentence": "木の幹が太い。", "kanji": "幹", "reading": "みき"},
-{"sentence": "習慣をまもる。", "kanji": "慣", "reading": "な"},
-{"sentence": "目の眼光が強い。", "kanji": "眼", "reading": "め"},
-{"sentence": "紀行文を読む。", "kanji": "紀", "reading": "き"},
-{"sentence": "生活の基を作る。", "kanji": "基", "reading": "もと"},
-
-{"sentence": "家に寄る。", "kanji": "寄", "reading": "よ"},
-{"sentence": "規則を守る。", "kanji": "規", "reading": "き"},
-{"sentence": "喜びの声。", "kanji": "喜", "reading": "よろこ"},
-{"sentence": "技をみがく。", "kanji": "技", "reading": "わざ"},
-{"sentence": "義を重んじる。", "kanji": "義", "reading": "ぎ"},
-{"sentence": "流れが逆になる。", "kanji": "逆", "reading": "ぎゃく"},
-{"sentence": "久しぶりの友。", "kanji": "久", "reading": "ひさ"},
-{"sentence": "旧い家。", "kanji": "旧", "reading": "ふる"},
-{"sentence": "命を救う。", "kanji": "救", "reading": "すく"},
-{"sentence": "家に居る。", "kanji": "居", "reading": "い"},
-
-{"sentence": "許しをこう。", "kanji": "許", "reading": "ゆる"},
-{"sentence": "境をこえる。", "kanji": "境", "reading": "さかい"},
-{"sentence": "均一な形。", "kanji": "均", "reading": "きん"},
-{"sentence": "禁じられたこと。", "kanji": "禁", "reading": "きん"},
-{"sentence": "文の句を読む。", "kanji": "句", "reading": "く"},
-{"sentence": "新しい型を作る。", "kanji": "型", "reading": "かた"},
-{"sentence": "道を経て行く。", "kanji": "経", "reading": "へ"},
-{"sentence": "清潔な部屋。", "kanji": "潔", "reading": "けつ"},
-{"sentence": "事件が起きる。", "kanji": "件", "reading": "けん"},
-{"sentence": "険しい山道。", "kanji": "険", "reading": "けわ"},
-
-{"sentence": "内容を検討する。", "kanji": "検", "reading": "けん"},
-{"sentence": "人数を限る。", "kanji": "限", "reading": "かぎ"},
-{"sentence": "現れるしるし。", "kanji": "現", "reading": "あらわ"},
-{"sentence": "人数を減らす。", "kanji": "減", "reading": "へ"},
-{"sentence": "事故の原因。", "kanji": "故", "reading": "こ"},
-{"sentence": "個人で決める。", "kanji": "個", "reading": "こ"},
-{"sentence": "けがを護る。", "kanji": "護", "reading": "まも"},
-{"sentence": "薬が効く。", "kanji": "効", "reading": "き"},
-{"sentence": "厚い紙。", "kanji": "厚", "reading": "あつ"},
-{"sentence": "田を耕す。", "kanji": "耕", "reading": "たがや"},
-
-{"sentence": "船で航海する。", "kanji": "航", "reading": "こう"},
-{"sentence": "鉱山を見学する。", "kanji": "鉱", "reading": "こう"},
-{"sentence": "家を構える。", "kanji": "構", "reading": "かま"},
-{"sentence": "学問に興味がある。", "kanji": "興", "reading": "きょう"},
-{"sentence": "講堂で話す。", "kanji": "講", "reading": "こう"},
-{"sentence": "知らせを告げる。", "kanji": "告", "reading": "つ"},
-{"sentence": "色が混ざる。", "kanji": "混", "reading": "ま"},
-{"sentence": "答えを査する。", "kanji": "査", "reading": "しら"},
-{"sentence": "再び始める。", "kanji": "再", "reading": "ふたた"},
-{"sentence": "火の災いを防ぐ。", "kanji": "災", "reading": "わざわ"},
-
-{"sentence": "妻と話す。", "kanji": "妻", "reading": "つま"},
-{"sentence": "木を採る。", "kanji": "採", "reading": "と"},
-{"sentence": "国際的な会議。", "kanji": "際", "reading": "さい"},
-{"sentence": "家に在る本。", "kanji": "在", "reading": "あ"},
-{"sentence": "財を築く。", "kanji": "財", "reading": "ざい"},
-{"sentence": "罪をつぐなう。", "kanji": "罪", "reading": "つみ"},
-{"sentence": "虫を殺す。", "kanji": "殺", "reading": "ころ"},
-{"sentence": "雑音を消す。", "kanji": "雑", "reading": "ざつ"},
-{"sentence": "酸っぱいりんご。", "kanji": "酸", "reading": "す"},
-{"sentence": "意見に賛成する。", "kanji": "賛", "reading": "さん"}
-{"sentence": "武士のように生きる。", "kanji": "士", "reading": "し"},
-{"sentence": "手を支える。", "kanji": "支", "reading": "ささ"},
-{"sentence": "日本の歴史を学ぶ。", "kanji": "史", "reading": "し"},
-{"sentence": "強い志を持つ。", "kanji": "志", "reading": "こころざ"},
-{"sentence": "枝を切る。", "kanji": "枝", "reading": "えだ"},
-{"sentence": "先生は師です。", "kanji": "師", "reading": "し"},
-{"sentence": "資金をあつめる。", "kanji": "資", "reading": "し"},
-{"sentence": "犬を飼う。", "kanji": "飼", "reading": "か"},
-{"sentence": "神に示す。", "kanji": "示", "reading": "しめ"},
-{"sentence": "似た形をしている。", "kanji": "似", "reading": "に"},
-
-{"sentence": "意識して見る。", "kanji": "識", "reading": "しき"},
-{"sentence": "質問に答える。", "kanji": "質", "reading": "しつ"},
-{"sentence": "校舎の前に立つ。", "kanji": "舎", "reading": "しゃ"},
-{"sentence": "人に感謝する。", "kanji": "謝", "reading": "しゃ"},
-{"sentence": "授業をうける。", "kanji": "授", "reading": "じゅ"},
-{"sentence": "文を述べる。", "kanji": "述", "reading": "の"},
-{"sentence": "技術を学ぶ。", "kanji": "術", "reading": "じゅつ"},
-{"sentence": "準備をする。", "kanji": "準", "reading": "じゅん"},
-{"sentence": "順序をまもる。", "kanji": "序", "reading": "じょ"},
-{"sentence": "友を招く。", "kanji": "招", "reading": "まね"},
-
-{"sentence": "証明書を出す。", "kanji": "証", "reading": "しょう"},
-{"sentence": "動物の象。", "kanji": "象", "reading": "ぞう"},
-{"sentence": "賞をもらう。", "kanji": "賞", "reading": "しょう"},
-{"sentence": "条件を話す。", "kanji": "条", "reading": "じょう"},
-{"sentence": "状を読む。", "kanji": "状", "reading": "じょう"},
-{"sentence": "常に笑顔。", "kanji": "常", "reading": "つね"},
-{"sentence": "感情を表す。", "kanji": "情", "reading": "じょう"},
-{"sentence": "布を織る。", "kanji": "織", "reading": "お"},
-{"sentence": "職業を選ぶ。", "kanji": "職", "reading": "しょく"},
-{"sentence": "制度を変える。", "kanji": "制", "reading": "せい"},
-
-{"sentence": "性格がよい。", "kanji": "性", "reading": "せい"},
-{"sentence": "政治を学ぶ。", "kanji": "政", "reading": "せい"},
-{"sentence": "勢いがある。", "kanji": "勢", "reading": "いきお"},
-{"sentence": "精神をみがく。", "kanji": "精", "reading": "せい"},
-{"sentence": "米を製する。", "kanji": "製", "reading": "せい"},
-{"sentence": "税金をおさめる。", "kanji": "税", "reading": "ぜい"},
-{"sentence": "責めをおう。", "kanji": "責", "reading": "せ"},
-{"sentence": "業績をたたえる。", "kanji": "績", "reading": "せき"},
-{"sentence": "人と接する。", "kanji": "接", "reading": "せっ"},
-{"sentence": "建物を設ける。", "kanji": "設", "reading": "もう"},
-
-{"sentence": "関係を絶つ。", "kanji": "絶", "reading": "た"},
-{"sentence": "祖父と話す。", "kanji": "祖", "reading": "そ"},
-{"sentence": "素材を生かす。", "kanji": "素", "reading": "そ"},
-{"sentence": "総会に出る。", "kanji": "総", "reading": "そう"},
-{"sentence": "家を造る。", "kanji": "造", "reading": "つく"},
-{"sentence": "像をたてる。", "kanji": "像", "reading": "ぞう"},
-{"sentence": "人数が増える。", "kanji": "増", "reading": "ふ"},
-{"sentence": "法の則にしたがう。", "kanji": "則", "reading": "そく"},
-{"sentence": "深さを測る。", "kanji": "測", "reading": "はか"},
-{"sentence": "川に属する魚。", "kanji": "属", "reading": "ぞく"},
-
-{"sentence": "成功の率を出す。", "kanji": "率", "reading": "りつ"},
-{"sentence": "損を出す。", "kanji": "損", "reading": "そん"},
-{"sentence": "友に金を貸す。", "kanji": "貸", "reading": "か"},
-{"sentence": "態度を改める。", "kanji": "態", "reading": "たい"},
-{"sentence": "団体で行動する。", "kanji": "団", "reading": "だん"},
-{"sentence": "決断する。", "kanji": "断", "reading": "だん"},
-{"sentence": "家を築く。", "kanji": "築", "reading": "きず"},
-{"sentence": "貯金をする。", "kanji": "貯", "reading": "ちょ"},
-{"sentence": "糸を張る。", "kanji": "張", "reading": "は"},
-{"sentence": "車を停める。", "kanji": "停", "reading": "と"},
-
-{"sentence": "意見を提出する。", "kanji": "提", "reading": "てい"},
-{"sentence": "程よい温度。", "kanji": "程", "reading": "てい"},
-{"sentence": "適した場所。", "kanji": "適", "reading": "てき"},
-{"sentence": "国を統一する。", "kanji": "統", "reading": "とう"},
-{"sentence": "堂の前でまつ。", "kanji": "堂", "reading": "どう"},
-{"sentence": "銅のいろ。", "kanji": "銅", "reading": "どう"},
-{"sentence": "友を導く。", "kanji": "導", "reading": "みちび"},
-{"sentence": "得をする。", "kanji": "得", "reading": "え"},
-{"sentence": "毒のある生き物。", "kanji": "毒", "reading": "どく"},
-{"sentence": "独りで学ぶ。", "kanji": "独", "reading": "ひと"},
-
-{"sentence": "仕事を任される。", "kanji": "任", "reading": "まか"},
-{"sentence": "火が燃える。", "kanji": "燃", "reading": "も"},
-{"sentence": "能力をのばす。", "kanji": "能", "reading": "のう"},
-{"sentence": "物を破る。", "kanji": "破", "reading": "やぶ"},
-{"sentence": "法律を犯す。", "kanji": "犯", "reading": "おか"},
-{"sentence": "正しいか判定する。", "kanji": "判", "reading": "はん"},
-{"sentence": "本の版をみる。", "kanji": "版", "reading": "はん"},
-{"sentence": "兄と比べる。", "kanji": "比", "reading": "くら"},
-{"sentence": "肥えた土地。", "kanji": "肥", "reading": "こ"},
-{"sentence": "非をみとめる。", "kanji": "非", "reading": "ひ"},
-
-{"sentence": "費用を出す。", "kanji": "費", "reading": "ひ"},
-{"sentence": "準備を備える。", "kanji": "備", "reading": "そな"},
-{"sentence": "作品を評価する。", "kanji": "評", "reading": "ひょう"},
-{"sentence": "貧しいくらし。", "kanji": "貧", "reading": "まず"},
-{"sentence": "布を切る。", "kanji": "布", "reading": "ぬの"},
-{"sentence": "婦人があつまる。", "kanji": "婦", "reading": "ふ"},
-{"sentence": "武道をならう。", "kanji": "武", "reading": "ぶ"},
-{"sentence": "元の形に復する。", "kanji": "復", "reading": "ふく"},
-{"sentence": "複数の意見。", "kanji": "複", "reading": "ふく"},
-{"sentence": "仏の心。", "kanji": "仏", "reading": "ほとけ"},
-
-{"sentence": "粉をまぜる。", "kanji": "粉", "reading": "こな"},
-{"sentence": "布を編む。", "kanji": "編", "reading": "あ"},
-{"sentence": "弁を立てる。", "kanji": "弁", "reading": "べん"},
-{"sentence": "命を保つ。", "kanji": "保", "reading": "たも"},
-{"sentence": "墓まいりをする。", "kanji": "墓", "reading": "はか"},
-{"sentence": "報告を書く。", "kanji": "報", "reading": "ほう"},
-{"sentence": "豊かな実り。", "kanji": "豊", "reading": "ゆた"},
-{"sentence": "火を防ぐ。", "kanji": "防", "reading": "ふせ"},
-{"sentence": "貿易の仕事。", "kanji": "貿", "reading": "ぼう"},
-{"sentence": "風が暴れる。", "kanji": "暴", "reading": "あば"},
-
-{"sentence": "血の脈を感じる。", "kanji": "脈", "reading": "みゃく"},
-{"sentence": "仕事を務める。", "kanji": "務", "reading": "つと"},
-{"sentence": "夢を語る。", "kanji": "夢", "reading": "ゆめ"},
-{"sentence": "道に迷う。", "kanji": "迷", "reading": "まよ"},
-{"sentence": "綿のふとん。", "kanji": "綿", "reading": "わた"},
-{"sentence": "品を輸出する。", "kanji": "輸", "reading": "ゆ"},
-{"sentence": "時間が余る。", "kanji": "余", "reading": "あま"},
-{"sentence": "容器を使う。", "kanji": "容", "reading": "よう"},
-{"sentence": "説明を略す。", "kanji": "略", "reading": "りゃく"},
-{"sentence": "家に留まる。", "kanji": "留", "reading": "と"},
-{"sentence": "国の領土。", "kanji": "領", "reading": "りょう"},
-{"sentence": "歴史を学ぶ。", "kanji": "歴", "reading": "れき"}
-{"sentence": "敵を討つ。", "kanji": "討", "reading": "う"},
-{"sentence": "詩を読む。", "kanji": "詩", "reading": "し"},
-{"sentence": "票を入れる。", "kanji": "票", "reading": "ひょう"},
-{"sentence": "裁判を開く。", "kanji": "裁", "reading": "さい"},
-{"sentence": "墓をたてる。", "kanji": "墓", "reading": "はか"},
-{"sentence": "仏の教え。", "kanji": "仏", "reading": "ほとけ"},
-{"sentence": "材木を使う。", "kanji": "材", "reading": "ざい"},
-{"sentence": "豊かな心。", "kanji": "豊", "reading": "ゆたか"}
+                {"sentence": "コードを接続する。", "kanji": "接続", "reading": "せつぞく"},
+                {"sentence": "空気の圧をはかる。", "kanji": "圧", "reading": "あつ"},
+                {"sentence": "家の周りを囲む。", "kanji": "囲", "reading": "かこ"},
+                {"sentence": "町が移る。", "kanji": "移", "reading": "うつ"},
+                {"sentence": "原因を考える。", "kanji": "因", "reading": "いん"},
+                {"sentence": "永い時を生きる。", "kanji": "永", "reading": "なが"},
+                {"sentence": "店を営む。", "kanji": "営", "reading": "いとな"},
+                {"sentence": "衛生に気をつける。", "kanji": "衛", "reading": "えい"},
+                {"sentence": "計算を易しくする。", "kanji": "易", "reading": "やさ"},
+                {"sentence": "利益をえる。", "kanji": "益", "reading": "えき"},
+                {"sentence": "液体をまぜる。", "kanji": "液", "reading": "えき"},
+                {"sentence": "劇を演じる。", "kanji": "演", "reading": "えん"},
+                {"sentence": "声に応える。", "kanji": "応", "reading": "こた"},
+                {"sentence": "道を往く人。", "kanji": "往", "reading": "おう"},
+                {"sentence": "桜がさく。", "kanji": "桜", "reading": "さくら"},
+                {"sentence": "可笑しい話。", "kanji": "可", "reading": "か"},
+                {"sentence": "仮の名前を使う。", "kanji": "仮", "reading": "かり"},
+                {"sentence": "物の価を調べる。", "kanji": "価", "reading": "あたい"},
+                {"sentence": "河の流れ。", "kanji": "河", "reading": "かわ"},
+                {"sentence": "時間が過ぎる。", "kanji": "過", "reading": "す"},
+                {"sentence": "気分が快い。", "kanji": "快", "reading": "こころよ"}
             ],
             "6年生": [
                 {"sentence": "姿勢を正す。", "kanji": "姿勢", "reading": "しせい"},
@@ -1144,225 +562,28 @@
                 {"sentence": "純白のウエディングドレス。", "kanji": "純白", "reading": "じゅんぱく"},
                 {"sentence": "ワクチンを注射する。", "kanji": "注射", "reading": "ちゅうしゃ"},
                 {"sentence": "電源を切る。", "kanji": "源", "reading": "げん"},
-                {"sentence": "密接な関係。", "kanji": "密接", "reading": "みっせつ"},{"sentence": "胃の調子がよくない。", "kanji": "胃", "reading": "い"},
-{"sentence": "異なる考えをもつ。", "kanji": "異", "reading": "こと"},
-{"sentence": "文化を遺す。", "kanji": "遺", "reading": "のこ"},
-{"sentence": "地域の活動。", "kanji": "域", "reading": "いき"},
-{"sentence": "宇宙を見上げる。", "kanji": "宇", "reading": "う"},
-{"sentence": "月が水に映る。", "kanji": "映", "reading": "うつ"},
-{"sentence": "話が延びる。", "kanji": "延", "reading": "の"},
-{"sentence": "川に沿って歩く。", "kanji": "沿", "reading": "そ"},
-{"sentence": "恩をわすれない。", "kanji": "恩", "reading": "おん"},
-{"sentence": "我をおさえる。", "kanji": "我", "reading": "が"},
-
-{"sentence": "灰をすてる。", "kanji": "灰", "reading": "はい"},
-{"sentence": "手を拡げる。", "kanji": "拡", "reading": "ひろ"},
-{"sentence": "古い革のかばん。", "kanji": "革", "reading": "かわ"},
-{"sentence": "閣議がひらかれる。", "kanji": "閣", "reading": "かく"},
-{"sentence": "割れた皿。", "kanji": "割", "reading": "わ"},
-{"sentence": "株を買う。", "kanji": "株", "reading": "かぶ"},
-{"sentence": "洗たく物を干す。", "kanji": "干", "reading": "ほ"},
-{"sentence": "本を巻く。", "kanji": "巻", "reading": "ま"},
-{"sentence": "病人を看る。", "kanji": "看", "reading": "み"},
-{"sentence": "簡単な問題。", "kanji": "簡", "reading": "かん"},
-
-{"sentence": "危ない場所。", "kanji": "危", "reading": "あぶ"},
-{"sentence": "机に向かう。", "kanji": "机", "reading": "つくえ"},
-{"sentence": "旗を揮う。", "kanji": "揮", "reading": "ふる"},
-{"sentence": "貴重な本。", "kanji": "貴", "reading": "たっと"},
-{"sentence": "答えを疑う。", "kanji": "疑", "reading": "うたが"},
-{"sentence": "空気を吸う。", "kanji": "吸", "reading": "す"},
-{"sentence": "花を供える。", "kanji": "供", "reading": "そな"},
-{"sentence": "胸をはる。", "kanji": "胸", "reading": "むね"},
-{"sentence": "ふるさとに帰る。", "kanji": "郷", "reading": "きょう"},
-{"sentence": "仕事に勤める。", "kanji": "勤", "reading": "つと"},
-
-{"sentence": "腕の筋がいたい。", "kanji": "筋", "reading": "すじ"},
-{"sentence": "家族の系図。", "kanji": "系", "reading": "けい"},
-{"sentence": "先生を敬う。", "kanji": "敬", "reading": "うやま"},
-{"sentence": "警察に知らせる。", "kanji": "警", "reading": "けい"},
-{"sentence": "劇を見に行く。", "kanji": "劇", "reading": "げき"},
-{"sentence": "水が激しく流れる。", "kanji": "激", "reading": "はげ"},
-{"sentence": "穴をほる。", "kanji": "穴", "reading": "あな"},
-{"sentence": "入場券を買う。", "kanji": "券", "reading": "けん"},
-{"sentence": "絹のはぎれ。", "kanji": "絹", "reading": "きぬ"},
-{"sentence": "権利をまもる。", "kanji": "権", "reading": "けん"},
-
-{"sentence": "憲法を学ぶ。", "kanji": "憲", "reading": "けん"},
-{"sentence": "川の源をたどる。", "kanji": "源", "reading": "みなもと"},
-{"sentence": "厳しい先生。", "kanji": "厳", "reading": "きび"},
-{"sentence": "己の弱さを知る。", "kanji": "己", "reading": "おのれ"},
-{"sentence": "名前を呼ぶ。", "kanji": "呼", "reading": "よ"},
-{"sentence": "言葉を誤る。", "kanji": "誤", "reading": "あやま"},
-{"sentence": "后は女王のこと。", "kanji": "后", "reading": "きさき"},
-{"sentence": "孝行をする。", "kanji": "孝", "reading": "こう"},
-{"sentence": "皇居を見学する。", "kanji": "皇", "reading": "こう"},
-{"sentence": "紅葉を見に行く。", "kanji": "紅", "reading": "こう"},
-
-{"sentence": "雨が降る。", "kanji": "降", "reading": "ふ"},
-{"sentence": "鉄と鋼。", "kanji": "鋼", "reading": "はがね"},
-{"sentence": "時間を刻む。", "kanji": "刻", "reading": "きざ"},
-{"sentence": "穀物を育てる。", "kanji": "穀", "reading": "こく"},
-{"sentence": "骨をおる。", "kanji": "骨", "reading": "ほね"},
-{"sentence": "問題に困る。", "kanji": "困", "reading": "こま"},
-{"sentence": "砂のつぶ。", "kanji": "砂", "reading": "すな"},
-{"sentence": "正座をする。", "kanji": "座", "reading": "ざ"},
-{"sentence": "仕事が済む。", "kanji": "済", "reading": "す"},
-{"sentence": "裁判を見る。", "kanji": "裁", "reading": "さい"},
-
-{"sentence": "計画を策にする。", "kanji": "策", "reading": "さく"},
-{"sentence": "一冊の本。", "kanji": "冊", "reading": "さつ"},
-{"sentence": "蚕を育てる。", "kanji": "蚕", "reading": "かいこ"},
-{"sentence": "目的地に至る。", "kanji": "至", "reading": "いた"},
-{"sentence": "私の意見。", "kanji": "私", "reading": "わたし"},
-{"sentence": "美しい姿。", "kanji": "姿", "reading": "すがた"},
-{"sentence": "外を見る。", "kanji": "視", "reading": "し"},
-{"sentence": "言葉の詞。", "kanji": "詞", "reading": "し"},
-{"sentence": "記事を読む。", "kanji": "誌", "reading": "し"},
-{"sentence": "磁石で遊ぶ。", "kanji": "磁", "reading": "じ"},
-
-{"sentence": "矢を射る。", "kanji": "射", "reading": "い"},
-{"sentence": "ごみを捨てる。", "kanji": "捨", "reading": "す"},
-{"sentence": "一尺の長さ。", "kanji": "尺", "reading": "しゃく"},
-{"sentence": "若い人。", "kanji": "若", "reading": "わか"},
-{"sentence": "木を植える。", "kanji": "樹", "reading": "き"},
-{"sentence": "税金を収める。", "kanji": "収", "reading": "おさ"},
-{"sentence": "宗教を学ぶ。", "kanji": "宗", "reading": "しゅう"},
-{"sentence": "仕事に就く。", "kanji": "就", "reading": "つ"},
-{"sentence": "民の衆。", "kanji": "衆", "reading": "しゅう"},
-{"sentence": "先生に従う。", "kanji": "従", "reading": "したが"}
-{"sentence": "縦に線を引く。", "kanji": "縦", "reading": "たて"},
-{"sentence": "服が縮む。", "kanji": "縮", "reading": "ちぢ"},
-{"sentence": "熟したくだもの。", "kanji": "熟", "reading": "じゅく"},
-{"sentence": "水が純らか。", "kanji": "純", "reading": "じゅん"},
-{"sentence": "場所を処理する。", "kanji": "処", "reading": "しょ"},
-{"sentence": "署名をする。", "kanji": "署", "reading": "しょ"},
-{"sentence": "諸国を旅する。", "kanji": "諸", "reading": "しょ"},
-{"sentence": "雪を除く。", "kanji": "除", "reading": "のぞ"},
-{"sentence": "話を承る。", "kanji": "承", "reading": "うけたまわ"},
-{"sentence": "将来の夢。", "kanji": "将", "reading": "しょう"},
-
-{"sentence": "けがを傷める。", "kanji": "傷", "reading": "きず"},
-{"sentence": "道に障がいがある。", "kanji": "障", "reading": "しょう"},
-{"sentence": "水が蒸発する。", "kanji": "蒸", "reading": "じょう"},
-{"sentence": "針でぬう。", "kanji": "針", "reading": "はり"},
-{"sentence": "仁義を重んじる。", "kanji": "仁", "reading": "じん"},
-{"sentence": "水を垂らす。", "kanji": "垂", "reading": "た"},
-{"sentence": "ボールを推す。", "kanji": "推", "reading": "お"},
-{"sentence": "一寸の虫。", "kanji": "寸", "reading": "すん"},
-{"sentence": "料理を盛る。", "kanji": "盛", "reading": "も"},
-{"sentence": "聖なる場所。", "kanji": "聖", "reading": "せい"},
-
-{"sentence": "誠実に生きる。", "kanji": "誠", "reading": "まこと"},
-{"sentence": "舌を出す。", "kanji": "舌", "reading": "した"},
-{"sentence": "宣言をする。", "kanji": "宣", "reading": "せん"},
-{"sentence": "専門の人。", "kanji": "専", "reading": "せん"},
-{"sentence": "泉の水。", "kanji": "泉", "reading": "いずみ"},
-{"sentence": "手を洗う。", "kanji": "洗", "reading": "あら"},
-{"sentence": "服を染める。", "kanji": "染", "reading": "そ"},
-{"sentence": "お金を銭とよぶ。", "kanji": "銭", "reading": "ぜに"},
-{"sentence": "善い行い。", "kanji": "善", "reading": "よ"},
-{"sentence": "曲を奏でる。", "kanji": "奏", "reading": "かな"},
-
-{"sentence": "窓を開ける。", "kanji": "窓", "reading": "まど"},
-{"sentence": "新しい物を創る。", "kanji": "創", "reading": "つく"},
-{"sentence": "服を装う。", "kanji": "装", "reading": "よそお"},
-{"sentence": "層が重なる。", "kanji": "層", "reading": "そう"},
-{"sentence": "ロープを操る。", "kanji": "操", "reading": "あやつ"},
-{"sentence": "金を蔵に入れる。", "kanji": "蔵", "reading": "くら"},
-{"sentence": "心臓が動く。", "kanji": "臓", "reading": "ぞう"},
-{"sentence": "生命を存する。", "kanji": "存", "reading": "そん"},
-{"sentence": "相手を尊ぶ。", "kanji": "尊", "reading": "とうと"},
-{"sentence": "家に退く。", "kanji": "退", "reading": "しりぞ"},
-
-{"sentence": "宅に帰る。", "kanji": "宅", "reading": "たく"},
-{"sentence": "責任を担う。", "kanji": "担", "reading": "にな"},
-{"sentence": "山を探る。", "kanji": "探", "reading": "さぐ"},
-{"sentence": "誕生日を祝う。", "kanji": "誕", "reading": "たん"},
-{"sentence": "階段を上る。", "kanji": "段", "reading": "だん"},
-{"sentence": "部屋を暖める。", "kanji": "暖", "reading": "あたた"},
-{"sentence": "値を下げる。", "kanji": "値", "reading": "ね"},
-{"sentence": "空中をとぶ。", "kanji": "宙", "reading": "ちゅう"},
-{"sentence": "忠実に守る。", "kanji": "忠", "reading": "ちゅう"},
-{"sentence": "本を著す。", "kanji": "著", "reading": "あらわ"},
-
-{"sentence": "市の庁舎。", "kanji": "庁", "reading": "ちょう"},
-{"sentence": "山の頂上。", "kanji": "頂", "reading": "ちょう"},
-{"sentence": "腸がいたい。", "kanji": "腸", "reading": "ちょう"},
-{"sentence": "潮が満ちる。", "kanji": "潮", "reading": "しお"},
-{"sentence": "家賃をはらう。", "kanji": "賃", "reading": "ちん"},
-{"sentence": "歯が痛い。", "kanji": "痛", "reading": "いた"},
-{"sentence": "敵に勝つ。", "kanji": "敵", "reading": "てき"},
-{"sentence": "店を展開する。", "kanji": "展", "reading": "てん"},
-{"sentence": "討論をする。", "kanji": "討", "reading": "とう"},
-{"sentence": "党の代表。", "kanji": "党", "reading": "とう"},
-
-{"sentence": "糖をとかす。", "kanji": "糖", "reading": "とう"},
-{"sentence": "書類を届ける。", "kanji": "届", "reading": "とど"},
-{"sentence": "問題が難しい。", "kanji": "難", "reading": "むずか"},
-{"sentence": "乳を飲む。", "kanji": "乳", "reading": "ちち"},
-{"sentence": "事実を認める。", "kanji": "認", "reading": "みと"},
-{"sentence": "品を納める。", "kanji": "納", "reading": "おさ"},
-{"sentence": "脳のはたらき。", "kanji": "脳", "reading": "のう"},
-{"sentence": "新しい派をつくる。", "kanji": "派", "reading": "は"},
-{"sentence": "手を拝む。", "kanji": "拝", "reading": "おが"},
-{"sentence": "背中がいたい。", "kanji": "背", "reading": "せ"},
-
-{"sentence": "肺をいたわる。", "kanji": "肺", "reading": "はい"},
-{"sentence": "俳句をつくる。", "kanji": "俳", "reading": "はい"},
-{"sentence": "班ごとにわかれる。", "kanji": "班", "reading": "はん"},
-{"sentence": "夜が晩い。", "kanji": "晩", "reading": "おそ"},
-{"sentence": "答えを否定する。", "kanji": "否", "reading": "ひ"},
-{"sentence": "作品を批評する。", "kanji": "批", "reading": "ひ"},
-{"sentence": "秘密を守る。", "kanji": "秘", "reading": "ひ"},
-{"sentence": "米を俵につめる。", "kanji": "俵", "reading": "たわら"},
-{"sentence": "腹がへる。", "kanji": "腹", "reading": "はら"},
-{"sentence": "強く奮い立つ。", "kanji": "奮", "reading": "ふる"},
-
-{"sentence": "列に並ぶ。", "kanji": "並", "reading": "なら"},
-{"sentence": "陛下に会う。", "kanji": "陛", "reading": "へい"},
-{"sentence": "門を閉める。", "kanji": "閉", "reading": "し"},
-{"sentence": "紙を片に切る。", "kanji": "片", "reading": "かた"},
-{"sentence": "弱点を補う。", "kanji": "補", "reading": "おぎな"},
-{"sentence": "日が暮れる。", "kanji": "暮", "reading": "く"},
-{"sentence": "宝を見つける。", "kanji": "宝", "reading": "たから"},
-{"sentence": "家を訪ねる。", "kanji": "訪", "reading": "たず"},
-{"sentence": "命を亡くす。", "kanji": "亡", "reading": "な"},
-{"sentence": "名前を忘れる。", "kanji": "忘", "reading": "わす"},
-
-{"sentence": "棒を立てる。", "kanji": "棒", "reading": "ぼう"},
-{"sentence": "紙を枚に切る。", "kanji": "枚", "reading": "まい"},
-{"sentence": "幕を開ける。", "kanji": "幕", "reading": "まく"},
-{"sentence": "秘密を守る。", "kanji": "密", "reading": "みつ"},
-{"sentence": "国の盟をむすぶ。", "kanji": "盟", "reading": "めい"},
-{"sentence": "模様をえがく。", "kanji": "模", "reading": "も"},
-{"sentence": "英語に訳す。", "kanji": "訳", "reading": "やく"},
-{"sentence": "郵便を出す。", "kanji": "郵", "reading": "ゆう"},
-{"sentence": "優しい心。", "kanji": "優", "reading": "やさ"},
-{"sentence": "お金を預ける。", "kanji": "預", "reading": "あず"},
-
-{"sentence": "幼い子。", "kanji": "幼", "reading": "おさな"},
-{"sentence": "欲しい物。", "kanji": "欲", "reading": "ほ"},
-{"sentence": "翌日が休み。", "kanji": "翌", "reading": "よく"},
-{"sentence": "国が乱れる。", "kanji": "乱", "reading": "みだ"},
-{"sentence": "鳥の卵。", "kanji": "卵", "reading": "たまご"},
-{"sentence": "絵を覧る。", "kanji": "覧", "reading": "み"},
-{"sentence": "服の裏。", "kanji": "裏", "reading": "うら"},
-{"sentence": "法律を守る。", "kanji": "律", "reading": "りつ"},
-{"sentence": "式に臨む。", "kanji": "臨", "reading": "のぞ"},
-{"sentence": "朗らかに笑う。", "kanji": "朗", "reading": "ほが"},
-{"sentence": "意見を論じる。", "kanji": "論", "reading": "ろん"},
-{"sentence": "宇宙を旅する。", "kanji": "宙", "reading": "ちゅう"},
-{"sentence": "栄えた町。", "kanji": "栄", "reading": "さか"},
-{"sentence": "漢字を覚える。", "kanji": "漢", "reading": "かん"},
-{"sentence": "鏡を見る。", "kanji": "鏡", "reading": "かがみ"},
-{"sentence": "筋道を立てる。", "kanji": "筋", "reading": "すじ"},
-{"sentence": "群れをなす。", "kanji": "群", "reading": "む"},
-{"sentence": "潔くあやまる。", "kanji": "潔", "reading": "いさぎよ"},
-{"sentence": "標識を見つける。", "kanji": "標", "reading": "ひょう"},
-{"sentence": "歴史を学ぶ。", "kanji": "歴", "reading": "れき"},
-{"sentence": "仮の名前を使う。", "kanji": "仮", "reading": "かり"}
-            ],
+                {"sentence": "密接な関係。", "kanji": "密接", "reading": "みっせつ"},
+                {"sentence": "胃の調子がよくない。", "kanji": "胃", "reading": "い"},
+                {"sentence": "異なる考えをもつ。", "kanji": "異", "reading": "こと"},
+                {"sentence": "文化を遺す。", "kanji": "遺", "reading": "のこ"},
+                {"sentence": "地域の活動。", "kanji": "域", "reading": "いき"},
+                {"sentence": "宇宙を見上げる。", "kanji": "宇", "reading": "う"},
+                {"sentence": "月が水に映る。", "kanji": "映", "reading": "うつ"},
+                {"sentence": "話が延びる。", "kanji": "延", "reading": "の"},
+                {"sentence": "川に沿って歩く。", "kanji": "沿", "reading": "そ"},
+                {"sentence": "恩をわすれない。", "kanji": "恩", "reading": "おん"},
+                {"sentence": "我をおさえる。", "kanji": "我", "reading": "が"},
+                {"sentence": "灰をすてる。", "kanji": "灰", "reading": "はい"},
+                {"sentence": "手を拡げる。", "kanji": "拡", "reading": "ひろ"},
+                {"sentence": "古い革のかばん。", "kanji": "革", "reading": "かわ"},
+                {"sentence": "閣議がひらかれる。", "kanji": "閣", "reading": "かく"},
+                {"sentence": "割れた皿。", "kanji": "割", "reading": "わ"},
+                {"sentence": "株を買う。", "kanji": "株", "reading": "かぶ"},
+                {"sentence": "洗たく物を干す。", "kanji": "干", "reading": "ほ"},
+                {"sentence": "本を巻く。", "kanji": "巻", "reading": "ま"},
+                {"sentence": "病人を看る。", "kanji": "看", "reading": "み"},
+                {"sentence": "簡単な問題。", "kanji": "簡", "reading": "かん"}
+            ]
         };
 
         let currentQuestions = [];
@@ -1380,7 +601,9 @@
 
         function startQuiz(grade) {
             const questions = kanjiQuestions[grade];
-            currentQuestions = questions.sort(() => Math.random() - 0.5);
+            // 問題をシャッフルして最初の10問だけを取得
+            const shuffled = questions.sort(() => Math.random() - 0.5);
+            currentQuestions = shuffled.slice(0, 10);
             currentIndex = 0;
             currentGrade = grade;
             correctCount = 0;
@@ -1391,6 +614,70 @@
 
         function showQuestion() {
             const q = currentQuestions[currentIndex];
+            document.getElementById('question-number').textContent = `(${currentIndex + 1}/${currentQuestions.length}) のもんだい`;
+            
+            const progress = ((currentIndex + 1) / currentQuestions.length) * 100;
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = `${currentIndex + 1}/${currentQuestions.length}`;
+            
+            const sentenceBox = document.getElementById('sentence-box');
+            const sentence = q.sentence;
+            const kanji = q.kanji;
+            const index = sentence.indexOf(kanji);
+            
+            const before = sentence.substring(0, index);
+            const target = sentence.substring(index, index + kanji.length);
+            const after = sentence.substring(index + kanji.length);
+            
+            sentenceBox.innerHTML = before + '<span class="underline">' + target + '</span>' + after;
+            
+            document.getElementById('answer-input').value = '';
+            document.getElementById('result').textContent = '';
+            document.getElementById('result').className = 'result';
+            document.getElementById('answer-input').focus();
+        }
+
+        function checkAnswer() {
+            const q = currentQuestions[currentIndex];
+            const answer = document.getElementById('answer-input').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (answer === q.reading) {
+                resultDiv.textContent = '💮 正解!';
+                resultDiv.className = 'result correct';
+                correctCount++;
+            } else {
+                resultDiv.textContent = `❌ 不正解! 正しくは「${q.reading}」`;
+                resultDiv.className = 'result incorrect';
+            }
+        }
+
+        function nextQuestion() {
+            if (currentIndex + 1 < currentQuestions.length) {
+                currentIndex++;
+                showQuestion();
+            } else {
+                showFinish();
+            }
+        }
+
+        function showFinish() {
+            if (!stats[currentGrade]) {
+                stats[currentGrade] = {
+                    totalQuestions: 0,
+                    correctAnswers: 0,
+                    attempts: 0
+                };
+            }
+            stats[currentGrade].totalQuestions += currentQuestions.length;
+            stats[currentGrade].correctAnswers += correctCount;
+            stats[currentGrade].attempts += 1;
+            localStorage.setItem('kanjiStats', JSON.stringify(stats));
+            
+            const accuracy = Math.round((correctCount / currentQuestions.length) * 100);
+            document.getElementById('current-accuracy').textContent = `${accuracy}% (${correctCount}/${currentQuestions.length})`;
+            
             document.getElementById('question-number').textContent = `(${currentIndex + 1}/${currentQuestions.length}) のもんだい`;
             
             const progress = ((currentIndex + 1) / currentQuestions.length) * 100;
