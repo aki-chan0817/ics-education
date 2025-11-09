@@ -2,396 +2,102 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌸 かんじのもり 🌸</title>
+    <title>漢字クイズ</title>
     <style>
-        * {
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+            background: #f4f8fb;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
-            background: linear-gradient(135deg, #f4f9f1 0%, #e8f5e3 100%);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            flex: 1;
-            width: 100%;
-            max-width: 650px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
         }
-        .title {
-            font-size: 32px;
-            font-weight: bold;
-            margin: 30px 0 40px;
-            color: #2d5016;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            letter-spacing: 2px;
+        header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 1em;
+            font-size: 1.5em;
         }
-        .grade-button {
-            font-size: 18px;
-            background: linear-gradient(145deg, #d4f1d0, #b9e8b5);
-            padding: 14px 50px;
-            margin: 8px auto;
-            border: 2px solid #a0d89f;
-            border-radius: 12px;
+        main {
+            padding: 2em;
+        }
+        button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.7em 1.5em;
+            margin: 0.5em;
+            font-size: 1em;
             cursor: pointer;
-            width: 220px;
-            display: block;
-            transition: all 0.3s;
-            color: #2d5016;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .grade-button:hover {
-            background: linear-gradient(145deg, #b9e8b5, #a0d89f);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-        .grade-button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .stats-menu-button {
-            background: linear-gradient(145deg, #ffe699, #ffd966);
-            border: 2px solid #ffcc33;
-            margin-top: 30px;
-        }
-        .stats-menu-button:hover {
-            background: linear-gradient(145deg, #ffd966, #ffcc33);
-        }
-        .question-number {
-            font-size: 18px;
-            margin: 25px 0 15px;
-            color: #2d5016;
-            font-weight: bold;
-        }
-        .progress-container {
-            width: 90%;
-            max-width: 450px;
-            height: 35px;
-            background-color: #fff;
-            border-radius: 18px;
-            margin: 15px auto 30px;
-            overflow: hidden;
-            border: 3px solid #b9e8b5;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #7ac977, #b9e8b5);
-            border-radius: 15px;
-            transition: width 0.4s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #2d5016;
-            font-weight: bold;
-            font-size: 15px;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
-        }
-        .sentence-box {
-            font-size: 26px;
-            line-height: 1.8;
-            padding: 45px 30px;
-            text-align: center;
-            background-color: #fff;
-            margin: 30px 0;
-            border-radius: 16px;
-            border: 3px solid #b9e8b5;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            min-height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .underline {
-            text-decoration: underline;
-            text-decoration-thickness: 3px;
-            text-decoration-color: #ff6b6b;
-            text-underline-offset: 5px;
-            font-weight: bold;
-        }
-        .input-box {
-            font-size: 20px;
-            padding: 14px 20px;
-            width: 320px;
-            max-width: 90%;
-            border: 3px solid #b9e8b5;
-            border-radius: 12px;
-            margin: 15px 0;
-            text-align: center;
-            transition: all 0.3s;
-            background-color: #fff;
-        }
-        .input-box:focus {
-            outline: none;
-            border-color: #7ac977;
-            box-shadow: 0 0 0 3px rgba(122, 201, 119, 0.2);
-        }
-        .input-box::placeholder {
-            color: #999;
-        }
-        .result {
-            font-size: 18px;
-            margin: 15px 0;
-            min-height: 40px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .correct {
-            color: #22c55e;
-            font-size: 20px;
-        }
-        .incorrect {
-            color: #ef4444;
-            font-size: 18px;
-        }
-        .answer-button {
-            font-size: 18px;
-            background: linear-gradient(145deg, #fff4cc, #ffeb99);
-            padding: 14px 50px;
-            margin: 12px auto;
-            border: 2px solid #ffd966;
-            border-radius: 12px;
-            cursor: pointer;
-            display: block;
-            transition: all 0.3s;
-            font-weight: bold;
-            color: #6b5a00;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .answer-button:hover {
-            background: linear-gradient(145deg, #ffeb99, #ffd966);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-        .next-button {
-            font-size: 18px;
-            background: linear-gradient(145deg, #c7e3ff, #b0d6ff);
-            padding: 14px 50px;
-            margin: 8px auto;
-            border: 2px solid #90c0ff;
-            border-radius: 12px;
-            cursor: pointer;
-            display: block;
-            transition: all 0.3s;
-            font-weight: bold;
-            color: #003d82;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .next-button:hover {
-            background: linear-gradient(145deg, #b0d6ff, #90c0ff);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-        .finish-title {
-            font-size: 28px;
-            font-weight: bold;
-            margin: 50px 0 35px;
-            color: #2d5016;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        .menu-button {
-            font-size: 18px;
-            background: linear-gradient(145deg, #d4f1d0, #b9e8b5);
-            padding: 16px 50px;
-            margin: 20px;
-            border: 2px solid #a0d89f;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            color: #2d5016;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .menu-button:hover {
-            background: linear-gradient(145deg, #b9e8b5, #a0d89f);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-        .stats-container {
-            width: 100%;
-            max-width: 550px;
-            margin: 25px auto;
-        }
-        .grade-stats {
-            background: linear-gradient(145deg, #ffffff, #f9f9f9);
-            border: 3px solid #b9e8b5;
-            border-radius: 16px;
-            padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        .grade-stats h3 {
-            color: #2d5016;
-            margin-bottom: 18px;
-            font-size: 20px;
-            text-align: center;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #e8f5e3;
-        }
-        .stat-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 8px;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 16px;
-        }
-        .stat-row:last-child {
-            border-bottom: none;
-        }
-        .stat-label {
-            color: #555;
-        }
-        .stat-value {
-            font-weight: bold;
-            color: #2d5016;
-            font-size: 17px;
-        }
-        .accuracy-bar {
-            width: 100%;
-            height: 24px;
-            background-color: #f0f0f0;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-top: 10px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .accuracy-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #7ac977, #b9e8b5);
-            border-radius: 12px;
-            transition: width 0.4s ease;
-        }
-        .no-data {
-            color: #999;
-            font-style: italic;
-            text-align: center;
-            padding: 25px;
-            font-size: 16px;
-        }
-        .reset-button {
-            font-size: 15px;
-            background: linear-gradient(145deg, #ffc9c9, #ffb3b3);
-            padding: 10px 25px;
-            margin: 15px auto;
-            border: 2px solid #ff9999;
-            border-radius: 10px;
-            cursor: pointer;
-            display: block;
-            transition: all 0.3s;
-            font-weight: bold;
-            color: #8b0000;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-        }
-        .reset-button:hover {
-            background: linear-gradient(145deg, #ffb3b3, #ff9999);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        .current-result {
-            background: linear-gradient(145deg, #ffffff, #f9f9f9);
-            border: 3px solid #b9e8b5;
-            border-radius: 16px;
-            padding: 25px;
-            margin: 25px auto;
-            max-width: 350px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        .current-result .stat-row {
-            font-size: 18px;
-            padding: 8px 0;
-        }
-        footer {
-            width: 100%;
-            text-align: center;
-            padding: 25px;
-            background: linear-gradient(to top, #d4ecd0, #e8f5e3);
-            color: #2d5016;
-            font-size: 14px;
-            margin-top: 30px;
-            border-top: 2px solid #b9e8b5;
+        button:hover {
+            background-color: #357ac9;
         }
         .hidden {
             display: none;
         }
-        
-        @media (max-width: 480px) {
-            .title {
-                font-size: 26px;
-            }
-            .sentence-box {
-                font-size: 22px;
-                padding: 35px 20px;
-            }
-            .grade-button {
-                width: 200px;
-                font-size: 16px;
-            }
+        .question-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5em;
+            margin: 1em auto;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .stats-grade {
+            background: white;
+            margin: 1em auto;
+            padding: 1em;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        .learned-kanji {
+            margin-top: 0.5em;
+            color: #333;
+            font-size: 1em;
+            line-height: 1.6em;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div id="menu-screen">
-            <div class="title">🌳 かんじのもり 🌳</div>
-            <button class="grade-button" onclick="startQuiz('1年生')">1年生</button>
-            <button class="grade-button" onclick="startQuiz('2年生')">2年生</button>
-            <button class="grade-button" onclick="startQuiz('3年生')">3年生</button>
-            <button class="grade-button" onclick="startQuiz('4年生')">4年生</button>
-            <button class="grade-button" onclick="startQuiz('5年生')">5年生</button>
-            <button class="grade-button" onclick="startQuiz('6年生')">6年生</button>
-            <button class="grade-button stats-menu-button" onclick="showStats()">📊 学習記録を見る</button>
+    <header>📘 小学生の漢字クイズ</header>
+
+    <main>
+        <div id="menu">
+            <h2>学年を選んでね</h2>
+            <button onclick="startQuiz('1年生')">1年生</button>
+            <button onclick="startQuiz('2年生')">2年生</button>
+            <button onclick="startQuiz('3年生')">3年生</button>
+            <button onclick="startQuiz('4年生')">4年生</button>
+            <button onclick="startQuiz('5年生')">5年生</button>
+            <button onclick="startQuiz('6年生')">6年生</button>
+            <br><br>
+            <button onclick="showStats()">📊 学習記録を見る</button>
         </div>
 
-        <div id="question-screen" class="hidden">
-            <div class="question-number" id="question-number"></div>
-            <div class="progress-container">
-                <div class="progress-bar" id="progress-bar"></div>
+        <div id="quiz" class="hidden">
+            <div class="question-box">
+                <p id="question"></p>
+                <input id="answer" type="text" placeholder="漢字を入力">
+                <br><br>
+                <button onclick="checkAnswer()">答える</button>
             </div>
-            <div class="sentence-box" id="sentence-box"></div>
-            <input type="text" class="input-box" id="answer-input" placeholder="ひらがなで入力してね">
-            <div class="result" id="result"></div>
-            <button class="answer-button" id="answer-button" onclick="checkAnswer()">こたえる</button>
-            <button class="next-button" id="next-button" onclick="nextQuestion()">▶ 次へ</button>
         </div>
 
-        <div id="finish-screen" class="hidden">
-            <div class="finish-title">✨ おつかれさまでした ✨</div>
-            <div class="current-result">
-                <div class="stat-row">
-                    <span class="stat-label">今回の正答率:</span>
-                    <span class="stat-value" id="current-accuracy"></span>
-                </div>
-            </div>
-            <button class="menu-button" onclick="showMenu()">🏠 メニューにもどる</button>
+        <div id="result" class="hidden">
+            <h2 id="resultText"></h2>
+            <button onclick="nextQuestion()">次の問題へ</button>
+            <button onclick="returnToMenu()">メニューへ</button>
         </div>
 
-        <div id="stats-screen" class="hidden">
-            <div class="title">📊 学習記録</div>
-            <div class="stats-container" id="stats-container"></div>
-            <button class="reset-button" onclick="resetAllStats()">すべての記録をリセット</button>
-            <button class="menu-button" onclick="showMenu()">🏠 メニューにもどる</button>
-        </div>
-    </div>
-
-    <footer>
-        情報通信技術活用論2025
-    </footer>
+        <div id="stats" class="hidden"></div>
+    </main>
 
     <script>
-        const kanjiQuestions = {
+        const kanjiData = {
             "1年生": [
                 {"sentence": "大きなイヌ。", "kanji": "大", "reading": "おお"},
                 {"sentence": "小さい声。", "kanji": "小", "reading": "ちい"},
@@ -419,7 +125,7 @@
                 {"sentence": "早くおきる。", "kanji": "早", "reading": "はや"},
                 {"sentence": "正しいこたえ。", "kanji": "正", "reading": "ただ"},
                 {"sentence": "生きものをまもる。", "kanji": "生", "reading": "い"},
-                {"sentence": "天の川をみる。", "kanji": "天", "reading": "あま"},
+                {"sentence": "天の川をみる。", "kanji": "天", "reading": "てん"},
                 {"sentence": "気もちがいい。", "kanji": "気", "reading": "き"},
                 {"sentence": "水をのむ。", "kanji": "水", "reading": "みず"},
                 {"sentence": "火をつける。", "kanji": "火", "reading": "ひ"}
@@ -438,7 +144,7 @@
                 {"sentence": "ロープを強く引く。", "kanji": "引", "reading": "ひ"},
                 {"sentence": "羽をひろげた鳥。", "kanji": "羽", "reading": "はね"},
                 {"sentence": "白い雲がながれる。", "kanji": "雲", "reading": "くも"},
-                {"sentence": "公園であそぶ。", "kanji": "園", "reading": "えん"},
+                {"sentence": "園で花をうえる。", "kanji": "園", "reading": "えん"},
                 {"sentence": "遠くの山がみえる。", "kanji": "遠", "reading": "とお"},
                 {"sentence": "何をしているの。", "kanji": "何", "reading": "なに"},
                 {"sentence": "理科のじっけん。", "kanji": "科", "reading": "か"},
@@ -474,7 +180,7 @@
                 {"sentence": "委員にえらばれた。", "kanji": "委", "reading": "い"},
                 {"sentence": "意見をのべる。", "kanji": "意", "reading": "い"},
                 {"sentence": "花を育てる。", "kanji": "育", "reading": "そだ"},
-                {"sentence": "全員で作る。", "kanji": "員", "reading": "いん"},
+                {"sentence": "会社の員。", "kanji": "員", "reading": "いん"},
                 {"sentence": "病院へいく。", "kanji": "院", "reading": "いん"},
                 {"sentence": "水を飲む。", "kanji": "飲", "reading": "の"},
                 {"sentence": "車を運ぶ。", "kanji": "運", "reading": "はこ"},
@@ -511,9 +217,9 @@
                 {"sentence": "岡の上にのぼる。", "kanji": "岡", "reading": "おか"},
                 {"sentence": "大きな億の数。", "kanji": "億", "reading": "おく"},
                 {"sentence": "数字を加える。", "kanji": "加", "reading": "くわ"},
-                {"sentence": "果物を食べる。", "kanji": "果", "reading": "くだ"},
+                {"sentence": "果物を食べる。", "kanji": "果", "reading": "は"},
                 {"sentence": "貨物を運ぶ。", "kanji": "貨", "reading": "か"},
-                {"sentence": "課題をてい出する。", "kanji": "課", "reading": "か"},
+                {"sentence": "新しい課がはじまる。", "kanji": "課", "reading": "か"},
                 {"sentence": "芽が出た。", "kanji": "芽", "reading": "め"},
                 {"sentence": "計画を改める。", "kanji": "改", "reading": "あらた"},
                 {"sentence": "害のある虫。", "kanji": "害", "reading": "がい"},
@@ -543,11 +249,11 @@
                 {"sentence": "液体をまぜる。", "kanji": "液", "reading": "えき"},
                 {"sentence": "劇を演じる。", "kanji": "演", "reading": "えん"},
                 {"sentence": "声に応える。", "kanji": "応", "reading": "こた"},
-                {"sentence": "道を往復する。", "kanji": "往", "reading": "おう"},
+                {"sentence": "道を往く人。", "kanji": "往", "reading": "おう"},
                 {"sentence": "桜がさく。", "kanji": "桜", "reading": "さくら"},
-                {"sentence": "外出を許可する。", "kanji": "可", "reading": "か"},
+                {"sentence": "可笑しい話。", "kanji": "可", "reading": "か"},
                 {"sentence": "仮の名前を使う。", "kanji": "仮", "reading": "かり"},
-                {"sentence": "物の価値を調べる。", "kanji": "価", "reading": "か"},
+                {"sentence": "物の価を調べる。", "kanji": "価", "reading": "か"},
                 {"sentence": "河の流れ。", "kanji": "河", "reading": "かわ"},
                 {"sentence": "時間が過ぎる。", "kanji": "過", "reading": "す"},
                 {"sentence": "気分が快い。", "kanji": "快", "reading": "こころよ"}
@@ -580,82 +286,59 @@
                 {"sentence": "割れた皿。", "kanji": "割", "reading": "わ"},
                 {"sentence": "株を買う。", "kanji": "株", "reading": "かぶ"},
                 {"sentence": "洗たく物を干す。", "kanji": "干", "reading": "ほ"},
-                {"sentence": "包帯を巻く。", "kanji": "巻", "reading": "ま"},
+                {"sentence": "本を巻く。", "kanji": "巻", "reading": "ま"},
                 {"sentence": "病人を看る。", "kanji": "看", "reading": "み"},
                 {"sentence": "簡単な問題。", "kanji": "簡", "reading": "かん"}
             ]
         };
 
-        let currentQuestions = [];
+        let currentGrade = "";
+        let questions = [];
         let currentIndex = 0;
-        let currentGrade = '';
-        let correctCount = 0;
-        let stats = JSON.parse(localStorage.getItem('kanjiStats')) || {};
-
-        function showMenu() {
-            document.getElementById('menu-screen').classList.remove('hidden');
-            document.getElementById('question-screen').classList.add('hidden');
-            document.getElementById('finish-screen').classList.add('hidden');
-            document.getElementById('stats-screen').classList.add('hidden');
-        }
+        let stats = JSON.parse(localStorage.getItem('kanjiStats') || '{}');
 
         function startQuiz(grade) {
-            const questions = kanjiQuestions[grade];
-            // 問題をシャッフルして最初の10問だけを取得
-            const shuffled = questions.sort(() => Math.random() - 0.5);
-            currentQuestions = shuffled.slice(0, 10);
-            currentIndex = 0;
             currentGrade = grade;
-            correctCount = 0;
-            document.getElementById('menu-screen').classList.add('hidden');
-            document.getElementById('question-screen').classList.remove('hidden');
+            questions = [...kanjiData[grade]].sort(() => Math.random() - 0.5);
+            currentIndex = 0;
+            document.getElementById('menu').classList.add('hidden');
+            document.getElementById('stats').classList.add('hidden');
+            document.getElementById('quiz').classList.remove('hidden');
             showQuestion();
         }
 
         function showQuestion() {
-            const q = currentQuestions[currentIndex];
-            document.getElementById('question-number').textContent = `(${currentIndex + 1}/${currentQuestions.length}) のもんだい`;
-            
-            const progress = ((currentIndex + 1) / currentQuestions.length) * 100;
-            const progressBar = document.getElementById('progress-bar');
-            progressBar.style.width = progress + '%';
-            progressBar.textContent = `${currentIndex + 1}/${currentQuestions.length}`;
-            
-            const sentenceBox = document.getElementById('sentence-box');
-            const sentence = q.sentence;
-            const kanji = q.kanji;
-            const index = sentence.indexOf(kanji);
-            
-            const before = sentence.substring(0, index);
-            const target = sentence.substring(index, index + kanji.length);
-            const after = sentence.substring(index + kanji.length);
-            
-            sentenceBox.innerHTML = before + '<span class="underline">' + target + '</span>' + after;
-            
-            document.getElementById('answer-input').value = '';
-            document.getElementById('result').textContent = '';
-            document.getElementById('result').className = 'result';
-            document.getElementById('answer-input').focus();
+            const q = questions[currentIndex];
+            document.getElementById('question').textContent = `文：${q.sentence.replace(q.kanji, '□')}`;
+            document.getElementById('answer').value = '';
+            document.getElementById('answer').focus();
         }
 
         function checkAnswer() {
-            const q = currentQuestions[currentIndex];
-            const answer = document.getElementById('answer-input').value.trim();
-            const resultDiv = document.getElementById('result');
-            
-            if (answer === q.reading) {
-                resultDiv.textContent = '💮 正解!';
-                resultDiv.className = 'result correct';
-                correctCount++;
-            } else {
-                resultDiv.textContent = `❌ 不正解! 正しくは「${q.reading}」`;
-                resultDiv.className = 'result incorrect';
+            const q = questions[currentIndex];
+            const answer = document.getElementById('answer').value.trim();
+            const correct = q.kanji;
+            if (!stats[currentGrade]) {
+                stats[currentGrade] = { attempts: 0, totalQuestions: 0, correctAnswers: 0, learnedKanji: [] };
             }
+            stats[currentGrade].attempts++;
+            stats[currentGrade].totalQuestions++;
+            if (answer === correct) {
+                stats[currentGrade].correctAnswers++;
+                if (!stats[currentGrade].learnedKanji.includes(correct)) {
+                    stats[currentGrade].learnedKanji.push(correct);
+                }
+                alert('正解！');
+            } else {
+                alert(`不正解…。正しい漢字は「${correct}」です。`);
+            }
+            localStorage.setItem('kanjiStats', JSON.stringify(stats));
+            nextQuestion();
         }
 
         function nextQuestion() {
-            if (currentIndex + 1 < currentQuestions.length) {
-                currentIndex++;
+            currentIndex++;
+            if (currentIndex < questions.length) {
                 showQuestion();
             } else {
                 showFinish();
@@ -663,183 +346,51 @@
         }
 
         function showFinish() {
-            if (!stats[currentGrade]) {
-                stats[currentGrade] = {
-                    totalQuestions: 0,
-                    correctAnswers: 0,
-                    attempts: 0
-                };
-            }
-            stats[currentGrade].totalQuestions += currentQuestions.length;
-            stats[currentGrade].correctAnswers += correctCount;
-            stats[currentGrade].attempts += 1;
-            localStorage.setItem('kanjiStats', JSON.stringify(stats));
-            
-            const accuracy = Math.round((correctCount / currentQuestions.length) * 100);
-            document.getElementById('current-accuracy').textContent = `${accuracy}% (${correctCount}/${currentQuestions.length})`;
-            
-            document.getElementById('question-number').textContent = `(${currentIndex + 1}/${currentQuestions.length}) のもんだい`;
-            
-            const progress = ((currentIndex + 1) / currentQuestions.length) * 100;
-            const progressBar = document.getElementById('progress-bar');
-            progressBar.style.width = progress + '%';
-            progressBar.textContent = `${currentIndex + 1}/${currentQuestions.length}`;
-            
-            const sentenceBox = document.getElementById('sentence-box');
-            const sentence = q.sentence;
-            const kanji = q.kanji;
-            const index = sentence.indexOf(kanji);
-            
-            const before = sentence.substring(0, index);
-            const target = sentence.substring(index, index + kanji.length);
-            const after = sentence.substring(index + kanji.length);
-            
-            sentenceBox.innerHTML = before + '<span class="underline">' + target + '</span>' + after;
-            
-            document.getElementById('answer-input').value = '';
-            document.getElementById('result').textContent = '';
-            document.getElementById('result').className = 'result';
-            document.getElementById('answer-input').focus();
+            const total = questions.length;
+            const correct = stats[currentGrade].correctAnswers;
+            const accuracy = Math.round(correct / stats[currentGrade].totalQuestions * 100);
+            alert(`この学年のクイズ終了！正答率：${accuracy}% (${correct}/${stats[currentGrade].totalQuestions})`);
+            returnToMenu();
         }
 
-        function checkAnswer() {
-            const q = currentQuestions[currentIndex];
-            const answer = document.getElementById('answer-input').value.trim();
-            const resultDiv = document.getElementById('result');
-            
-            if (answer === q.reading) {
-                resultDiv.textContent = '💮 正解!';
-                resultDiv.className = 'result correct';
-                correctCount++;
-            } else {
-                resultDiv.textContent = `❌ 不正解! 正しくは「${q.reading}」`;
-                resultDiv.className = 'result incorrect';
-            }
-        }
-
-        function nextQuestion() {
-            if (currentIndex + 1 < currentQuestions.length) {
-                currentIndex++;
-                showQuestion();
-            } else {
-                showFinish();
-            }
-        }
-
-        function showFinish() {
-            if (!stats[currentGrade]) {
-                stats[currentGrade] = {
-                    totalQuestions: 0,
-                    correctAnswers: 0,
-                    attempts: 0
-                };
-            }
-            stats[currentGrade].totalQuestions += currentQuestions.length;
-            stats[currentGrade].correctAnswers += correctCount;
-            stats[currentGrade].attempts += 1;
-            localStorage.setItem('kanjiStats', JSON.stringify(stats));
-            
-            const accuracy = Math.round((correctCount / currentQuestions.length) * 100);
-            document.getElementById('current-accuracy').textContent = `${accuracy}% (${correctCount}/${currentQuestions.length})`;
-            
-            document.getElementById('question-screen').classList.add('hidden');
-            document.getElementById('finish-screen').classList.remove('hidden');
+        function returnToMenu() {
+            document.getElementById('menu').classList.remove('hidden');
+            document.getElementById('quiz').classList.add('hidden');
+            document.getElementById('result').classList.add('hidden');
+            document.getElementById('stats').classList.add('hidden');
         }
 
         function showStats() {
-            document.getElementById('menu-screen').classList.add('hidden');
-            document.getElementById('stats-screen').classList.remove('hidden');
-            
-            const container = document.getElementById('stats-container');
-            container.innerHTML = '';
-            
-            const grades = ['1年生', '2年生', '3年生', '4年生', '5年生', '6年生'];
-            let hasData = false;
-            
-            grades.forEach(grade => {
-                const gradeDiv = document.createElement('div');
-                gradeDiv.className = 'grade-stats';
-                
-                const title = document.createElement('h3');
-                title.textContent = grade;
-                gradeDiv.appendChild(title);
-                
-                if (stats[grade] && stats[grade].attempts > 0) {
-                    hasData = true;
-                    const accuracy = Math.round((stats[grade].correctAnswers / stats[grade].totalQuestions) * 100);
-                    
-                    const attemptsRow = document.createElement('div');
-                    attemptsRow.className = 'stat-row';
-                    attemptsRow.innerHTML = `
-                        <span class="stat-label">挑戦回数:</span>
-                        <span class="stat-value">${stats[grade].attempts}回</span>
-                    `;
-                    gradeDiv.appendChild(attemptsRow);
-                    
-                    const questionsRow = document.createElement('div');
-                    questionsRow.className = 'stat-row';
-                    questionsRow.innerHTML = `
-                        <span class="stat-label">解いた問題数:</span>
-                        <span class="stat-value">${stats[grade].totalQuestions}問</span>
-                    `;
-                    gradeDiv.appendChild(questionsRow);
-                    
-                    const correctRow = document.createElement('div');
-                    correctRow.className = 'stat-row';
-                    correctRow.innerHTML = `
-                        <span class="stat-label">正解数:</span>
-                        <span class="stat-value">${stats[grade].correctAnswers}問</span>
-                    `;
-                    gradeDiv.appendChild(correctRow);
-                    
-                    const accuracyRow = document.createElement('div');
-                    accuracyRow.className = 'stat-row';
-                    accuracyRow.innerHTML = `
-                        <span class="stat-label">正答率:</span>
-                        <span class="stat-value">${accuracy}%</span>
-                    `;
-                    gradeDiv.appendChild(accuracyRow);
-                    
-                    const barContainer = document.createElement('div');
-                    barContainer.className = 'accuracy-bar';
-                    const barFill = document.createElement('div');
-                    barFill.className = 'accuracy-fill';
-                    barFill.style.width = accuracy + '%';
-                    barContainer.appendChild(barFill);
-                    gradeDiv.appendChild(barContainer);
-                } else {
-                    const noData = document.createElement('div');
-                    noData.className = 'no-data';
-                    noData.textContent = 'まだ挑戦していません';
-                    gradeDiv.appendChild(noData);
+            document.getElementById('menu').classList.add('hidden');
+            const container = document.getElementById('stats');
+            container.innerHTML = '<h2>📊 学習記録</h2>';
+            for (const grade in stats) {
+                const s = stats[grade];
+                const totalAvailable = kanjiData[grade].length;
+                const accuracy = Math.round(s.correctAnswers / s.totalQuestions * 100);
+                const div = document.createElement('div');
+                div.className = 'stats-grade';
+                div.innerHTML = `
+                    <strong>${grade}</strong><br>
+                    挑戦回数: ${s.attempts}回<br>
+                    解いた問題数: ${s.totalQuestions}問 / ${totalAvailable}問中<br>
+                    正解数: ${s.correctAnswers}問<br>
+                    正答率: ${accuracy}%<br>
+                `;
+                if (s.learnedKanji && s.learnedKanji.length > 0) {
+                    const listDiv = document.createElement('div');
+                    listDiv.className = 'learned-kanji';
+                    listDiv.textContent = `学んだ漢字: ${s.learnedKanji.join('、')}`;
+                    div.appendChild(listDiv);
                 }
-                
-                container.appendChild(gradeDiv);
-            });
-            
-            if (!hasData) {
-                container.innerHTML = '<div class="no-data" style="margin-top: 40px;">まだ学習記録がありません。<br>問題に挑戦してみましょう!</div>';
+                container.appendChild(div);
             }
+            const backBtn = document.createElement('button');
+            backBtn.textContent = 'メニューへ戻る';
+            backBtn.onclick = returnToMenu;
+            container.appendChild(backBtn);
+            container.classList.remove('hidden');
         }
-
-        function resetAllStats() {
-            if (confirm('すべての学習記録を削除しますか？')) {
-                localStorage.removeItem('kanjiStats');
-                stats = {};
-                showStats();
-            }
-        }
-
-        document.getElementById('answer-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const resultDiv = document.getElementById('result');
-                if (resultDiv.textContent === '') {
-                    checkAnswer();
-                } else {
-                    nextQuestion();
-                }
-            }
-        });
     </script>
 </body>
 </html>
