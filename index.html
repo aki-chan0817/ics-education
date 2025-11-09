@@ -11,8 +11,8 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
-            background: linear-gradient(135deg, #f4f9f1 0%, #e8f5e3 100%);
+            font-family: Arial, sans-serif;
+            background-color: #f4f9f1;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -22,72 +22,51 @@
         .container {
             flex: 1;
             width: 100%;
-            max-width: 650px;
+            max-width: 600px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
         }
         .title {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: bold;
-            margin: 30px 0 40px;
+            margin: 40px 0;
             color: #2d5016;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            letter-spacing: 2px;
         }
         .grade-button {
-            font-size: 18px;
-            background: linear-gradient(145deg, #d4f1d0, #b9e8b5);
-            padding: 14px 50px;
-            margin: 8px auto;
-            border: 2px solid #a0d89f;
-            border-radius: 12px;
+            font-size: 16px;
+            background-color: #b9e8b5;
+            padding: 12px 40px;
+            margin: 6px auto;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            width: 220px;
+            width: 200px;
             display: block;
-            transition: all 0.3s;
-            color: #2d5016;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
         }
         .grade-button:hover {
-            background: linear-gradient(145deg, #b9e8b5, #a0d89f);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-        .grade-button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .stats-menu-button {
-            background: linear-gradient(145deg, #ffe699, #ffd966);
-            border: 2px solid #ffcc33;
-            margin-top: 30px;
-        }
-        .stats-menu-button:hover {
-            background: linear-gradient(145deg, #ffd966, #ffcc33);
+            background-color: #a0d89f;
         }
         .question-number {
-            font-size: 18px;
-            margin: 25px 0 15px;
+            font-size: 16px;
+            margin: 20px 0;
             color: #2d5016;
-            font-weight: bold;
         }
         .progress-container {
-            width: 90%;
-            max-width: 450px;
-            height: 35px;
-            background-color: #fff;
-            border-radius: 18px;
-            margin: 15px auto 30px;
+            width: 80%;
+            max-width: 400px;
+            height: 30px;
+            background-color: #e8f5e3;
+            border-radius: 15px;
+            margin: 20px auto;
             overflow: hidden;
-            border: 3px solid #b9e8b5;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            border: 2px solid #b9e8b5;
         }
         .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, #7ac977, #b9e8b5);
+            background: linear-gradient(90deg, #b9e8b5, #7ac977);
             border-radius: 15px;
             transition: width 0.4s ease;
             display: flex;
@@ -95,158 +74,110 @@
             justify-content: center;
             color: #2d5016;
             font-weight: bold;
-            font-size: 15px;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+            font-size: 14px;
         }
         .sentence-box {
-            font-size: 26px;
-            line-height: 1.8;
-            padding: 45px 30px;
+            font-size: 22px;
+            padding: 40px;
             text-align: center;
-            background-color: #fff;
-            margin: 30px 0;
-            border-radius: 16px;
-            border: 3px solid #b9e8b5;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            min-height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: #f4f9f1;
+            margin: 40px 0;
         }
         .underline {
             text-decoration: underline;
-            text-decoration-thickness: 3px;
-            text-decoration-color: #ff6b6b;
-            text-underline-offset: 5px;
-            font-weight: bold;
         }
         .input-box {
-            font-size: 20px;
-            padding: 14px 20px;
-            width: 320px;
-            max-width: 90%;
-            border: 3px solid #b9e8b5;
-            border-radius: 12px;
-            margin: 15px 0;
+            font-size: 18px;
+            padding: 10px;
+            width: 300px;
+            border: 2px solid #b9e8b5;
+            border-radius: 8px;
+            margin: 10px 0;
             text-align: center;
-            transition: all 0.3s;
-            background-color: #fff;
-        }
-        .input-box:focus {
-            outline: none;
-            border-color: #7ac977;
-            box-shadow: 0 0 0 3px rgba(122, 201, 119, 0.2);
         }
         .input-box::placeholder {
-            color: #999;
+            color: gray;
         }
         .result {
-            font-size: 18px;
-            margin: 15px 0;
-            min-height: 40px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 16px;
+            margin: 10px 0;
+            min-height: 30px;
         }
         .correct {
-            color: #22c55e;
-            font-size: 20px;
+            color: green;
         }
         .incorrect {
-            color: #ef4444;
-            font-size: 18px;
+            color: red;
         }
         .answer-button {
-            font-size: 18px;
-            background: linear-gradient(145deg, #fff4cc, #ffeb99);
-            padding: 14px 50px;
-            margin: 12px auto;
-            border: 2px solid #ffd966;
-            border-radius: 12px;
+            font-size: 16px;
+            background-color: #ffeb99;
+            padding: 12px 40px;
+            margin: 10px auto;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
             display: block;
-            transition: all 0.3s;
-            font-weight: bold;
-            color: #6b5a00;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
         }
         .answer-button:hover {
-            background: linear-gradient(145deg, #ffeb99, #ffd966);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background-color: #ffd966;
         }
         .next-button {
-            font-size: 18px;
-            background: linear-gradient(145deg, #c7e3ff, #b0d6ff);
-            padding: 14px 50px;
-            margin: 8px auto;
-            border: 2px solid #90c0ff;
-            border-radius: 12px;
+            font-size: 16px;
+            background-color: #b0d6ff;
+            padding: 12px 40px;
+            margin: 5px auto;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
             display: block;
-            transition: all 0.3s;
-            font-weight: bold;
-            color: #003d82;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
         }
         .next-button:hover {
-            background: linear-gradient(145deg, #b0d6ff, #90c0ff);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background-color: #90c0ff;
         }
         .finish-title {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: bold;
-            margin: 50px 0 35px;
+            margin: 60px 0 30px 0;
             color: #2d5016;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         .menu-button {
             font-size: 18px;
-            background: linear-gradient(145deg, #d4f1d0, #b9e8b5);
-            padding: 16px 50px;
+            background-color: #b9e8b5;
+            padding: 15px 40px;
             margin: 20px;
-            border: 2px solid #a0d89f;
-            border-radius: 12px;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            color: #2d5016;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
         }
         .menu-button:hover {
-            background: linear-gradient(145deg, #b9e8b5, #a0d89f);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background-color: #a0d89f;
         }
         .stats-container {
             width: 100%;
-            max-width: 550px;
-            margin: 25px auto;
+            max-width: 500px;
+            margin: 20px auto;
         }
         .grade-stats {
-            background: linear-gradient(145deg, #ffffff, #f9f9f9);
-            border: 3px solid #b9e8b5;
-            border-radius: 16px;
-            padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            background-color: white;
+            border: 2px solid #b9e8b5;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
         }
         .grade-stats h3 {
             color: #2d5016;
-            margin-bottom: 18px;
-            font-size: 20px;
-            text-align: center;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #e8f5e3;
+            margin-bottom: 15px;
+            font-size: 18px;
         }
         .stat-row {
             display: flex;
             justify-content: space-between;
-            padding: 12px 8px;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 16px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e8f5e3;
         }
         .stat-row:last-child {
             border-bottom: none;
@@ -257,88 +188,60 @@
         .stat-value {
             font-weight: bold;
             color: #2d5016;
-            font-size: 17px;
         }
         .accuracy-bar {
             width: 100%;
-            height: 24px;
-            background-color: #f0f0f0;
-            border-radius: 12px;
+            height: 20px;
+            background-color: #e8f5e3;
+            border-radius: 10px;
             overflow: hidden;
-            margin-top: 10px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 5px;
         }
         .accuracy-fill {
             height: 100%;
             background: linear-gradient(90deg, #7ac977, #b9e8b5);
-            border-radius: 12px;
+            border-radius: 10px;
             transition: width 0.4s ease;
         }
         .no-data {
             color: #999;
             font-style: italic;
             text-align: center;
-            padding: 25px;
-            font-size: 16px;
+            padding: 20px;
         }
         .reset-button {
-            font-size: 15px;
-            background: linear-gradient(145deg, #ffc9c9, #ffb3b3);
-            padding: 10px 25px;
-            margin: 15px auto;
-            border: 2px solid #ff9999;
-            border-radius: 10px;
+            font-size: 14px;
+            background-color: #ffb3b3;
+            padding: 8px 20px;
+            margin: 10px auto;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
             display: block;
-            transition: all 0.3s;
-            font-weight: bold;
-            color: #8b0000;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
         }
         .reset-button:hover {
-            background: linear-gradient(145deg, #ffb3b3, #ff9999);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            background-color: #ff9999;
         }
         .current-result {
-            background: linear-gradient(145deg, #ffffff, #f9f9f9);
-            border: 3px solid #b9e8b5;
-            border-radius: 16px;
-            padding: 25px;
-            margin: 25px auto;
-            max-width: 350px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        .current-result .stat-row {
-            font-size: 18px;
-            padding: 8px 0;
+            background-color: white;
+            border: 2px solid #b9e8b5;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 300px;
         }
         footer {
             width: 100%;
             text-align: center;
-            padding: 25px;
-            background: linear-gradient(to top, #d4ecd0, #e8f5e3);
+            padding: 20px;
+            background-color: #e8f5e3;
             color: #2d5016;
             font-size: 14px;
-            margin-top: 30px;
-            border-top: 2px solid #b9e8b5;
+            margin-top: 20px;
         }
         .hidden {
             display: none;
-        }
-        
-        @media (max-width: 480px) {
-            .title {
-                font-size: 26px;
-            }
-            .sentence-box {
-                font-size: 22px;
-                padding: 35px 20px;
-            }
-            .grade-button {
-                width: 200px;
-                font-size: 16px;
-            }
         }
     </style>
 </head>
@@ -352,7 +255,7 @@
             <button class="grade-button" onclick="startQuiz('4年生')">4年生</button>
             <button class="grade-button" onclick="startQuiz('5年生')">5年生</button>
             <button class="grade-button" onclick="startQuiz('6年生')">6年生</button>
-            <button class="grade-button stats-menu-button" onclick="showStats()">📊 学習記録を見る</button>
+            <button class="grade-button" style="background-color: #ffd966; margin-top: 30px;" onclick="showStats()">📊 学習記録を見る</button>
         </div>
 
         <div id="question-screen" class="hidden">
@@ -368,7 +271,7 @@
         </div>
 
         <div id="finish-screen" class="hidden">
-            <div class="finish-title">✨ おつかれさまでした ✨</div>
+            <div class="finish-title">✨おつかれさまでした✨</div>
             <div class="current-result">
                 <div class="stat-row">
                     <span class="stat-label">今回の正答率:</span>
@@ -403,26 +306,6 @@
                 {"sentence": "なつ休み。", "kanji": "休", "reading": "やす"},
                 {"sentence": "夕ごはんをたべる。", "kanji": "夕", "reading": "ゆう"},
                 {"sentence": "音がくの先生。", "kanji": "音", "reading": "おん"},
-                {"sentence": "山にのぼる。", "kanji": "山", "reading": "やま"},
-                {"sentence": "川の水がながれる。", "kanji": "川", "reading": "かわ"},
-                {"sentence": "木のえだをきる。", "kanji": "木", "reading": "き"},
-                {"sentence": "森のなかをあるく。", "kanji": "森", "reading": "もり"},
-                {"sentence": "林でとりをみた。", "kanji": "林", "reading": "はやし"},
-                {"sentence": "田のあぜみち。", "kanji": "田", "reading": "た"},
-                {"sentence": "草のなかに虫。", "kanji": "虫", "reading": "むし"},
-                {"sentence": "空に月がうかぶ。", "kanji": "空", "reading": "そら"},
-                {"sentence": "花がさく。", "kanji": "花", "reading": "はな"},
-                {"sentence": "石をひろう。", "kanji": "石", "reading": "いし"},
-                {"sentence": "青いそら。", "kanji": "青", "reading": "あお"},
-                {"sentence": "赤いりんご。", "kanji": "赤", "reading": "あか"},
-                {"sentence": "白いくも。", "kanji": "白", "reading": "しろ"},
-                {"sentence": "早くおきる。", "kanji": "早", "reading": "はや"},
-                {"sentence": "正しいこたえ。", "kanji": "正", "reading": "ただ"},
-                {"sentence": "生きものをまもる。", "kanji": "生", "reading": "い"},
-                {"sentence": "天の川をみる。", "kanji": "天", "reading": "てん"},
-                {"sentence": "気もちがいい。", "kanji": "気", "reading": "き"},
-                {"sentence": "水をのむ。", "kanji": "水", "reading": "みず"},
-                {"sentence": "火をつける。", "kanji": "火", "reading": "ひ"}
             ],
             "2年生": [
                 {"sentence": "ともだちに会う。", "kanji": "会", "reading": "あ"},
@@ -435,26 +318,6 @@
                 {"sentence": "車が止まる。", "kanji": "止", "reading": "と"},
                 {"sentence": "船にのる。", "kanji": "船", "reading": "ふね"},
                 {"sentence": "原っぱであそぶ。", "kanji": "原", "reading": "はら"},
-                {"sentence": "ロープを強く引く。", "kanji": "引", "reading": "ひ"},
-                {"sentence": "羽をひろげた鳥。", "kanji": "羽", "reading": "はね"},
-                {"sentence": "白い雲がながれる。", "kanji": "雲", "reading": "くも"},
-                {"sentence": "園で花をうえる。", "kanji": "園", "reading": "えん"},
-                {"sentence": "遠くの山がみえる。", "kanji": "遠", "reading": "とお"},
-                {"sentence": "何をしているの。", "kanji": "何", "reading": "なに"},
-                {"sentence": "理科のじっけん。", "kanji": "科", "reading": "か"},
-                {"sentence": "夏の川あそび。", "kanji": "夏", "reading": "なつ"},
-                {"sentence": "家にかえる。", "kanji": "家", "reading": "いえ"},
-                {"sentence": "歌をうたう。", "kanji": "歌", "reading": "うた"},
-                {"sentence": "絵をかく。", "kanji": "絵", "reading": "え"},
-                {"sentence": "海のなみ。", "kanji": "海", "reading": "うみ"},
-                {"sentence": "画を見てまねる。", "kanji": "画", "reading": "が"},
-                {"sentence": "二回めのテスト。", "kanji": "回", "reading": "かい"},
-                {"sentence": "会ぎがはじまる。", "kanji": "会", "reading": "かい"},
-                {"sentence": "外であそぶ。", "kanji": "外", "reading": "そと"},
-                {"sentence": "角をまがる。", "kanji": "角", "reading": "かど"},
-                {"sentence": "楽しいえんそく。", "kanji": "楽", "reading": "たの"},
-                {"sentence": "水の中で活やく。", "kanji": "活", "reading": "かつ"},
-                {"sentence": "間をあけてならぶ。", "kanji": "間", "reading": "あいだ"}
             ],
             "3年生": [
                 {"sentence": "ゆう名な詩を読む。", "kanji": "詩", "reading": "し"},
@@ -467,26 +330,6 @@
                 {"sentence": "相手に伝える。", "kanji": "相手", "reading": "あいて"},
                 {"sentence": "形を整える。", "kanji": "整", "reading": "ととの"},
                 {"sentence": "新たな発見。", "kanji": "発見", "reading": "はっけん"},
-                {"sentence": "悪いゆめをみた。", "kanji": "悪", "reading": "わる"},
-                {"sentence": "安いりんごをかった。", "kanji": "安", "reading": "やす"},
-                {"sentence": "暗いみちをあるく。", "kanji": "暗", "reading": "くら"},
-                {"sentence": "医しゃにみてもらう。", "kanji": "医", "reading": "い"},
-                {"sentence": "委員にえらばれた。", "kanji": "委", "reading": "い"},
-                {"sentence": "意見をのべる。", "kanji": "意", "reading": "い"},
-                {"sentence": "花を育てる。", "kanji": "育", "reading": "そだ"},
-                {"sentence": "会社の員。", "kanji": "員", "reading": "いん"},
-                {"sentence": "病院へいく。", "kanji": "院", "reading": "いん"},
-                {"sentence": "水を飲む。", "kanji": "飲", "reading": "の"},
-                {"sentence": "車を運ぶ。", "kanji": "運", "reading": "はこ"},
-                {"sentence": "川で泳ぐ。", "kanji": "泳", "reading": "およ"},
-                {"sentence": "駅でまつ。", "kanji": "駅", "reading": "えき"},
-                {"sentence": "町の中央。", "kanji": "央", "reading": "おう"},
-                {"sentence": "横にすわる。", "kanji": "横", "reading": "よこ"},
-                {"sentence": "木の屋ね。", "kanji": "屋", "reading": "や"},
-                {"sentence": "温かいスープ。", "kanji": "温", "reading": "あたた"},
-                {"sentence": "化学のじっけん。", "kanji": "化", "reading": "か"},
-                {"sentence": "荷物をはこぶ。", "kanji": "荷", "reading": "に"},
-                {"sentence": "世界の国。", "kanji": "界", "reading": "かい"}
             ],
             "4年生": [
                 {"sentence": "季節に関する言葉。", "kanji": "季節", "reading": "きせつ"},
@@ -499,26 +342,6 @@
                 {"sentence": "友達とあそぶ。", "kanji": "友達", "reading": "ともだち"},
                 {"sentence": "夏休みの半ば。", "kanji": "半", "reading": "なか"},
                 {"sentence": "海底の生き物を調査する。", "kanji": "海底", "reading": "かいてい"},
-                {"sentence": "愛をだれかに伝える。", "kanji": "愛", "reading": "あい"},
-                {"sentence": "新しい案を出す。", "kanji": "案", "reading": "あん"},
-                {"sentence": "以後きをつける。", "kanji": "以", "reading": "い"},
-                {"sentence": "あたたかい衣。", "kanji": "衣", "reading": "ころも"},
-                {"sentence": "位をたてる。", "kanji": "位", "reading": "くらい"},
-                {"sentence": "印をつける。", "kanji": "印", "reading": "しるし"},
-                {"sentence": "英語をならう。", "kanji": "英", "reading": "えい"},
-                {"sentence": "栄える町。", "kanji": "栄", "reading": "さか"},
-                {"sentence": "塩をふる。", "kanji": "塩", "reading": "しお"},
-                {"sentence": "岡の上にのぼる。", "kanji": "岡", "reading": "おか"},
-                {"sentence": "大きな億の数。", "kanji": "億", "reading": "おく"},
-                {"sentence": "数字を加える。", "kanji": "加", "reading": "くわ"},
-                {"sentence": "果物を食べる。", "kanji": "果", "reading": "は"},
-                {"sentence": "貨物を運ぶ。", "kanji": "貨", "reading": "か"},
-                {"sentence": "新しい課がはじまる。", "kanji": "課", "reading": "か"},
-                {"sentence": "芽が出た。", "kanji": "芽", "reading": "め"},
-                {"sentence": "計画を改める。", "kanji": "改", "reading": "あらた"},
-                {"sentence": "害のある虫。", "kanji": "害", "reading": "がい"},
-                {"sentence": "街をあるく。", "kanji": "街", "reading": "まち"},
-                {"sentence": "各クラスで集まる。", "kanji": "各", "reading": "かく"}
             ],
             "5年生": [
                 {"sentence": "学校の校舎。", "kanji": "校舎", "reading": "こうしゃ"},
@@ -531,26 +354,6 @@
                 {"sentence": "画像を加工する。", "kanji": "像", "reading": "ぞう"},
                 {"sentence": "原因が分かる。", "kanji": "原因", "reading": "げんいん"},
                 {"sentence": "コードを接続する。", "kanji": "接続", "reading": "せつぞく"},
-                {"sentence": "空気の圧をはかる。", "kanji": "圧", "reading": "あつ"},
-                {"sentence": "家の周りを囲む。", "kanji": "囲", "reading": "かこ"},
-                {"sentence": "町が移る。", "kanji": "移", "reading": "うつ"},
-                {"sentence": "原因を考える。", "kanji": "因", "reading": "いん"},
-                {"sentence": "永い時を生きる。", "kanji": "永", "reading": "なが"},
-                {"sentence": "店を営む。", "kanji": "営", "reading": "いとな"},
-                {"sentence": "衛生に気をつける。", "kanji": "衛", "reading": "えい"},
-                {"sentence": "計算を易しくする。", "kanji": "易", "reading": "やさ"},
-                {"sentence": "利益をえる。", "kanji": "益", "reading": "えき"},
-                {"sentence": "液体をまぜる。", "kanji": "液", "reading": "えき"},
-                {"sentence": "劇を演じる。", "kanji": "演", "reading": "えん"},
-                {"sentence": "声に応える。", "kanji": "応", "reading": "こた"},
-                {"sentence": "道を往く人。", "kanji": "往", "reading": "おう"},
-                {"sentence": "桜がさく。", "kanji": "桜", "reading": "さくら"},
-                {"sentence": "可笑しい話。", "kanji": "可", "reading": "か"},
-                {"sentence": "仮の名前を使う。", "kanji": "仮", "reading": "かり"},
-                {"sentence": "物の価を調べる。", "kanji": "価", "reading": "あたい"},
-                {"sentence": "河の流れ。", "kanji": "河", "reading": "かわ"},
-                {"sentence": "時間が過ぎる。", "kanji": "過", "reading": "す"},
-                {"sentence": "気分が快い。", "kanji": "快", "reading": "こころよ"}
             ],
             "6年生": [
                 {"sentence": "姿勢を正す。", "kanji": "姿勢", "reading": "しせい"},
@@ -563,27 +366,7 @@
                 {"sentence": "ワクチンを注射する。", "kanji": "注射", "reading": "ちゅうしゃ"},
                 {"sentence": "電源を切る。", "kanji": "源", "reading": "げん"},
                 {"sentence": "密接な関係。", "kanji": "密接", "reading": "みっせつ"},
-                {"sentence": "胃の調子がよくない。", "kanji": "胃", "reading": "い"},
-                {"sentence": "異なる考えをもつ。", "kanji": "異", "reading": "こと"},
-                {"sentence": "文化を遺す。", "kanji": "遺", "reading": "のこ"},
-                {"sentence": "地域の活動。", "kanji": "域", "reading": "いき"},
-                {"sentence": "宇宙を見上げる。", "kanji": "宇", "reading": "う"},
-                {"sentence": "月が水に映る。", "kanji": "映", "reading": "うつ"},
-                {"sentence": "話が延びる。", "kanji": "延", "reading": "の"},
-                {"sentence": "川に沿って歩く。", "kanji": "沿", "reading": "そ"},
-                {"sentence": "恩をわすれない。", "kanji": "恩", "reading": "おん"},
-                {"sentence": "我をおさえる。", "kanji": "我", "reading": "が"},
-                {"sentence": "灰をすてる。", "kanji": "灰", "reading": "はい"},
-                {"sentence": "手を拡げる。", "kanji": "拡", "reading": "ひろ"},
-                {"sentence": "古い革のかばん。", "kanji": "革", "reading": "かわ"},
-                {"sentence": "閣議がひらかれる。", "kanji": "閣", "reading": "かく"},
-                {"sentence": "割れた皿。", "kanji": "割", "reading": "わ"},
-                {"sentence": "株を買う。", "kanji": "株", "reading": "かぶ"},
-                {"sentence": "洗たく物を干す。", "kanji": "干", "reading": "ほ"},
-                {"sentence": "本を巻く。", "kanji": "巻", "reading": "ま"},
-                {"sentence": "病人を看る。", "kanji": "看", "reading": "み"},
-                {"sentence": "簡単な問題。", "kanji": "簡", "reading": "かん"}
-            ]
+            ],
         };
 
         let currentQuestions = [];
@@ -601,9 +384,7 @@
 
         function startQuiz(grade) {
             const questions = kanjiQuestions[grade];
-            // 問題をシャッフルして最初の10問だけを取得
-            const shuffled = questions.sort(() => Math.random() - 0.5);
-            currentQuestions = shuffled.slice(0, 10);
+            currentQuestions = questions.sort(() => Math.random() - 0.5);
             currentIndex = 0;
             currentGrade = grade;
             correctCount = 0;
@@ -614,70 +395,6 @@
 
         function showQuestion() {
             const q = currentQuestions[currentIndex];
-            document.getElementById('question-number').textContent = `(${currentIndex + 1}/${currentQuestions.length}) のもんだい`;
-            
-            const progress = ((currentIndex + 1) / currentQuestions.length) * 100;
-            const progressBar = document.getElementById('progress-bar');
-            progressBar.style.width = progress + '%';
-            progressBar.textContent = `${currentIndex + 1}/${currentQuestions.length}`;
-            
-            const sentenceBox = document.getElementById('sentence-box');
-            const sentence = q.sentence;
-            const kanji = q.kanji;
-            const index = sentence.indexOf(kanji);
-            
-            const before = sentence.substring(0, index);
-            const target = sentence.substring(index, index + kanji.length);
-            const after = sentence.substring(index + kanji.length);
-            
-            sentenceBox.innerHTML = before + '<span class="underline">' + target + '</span>' + after;
-            
-            document.getElementById('answer-input').value = '';
-            document.getElementById('result').textContent = '';
-            document.getElementById('result').className = 'result';
-            document.getElementById('answer-input').focus();
-        }
-
-        function checkAnswer() {
-            const q = currentQuestions[currentIndex];
-            const answer = document.getElementById('answer-input').value.trim();
-            const resultDiv = document.getElementById('result');
-            
-            if (answer === q.reading) {
-                resultDiv.textContent = '💮 正解!';
-                resultDiv.className = 'result correct';
-                correctCount++;
-            } else {
-                resultDiv.textContent = `❌ 不正解! 正しくは「${q.reading}」`;
-                resultDiv.className = 'result incorrect';
-            }
-        }
-
-        function nextQuestion() {
-            if (currentIndex + 1 < currentQuestions.length) {
-                currentIndex++;
-                showQuestion();
-            } else {
-                showFinish();
-            }
-        }
-
-        function showFinish() {
-            if (!stats[currentGrade]) {
-                stats[currentGrade] = {
-                    totalQuestions: 0,
-                    correctAnswers: 0,
-                    attempts: 0
-                };
-            }
-            stats[currentGrade].totalQuestions += currentQuestions.length;
-            stats[currentGrade].correctAnswers += correctCount;
-            stats[currentGrade].attempts += 1;
-            localStorage.setItem('kanjiStats', JSON.stringify(stats));
-            
-            const accuracy = Math.round((correctCount / currentQuestions.length) * 100);
-            document.getElementById('current-accuracy').textContent = `${accuracy}% (${correctCount}/${currentQuestions.length})`;
-            
             document.getElementById('question-number').textContent = `(${currentIndex + 1}/${currentQuestions.length}) のもんだい`;
             
             const progress = ((currentIndex + 1) / currentQuestions.length) * 100;
