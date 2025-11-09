@@ -678,4 +678,168 @@
             const accuracy = Math.round((correctCount / currentQuestions.length) * 100);
             document.getElementById('current-accuracy').textContent = `${accuracy}% (${correctCount}/${currentQuestions.length})`;
             
-            document.getElementById('question
+            document.getElementById('question-number').textContent = `(${currentIndex + 1}/${currentQuestions.length}) のもんだい`;
+            
+            const progress = ((currentIndex + 1) / currentQuestions.length) * 100;
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = `${currentIndex + 1}/${currentQuestions.length}`;
+            
+            const sentenceBox = document.getElementById('sentence-box');
+            const sentence = q.sentence;
+            const kanji = q.kanji;
+            const index = sentence.indexOf(kanji);
+            
+            const before = sentence.substring(0, index);
+            const target = sentence.substring(index, index + kanji.length);
+            const after = sentence.substring(index + kanji.length);
+            
+            sentenceBox.innerHTML = before + '<span class="underline">' + target + '</span>' + after;
+            
+            document.getElementById('answer-input').value = '';
+            document.getElementById('result').textContent = '';
+            document.getElementById('result').className = 'result';
+            document.getElementById('answer-input').focus();
+        }
+
+        function checkAnswer() {
+            const q = currentQuestions[currentIndex];
+            const answer = document.getElementById('answer-input').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (answer === q.reading) {
+                resultDiv.textContent = '💮 正解!';
+                resultDiv.className = 'result correct';
+                correctCount++;
+            } else {
+                resultDiv.textContent = `❌ 不正解! 正しくは「${q.reading}」`;
+                resultDiv.className = 'result incorrect';
+            }
+        }
+
+        function nextQuestion() {
+            if (currentIndex + 1 < currentQuestions.length) {
+                currentIndex++;
+                showQuestion();
+            } else {
+                showFinish();
+            }
+        }
+
+        function showFinish() {
+            if (!stats[currentGrade]) {
+                stats[currentGrade] = {
+                    totalQuestions: 0,
+                    correctAnswers: 0,
+                    attempts: 0
+                };
+            }
+            stats[currentGrade].totalQuestions += currentQuestions.length;
+            stats[currentGrade].correctAnswers += correctCount;
+            stats[currentGrade].attempts += 1;
+            localStorage.setItem('kanjiStats', JSON.stringify(stats));
+            
+            const accuracy = Math.round((correctCount / currentQuestions.length) * 100);
+            document.getElementById('current-accuracy').textContent = `${accuracy}% (${correctCount}/${currentQuestions.length})`;
+            
+            document.getElementById('question-screen').classList.add('hidden');
+            document.getElementById('finish-screen').classList.remove('hidden');
+        }
+
+        function showStats() {
+            document.getElementById('menu-screen').classList.add('hidden');
+            document.getElementById('stats-screen').classList.remove('hidden');
+            
+            const container = document.getElementById('stats-container');
+            container.innerHTML = '';
+            
+            const grades = ['1年生', '2年生', '3年生', '4年生', '5年生', '6年生'];
+            let hasData = false;
+            
+            grades.forEach(grade => {
+                const gradeDiv = document.createElement('div');
+                gradeDiv.className = 'grade-stats';
+                
+                const title = document.createElement('h3');
+                title.textContent = grade;
+                gradeDiv.appendChild(title);
+                
+                if (stats[grade] && stats[grade].attempts > 0) {
+                    hasData = true;
+                    const accuracy = Math.round((stats[grade].correctAnswers / stats[grade].totalQuestions) * 100);
+                    
+                    const attemptsRow = document.createElement('div');
+                    attemptsRow.className = 'stat-row';
+                    attemptsRow.innerHTML = `
+                        <span class="stat-label">挑戦回数:</span>
+                        <span class="stat-value">${stats[grade].attempts}回</span>
+                    `;
+                    gradeDiv.appendChild(attemptsRow);
+                    
+                    const questionsRow = document.createElement('div');
+                    questionsRow.className = 'stat-row';
+                    questionsRow.innerHTML = `
+                        <span class="stat-label">解いた問題数:</span>
+                        <span class="stat-value">${stats[grade].totalQuestions}問</span>
+                    `;
+                    gradeDiv.appendChild(questionsRow);
+                    
+                    const correctRow = document.createElement('div');
+                    correctRow.className = 'stat-row';
+                    correctRow.innerHTML = `
+                        <span class="stat-label">正解数:</span>
+                        <span class="stat-value">${stats[grade].correctAnswers}問</span>
+                    `;
+                    gradeDiv.appendChild(correctRow);
+                    
+                    const accuracyRow = document.createElement('div');
+                    accuracyRow.className = 'stat-row';
+                    accuracyRow.innerHTML = `
+                        <span class="stat-label">正答率:</span>
+                        <span class="stat-value">${accuracy}%</span>
+                    `;
+                    gradeDiv.appendChild(accuracyRow);
+                    
+                    const barContainer = document.createElement('div');
+                    barContainer.className = 'accuracy-bar';
+                    const barFill = document.createElement('div');
+                    barFill.className = 'accuracy-fill';
+                    barFill.style.width = accuracy + '%';
+                    barContainer.appendChild(barFill);
+                    gradeDiv.appendChild(barContainer);
+                } else {
+                    const noData = document.createElement('div');
+                    noData.className = 'no-data';
+                    noData.textContent = 'まだ挑戦していません';
+                    gradeDiv.appendChild(noData);
+                }
+                
+                container.appendChild(gradeDiv);
+            });
+            
+            if (!hasData) {
+                container.innerHTML = '<div class="no-data" style="margin-top: 40px;">まだ学習記録がありません。<br>問題に挑戦してみましょう!</div>';
+            }
+        }
+
+        function resetAllStats() {
+            if (confirm('すべての学習記録を削除しますか？')) {
+                localStorage.removeItem('kanjiStats');
+                stats = {};
+                showStats();
+            }
+        }
+
+        document.getElementById('answer-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const resultDiv = document.getElementById('result');
+                if (resultDiv.textContent === '') {
+                    checkAnswer();
+                } else {
+                    nextQuestion();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
